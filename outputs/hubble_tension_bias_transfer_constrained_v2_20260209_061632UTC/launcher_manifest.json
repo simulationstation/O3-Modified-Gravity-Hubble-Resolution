@@ -1,0 +1,12 @@
+{
+  "created_utc": "2026-02-09T06:16:32Z",
+  "out_root": "outputs/hubble_tension_bias_transfer_constrained_v2_20260209_061632UTC",
+  "purpose": "constrained-prior bias-transfer sweep v2",
+  "n_cases_expected": 45,
+  "draws": 8192,
+  "n_rep": 100000,
+  "highz_bias_fracs": "-0.003,0.0,0.003",
+  "local_biases": "-0.25,0.0,0.25",
+  "seed0": 17000,
+  "cpuset": "0-47"
+}

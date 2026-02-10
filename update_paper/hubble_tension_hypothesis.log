@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.6)  10 FEB 2026 10:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.6)  10 FEB 2026 10:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -601,13 +601,13 @@ Overfull \hbox (151.80258pt too wide) detected at line 80
 OML/lmm/m/it/10 :
  []
 
-<hubble_tension_assets/h0_tension_summary.png, id=103, 614.00592pt x 346.60692p
-t>
-File: hubble_tension_assets/h0_tension_summary.png Graphic file (type png)
-<use hubble_tension_assets/h0_tension_summary.png>
-Package pdftex.def Info: hubble_tension_assets/h0_tension_summary.png  used on 
+<hubble_tension_assets/h0_tension_summary.pdf, id=103, 614.304pt x 346.19676pt>
+
+File: hubble_tension_assets/h0_tension_summary.pdf Graphic file (type pdf)
+<use hubble_tension_assets/h0_tension_summary.pdf>
+Package pdftex.def Info: hubble_tension_assets/h0_tension_summary.pdf  used on 
 input line 84.
-(pdftex.def)             Requested size: 233.69925pt x 131.92354pt.
+(pdftex.def)             Requested size: 233.69925pt x 131.70404pt.
 
 Underfull \hbox (badness 1112) in paragraph at lines 85--85
 []\T1/lmr/m/n/9 FIG. 1. []$\OML/lmm/m/it/9 H[]$ \T1/lmr/m/n/9 ten-sion sum-mary
@@ -619,7 +619,7 @@ Underfull \hbox (badness 1365) in paragraph at lines 85--85
 \T1/lmr/m/n/9 chan-nels, and local-distance-ladder con-text (SH0ES and
  []
 
-<hubble_tension_assets/h0_true_vs_inferred_hist_fixed_rebased.png, id=109, 520.
+<hubble_tension_assets/h0_true_vs_inferred_hist_fixed_rebased.png, id=108, 520.
 344pt x 346.896pt>
 File: hubble_tension_assets/h0_true_vs_inferred_hist_fixed_rebased.png Graphic 
 file (type png)
@@ -644,10 +644,10 @@ n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 1475\OML/lmm/m/it/10 =\OT1/lmr/m/n/10 0
  []
 
 [2{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc} <./hubble_tension_assets/h0_
-tension_summary.png> <./hubble_tension_assets/h0_true_vs_inferred_hist_fixed_re
+tension_summary.pdf> <./hubble_tension_assets/h0_true_vs_inferred_hist_fixed_re
 based.png> <./hubble_tension_assets/h0_true_vs_inferred_hist_lensing_rebased.pn
 g>]
-<hubble_tension_assets/clpp_overlay_baseline_vs_mgfit.png, id=134, 592.2125pt x
+<hubble_tension_assets/clpp_overlay_baseline_vs_mgfit.png, id=197, 592.2125pt x
  361.35pt>
 File: hubble_tension_assets/clpp_overlay_baseline_vs_mgfit.png Graphic file (ty
 pe png)
@@ -794,7 +794,7 @@ ed.
  ) 
 Here is how much of TeX's memory you used:
  12750 strings out of 476182
- 193140 string characters out of 5795596
+ 193164 string characters out of 5795596
  1950975 words of memory out of 5000000
  34511 multiletter control sequences out of 15000+600000
  608006 words of font info for 74 fonts, out of 8000000 for 9000
@@ -812,10 +812,10 @@ fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb
 hare/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/tex
 mf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on hubble_tension_hypothesis.pdf (5 pages, 599066 bytes).
+Output written on hubble_tension_hypothesis.pdf (5 pages, 522445 bytes).
 PDF statistics:
- 307 PDF objects out of 1000 (max. 8388607)
- 246 compressed objects within 3 object streams
+ 370 PDF objects out of 1000 (max. 8388607)
+ 255 compressed objects within 3 object streams
  57 named destinations out of 1000 (max. 500000)
  133 words of extra memory for PDF output out of 10000 (max. 10000000)
 

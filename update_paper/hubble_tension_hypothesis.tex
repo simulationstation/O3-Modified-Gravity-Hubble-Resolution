@@ -16,7 +16,7 @@
 \date{February 10, 2026}
 
 \begin{abstract}
-We investigate cosmological implications of the GWTC-3 O3 modified-propagation anomaly using an updated Planck-facing calibration chain. The upstream anomaly repository is archived on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.18585598}{10.5281/zenodo.18585598}). A 60-restart Planck+MG global refit defines a revised sound-horizon calibration anchor, $H_0^{\mathrm{Planck,MG}}=68.005$ (p50), $\Omega_m^{\mathrm{Planck,MG}}=0.30643$ (p50), and $A_{\mathrm{lens}}=1.0428$ (p50).
+We investigate cosmological implications of the GWTC-3 O3 modified-propagation anomaly using an updated Planck-facing calibration chain. The upstream anomaly repository is archived on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.18585598}{10.5281/zenodo.18585598}). A 60-restart Planck+MG global refit defines a revised sound-horizon calibration anchor, $H_0^{\mathrm{Planck,MG}}\!\approx\!68.0$, $\Omega_m^{\mathrm{Planck,MG}}\!\approx\!0.306$, and $A_{\mathrm{lens}}\!\approx\!1.04$ (posterior medians).
 
 The leading result is inference bias: if a modified-gravity truth is analyzed with standard GR sound-horizon compression (standard-ruler inversion), recovered $H_0$ shifts by mean $\Delta H_0=+1.88$ km s$^{-1}$ Mpc$^{-1}$ (fixed $\Omega_m$) or $+4.55$ km s$^{-1}$ Mpc$^{-1}$ (lensing-proxy $\Omega_m$), i.e. typical net displacements of order $+2$ to $+5$ km s$^{-1}$ Mpc$^{-1}$ relative to posterior truth.
 
@@ -29,7 +29,7 @@ For CMB lensing, baseline CAMB propagation predicts suppressed power at $L\!\sim
 \section{Scope and Framing}
 This work treats the O3 modified-propagation signal phenomenologically: given the inferred posterior, what cosmological consequences follow? The O3 anomaly analysis and data products are archived on Zenodo~\cite{O3Zenodo}. We do not re-argue detection significance in this manuscript.
 
-Modified GW propagation has been explored in theory-forward frameworks~\cite{Belgacem2018,Nishizawa2018}. Here, we use a data-driven posterior and update the pipeline to answer three questions in one chain:
+Modified GW propagation has been explored in theory-forward frameworks~\cite{Belgacem2018,Nishizawa2018}. In this follow-up, we assume the running effective Planck mass $M_\star(z)$ associated with GW friction is a universal MG sector ingredient, so the same $M_\star(z)$ trajectory also modifies the background/scalar channels probed by CMB compression and lensing~\cite{BelliniSawicki2014,PogosianSilvestri2016}. Here, we use a data-driven posterior and update the pipeline to answer three questions in one chain:
 \begin{enumerate}
 \item How much late-time Hubble tension relief remains after recalibrating the sound-horizon calibration anchor?
 \item Does Planck 2018 lensing necessarily reject this posterior, or can an MG-aware refit absorb the suppression?
@@ -70,6 +70,7 @@ $\theta_\star=r_d/D_M(z_\star)$ with a GR compression model:
 \item fixed $\Omega_m=\Omega_m^{\mathrm{Planck,MG}}$: $H_{0,\mathrm{inferred}}$ mean $72.394$ (p50 $73.170$), with mean $\Delta H_0=+1.876$ km s$^{-1}$ Mpc$^{-1}$ relative to draw-level truth;
 \item lensing-proxy $\Omega_m$: $H_{0,\mathrm{inferred}}$ mean $75.065$ (p50 $75.226$), with mean $\Delta H_0=+4.547$ km s$^{-1}$ Mpc$^{-1}$.
 \end{itemize}
+The wider lensing-proxy interval reflects the expected $H_0$--$\Omega_m$ degeneracy once rigid GR compression assumptions are relaxed; in this channel, the analysis releases model-imposed precision rather than exhibiting numerical instability.
 
 Relative to the recalibrated Planck+MG anchor $H_0^{\mathrm{Planck,MG}}=68.005$, the posterior medians shift by:
 \begin{equation}
@@ -81,7 +82,7 @@ Relative to the recalibrated Planck+MG anchor $H_0^{\mathrm{Planck,MG}}=68.005$,
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\linewidth]{hubble_tension_assets/h0_tension_summary.png}
-\caption{$H_0$ tension summary comparing Planck 2018 (GR), direct-friction recalibration, two GR-inversion bias channels, and local-distance-ladder context (SH0ES and TRGB/CCHP~\cite{SH0ES2022,Freedman2019}). The dominant displacement comes from GR standard-ruler inversion bias when MG truth is assumed.}
+\caption{$H_0$ tension summary comparing Planck 2018 (GR), direct-friction recalibration, two GR-inversion bias channels, and local-distance-ladder context (SH0ES and TRGB/CCHP~\cite{SH0ES2022,Freedman2019}). The dominant displacement comes from GR standard-ruler inversion bias when MG truth is assumed; the broad lensing-proxy interval is the expected $H_0$--$\Omega_m$ degeneracy after relaxing GR compression priors.}
 \label{fig:h0_summary}
 \end{figure}
 

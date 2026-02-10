@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.6)  10 FEB 2026 09:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.6)  10 FEB 2026 10:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -550,9 +550,9 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 36.
+(Font)              <10> on input line 32.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 36.
+(Font)              <7> on input line 32.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
 1.
 
@@ -577,20 +577,22 @@ T1/lmr/m/n/10 = 1\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 0428117 ([])\OML/lmm/m/it/10
  :
  []
 
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 7
 0.
+
 (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/
-enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr
-/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/
-lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}]
-Underfull \hbox (badness 2884) in paragraph at lines 74--75
+)
+Underfull \hbox (badness 2884) in paragraph at lines 75--76
 []\T1/lmr/m/n/10 Relative to the re-cal-i-brated Planck+MG an-chor
  []
 
 
-Overfull \hbox (151.80258pt too wide) detected at line 79
+Overfull \hbox (151.80258pt too wide) detected at line 80
 [][][]\OT1/lmr/m/n/10 ^^A\OML/lmm/m/it/10 H[] \OMS/lmsy/m/n/10 ^^Y \OT1/lmr/m/n
 /10 +2\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 39\OML/lmm/m/it/10 ;  \OT1/lmr/m/n/10 ^
 ^A\OML/lmm/m/it/10 H[] \OMS/lmsy/m/n/10 ^^Y \OT1/lmr/m/n/10 +5\OML/lmm/m/it/10 
@@ -599,193 +601,184 @@ Overfull \hbox (151.80258pt too wide) detected at line 79
 OML/lmm/m/it/10 :
  []
 
-<hubble_tension_assets/h0_tension_summary.png, id=99, 614.00592pt x 346.60692pt
->
+<hubble_tension_assets/h0_tension_summary.png, id=103, 614.00592pt x 346.60692p
+t>
 File: hubble_tension_assets/h0_tension_summary.png Graphic file (type png)
 <use hubble_tension_assets/h0_tension_summary.png>
 Package pdftex.def Info: hubble_tension_assets/h0_tension_summary.png  used on 
-input line 83.
+input line 84.
 (pdftex.def)             Requested size: 233.69925pt x 131.92354pt.
 
-Underfull \hbox (badness 1112) in paragraph at lines 84--84
+Underfull \hbox (badness 1112) in paragraph at lines 85--85
 []\T1/lmr/m/n/9 FIG. 1. []$\OML/lmm/m/it/9 H[]$ \T1/lmr/m/n/9 ten-sion sum-mary
  com-par-ing Planck 2018
  []
 
 
-Underfull \hbox (badness 1365) in paragraph at lines 84--84
+Underfull \hbox (badness 1365) in paragraph at lines 85--85
 \T1/lmr/m/n/9 chan-nels, and local-distance-ladder con-text (SH0ES and
  []
 
-<hubble_tension_assets/h0_true_vs_inferred_hist_fixed_rebased.png, id=105, 520.
+<hubble_tension_assets/h0_true_vs_inferred_hist_fixed_rebased.png, id=109, 520.
 344pt x 346.896pt>
 File: hubble_tension_assets/h0_true_vs_inferred_hist_fixed_rebased.png Graphic 
 file (type png)
 <use hubble_tension_assets/h0_true_vs_inferred_hist_fixed_rebased.png>
 Package pdftex.def Info: hubble_tension_assets/h0_true_vs_inferred_hist_fixed_r
-ebased.png  used on input line 92.
+ebased.png  used on input line 93.
 (pdftex.def)             Requested size: 120.54135pt x 80.36136pt.
-<hubble_tension_assets/h0_true_vs_inferred_hist_lensing_rebased.png, id=106, 52
+<hubble_tension_assets/h0_true_vs_inferred_hist_lensing_rebased.png, id=110, 52
 0.344pt x 346.896pt>
 File: hubble_tension_assets/h0_true_vs_inferred_hist_lensing_rebased.png Graphi
 c file (type png)
 <use hubble_tension_assets/h0_true_vs_inferred_hist_lensing_rebased.png>
 Package pdftex.def Info: hubble_tension_assets/h0_true_vs_inferred_hist_lensing
-_rebased.png  used on input line 97.
+_rebased.png  used on input line 98.
 (pdftex.def)             Requested size: 120.54135pt x 80.36136pt.
 
-Overfull \hbox (44.0232pt too wide) detected at line 108
+Overfull \hbox (44.0232pt too wide) detected at line 109
 [][][]\OMS/lmsy/m/n/10 R[] \OT1/lmr/m/n/10 = 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10
  1545 [] = 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 1085\OML/lmm/m/it/10 =\OT1/lmr/m/
 n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 1475\OML/lmm/m/it/10 =\OT1/lmr/m/n/10 0
 \OML/lmm/m/it/10 :\OT1/lmr/m/n/10 1891[]\OML/lmm/m/it/10 :
  []
 
-<hubble_tension_assets/clpp_overlay_baseline_vs_mgfit.png, id=109, 592.2125pt x
+[2{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc} <./hubble_tension_assets/h0_
+tension_summary.png> <./hubble_tension_assets/h0_true_vs_inferred_hist_fixed_re
+based.png> <./hubble_tension_assets/h0_true_vs_inferred_hist_lensing_rebased.pn
+g>]
+<hubble_tension_assets/clpp_overlay_baseline_vs_mgfit.png, id=134, 592.2125pt x
  361.35pt>
 File: hubble_tension_assets/clpp_overlay_baseline_vs_mgfit.png Graphic file (ty
 pe png)
 <use hubble_tension_assets/clpp_overlay_baseline_vs_mgfit.png>
 Package pdftex.def Info: hubble_tension_assets/clpp_overlay_baseline_vs_mgfit.p
-ng  used on input line 150.
+ng  used on input line 151.
 (pdftex.def)             Requested size: 233.69925pt x 142.59659pt.
-[2{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc} <./hubble_tension_assets/h0_
-tension_summary.png> <./hubble_tension_assets/h0_true_vs_inferred_hist_fixed_re
-based.png> <./hubble_tension_assets/h0_true_vs_inferred_hist_lensing_rebased.pn
-g>]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 157.
-
-
-LaTeX Warning: A float is stuck (cannot be placed) on input line 157.
-
-
-Class revtex4-2 Warning: Deferred float stuck during \clearpage processing.
-
-
-Underfull \hbox (badness 1168) in paragraph at lines 158--159
+Underfull \hbox (badness 1168) in paragraph at lines 159--160
 \T1/lmr/m/n/10 the con-strained re-based anal-y-sis: $\OMS/lmsy/m/n/10 R[] ' \O
 T1/lmr/m/n/10 0\OML/lmm/m/it/10 :\OT1/lmr/m/n/10 15$\T1/lmr/m/n/10 .
  []
 
 [3 <./hubble_tension_assets/clpp_overlay_baseline_vs_mgfit.png>]
-Overfull \hbox (30.99927pt too wide) in paragraph at lines 169--170
+Overfull \hbox (30.99927pt too wide) in paragraph at lines 170--171
  []\T1/lmtt/m/n/10 scripts/run_planck_global_mg_refit_multistart.py 
  []
 
 
-Overfull \hbox (46.74922pt too wide) in paragraph at lines 170--171
+Overfull \hbox (46.74922pt too wide) in paragraph at lines 171--172
  []\T1/lmtt/m/n/10 scripts/rebase_bias_transfer_sweep_to_planck_ref.py 
  []
 
 
-Overfull \hbox (51.9992pt too wide) in paragraph at lines 171--172
+Overfull \hbox (51.9992pt too wide) in paragraph at lines 172--173
  []\T1/lmtt/m/n/10 scripts/run_hubble_tension_final_relief_posterior.py 
  []
 
 
-Overfull \hbox (78.24913pt too wide) in paragraph at lines 172--173
+Overfull \hbox (78.24913pt too wide) in paragraph at lines 173--174
  []\T1/lmtt/m/n/10 scripts/run_hubble_tension_mg_forecast_robustness_grid.py 
  []
 
 
-Overfull \hbox (20.4993pt too wide) in paragraph at lines 175--176
+Overfull \hbox (20.4993pt too wide) in paragraph at lines 176--177
  []\T1/lmtt/m/n/10 scripts/run_hubble_tension_mg_lensing_refit.py 
  []
 
 
-Overfull \hbox (36.24925pt too wide) in paragraph at lines 176--177
+Overfull \hbox (36.24925pt too wide) in paragraph at lines 177--178
  []\T1/lmtt/m/n/10 scripts/run_hubble_tension_early_universe_bias.py 
  []
 
 
-Underfull \hbox (badness 2884) in paragraph at lines 187--188
+Underfull \hbox (badness 2884) in paragraph at lines 188--189
  []\T1/lmr/m/n/10 GWTC-3 cat-a-log pa-per: DOI []10.1103/Phys-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
  []\T1/lmr/m/n/10 Pantheon+ cos-mol-ogy con-straints: DOI
  []
 
 
-Underfull \hbox (badness 1028) in paragraph at lines 189--190
+Underfull \hbox (badness 1028) in paragraph at lines 190--191
  []\T1/lmr/m/n/10 SH0ES local-$\OML/lmm/m/it/10 H[]$ \T1/lmr/m/n/10 ref-er-ence
 : DOI []10.3847/2041-
  []
 
 
-Underfull \hbox (badness 6428) in paragraph at lines 191--192
+Underfull \hbox (badness 6428) in paragraph at lines 192--193
  []\T1/lmr/m/n/10 SDSS DR12 BOSS con-sen-sus BAO (source
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--192
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
  \T1/lmr/m/n/10 of \T1/lmtt/m/n/10 sdss_DR12Consensus_bao.dat\T1/lmr/m/n/10 ): 
 DOI
  []
 
 
-Underfull \hbox (badness 1242) in paragraph at lines 192--193
+Underfull \hbox (badness 1242) in paragraph at lines 193--194
  []\T1/lmr/m/n/10 eBOSS DR16 cos-mo-log-i-cal com-pi-la-tion (source
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 192--193
+Underfull \hbox (badness 1281) in paragraph at lines 193--194
  \T1/lmr/m/n/10 class for \T1/lmtt/m/n/10 sdss_DR16_LRG_BAO_DMDH.dat\T1/lmr/m/n
 /10 ): DOI
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+Underfull \hbox (badness 10000) in paragraph at lines 194--195
  []\T1/lmr/m/n/10 DESI 2024 BAO cos-mo-log-i-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+Underfull \hbox (badness 10000) in paragraph at lines 194--195
  \T1/lmr/m/n/10 cal con-straints (source class for
  []
 
 
-Overfull \hbox (6.16612pt too wide) in paragraph at lines 193--194
+Overfull \hbox (6.16612pt too wide) in paragraph at lines 194--195
  \T1/lmtt/m/n/10 desi_2024_gaussian_bao_ALL_GCcomb_mean.txt\T1/lmr/m/n/10 ):
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--195
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
  []\T1/lmr/m/n/10 Cosmic-chronometer com-pi-la-tion com-po-nents
  []
 
 
-Underfull \hbox (badness 2073) in paragraph at lines 195--196
+Underfull \hbox (badness 2073) in paragraph at lines 196--197
  \T1/lmr/m/n/10 ref-er-ences: DOIs []10.1051/0004-6361/201833910[]
  []
 
 
-Underfull \hbox (badness 1466) in paragraph at lines 229--233
+Underfull \hbox (badness 1466) in paragraph at lines 230--234
  \T1/lmr/m/n/9 the Hub-ble con-stant based on the tip of the red
  []
 
 [4]
-Underfull \hbox (badness 1117) in paragraph at lines 271--275
+Underfull \hbox (badness 1117) in paragraph at lines 272--276
  []\T1/lmr/m/n/9 N. Aghanim \T1/lmr/m/it/9 et al. \T1/lmr/m/n/9 (Planck Col-lab
 -o-ra-tion), ``Planck
  []
 
 
-Underfull \hbox (badness 1062) in paragraph at lines 271--275
+Underfull \hbox (badness 1062) in paragraph at lines 272--276
  \T1/lmr/m/n/9 2018 re-sults. VI. Cos-mo-log-i-cal pa-ram-e-ters,'' \T1/lmr/m/i
 t/9 As-tron.
  []
 
 
-Underfull \hbox (badness 7133) in paragraph at lines 271--275
+Underfull \hbox (badness 7133) in paragraph at lines 272--276
  \T1/lmr/m/it/9 As-tro-phys. \T1/lmr/bx/n/9 641\T1/lmr/m/n/9 , A6 (2020), DOI: 
 []10.1051/0004-
  []
 
 
-Underfull \hbox (badness 2521) in paragraph at lines 283--287
+Underfull \hbox (badness 2521) in paragraph at lines 284--288
  \T1/lmr/m/n/9 ``Mod-i-fied gravitational-wave prop-a-ga-tion and stan-
  []
 
@@ -800,13 +793,13 @@ ed.
 (rerunfilecheck)             Checksum: FA99DBFA4783530529145727318ADF1E;3256.
  ) 
 Here is how much of TeX's memory you used:
- 12748 strings out of 476182
- 193121 string characters out of 5795596
+ 12750 strings out of 476182
+ 193140 string characters out of 5795596
  1950975 words of memory out of 5000000
- 34509 multiletter control sequences out of 15000+600000
+ 34511 multiletter control sequences out of 15000+600000
  608006 words of font info for 74 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,8n,79p,671b,619s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,674b,619s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></us
 r/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/pu
@@ -819,10 +812,10 @@ fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb
 hare/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/tex
 mf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on hubble_tension_hypothesis.pdf (5 pages, 597791 bytes).
+Output written on hubble_tension_hypothesis.pdf (5 pages, 599066 bytes).
 PDF statistics:
- 305 PDF objects out of 1000 (max. 8388607)
- 244 compressed objects within 3 object streams
+ 307 PDF objects out of 1000 (max. 8388607)
+ 246 compressed objects within 3 object streams
  57 named destinations out of 1000 (max. 500000)
  133 words of extra memory for PDF output out of 10000 (max. 10000000)
 

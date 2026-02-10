@@ -1,0 +1,149 @@
+\documentclass[preprint,aps,prd,nofootinbib,floatfix]{revtex4-2}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\usepackage{lineno}
+\usepackage{placeins}
+
+\begin{document}
+
+\title{Entropy-Slope Reconstruction from Late-Time Geometry in an MG-Unbiased Pipeline}
+\author{Aiden B. Smith}
+\affiliation{Independent Researcher}
+\date{February 10, 2026}
+
+\begin{abstract}
+We report finalized results from the entropy submission-hardening pipeline using an MG-unbiased late-time geometry profile. The forward inversion reconstructs the apparent-horizon entropy-slope function $\mu(A)$ from Pantheon+, cosmic chronometers, and BAO while excluding GR-anchored growth, lensing, and full-shape closure terms from the primary posterior. For the real-data stage, the recovered slope is negative on average, $\langle d\log\mu/d\log A\rangle=-0.237\pm0.315$, with $P(d\log\mu/d\log A>0)=0.214$. The background posterior is broad but well sampled ($H_0=70.11^{+2.47}_{-2.43}$ km s$^{-1}$ Mpc$^{-1}$, $\Omega_m=0.297^{+0.058}_{-0.043}$, acceptance $0.337$, minimum ESS $\approx 3995$). Mapping-variant stress tests remain sub-dominant relative to posterior width: fixed-$\Omega_m$ and residual variants shift median $\log\mu$ by at most $0.021$ and $0.015$, while the curved-horizon variant gives the largest shift, $0.056$ (RMS significance $0.291\sigma$). Function-space distances strongly disfavor strict BH ($D^2_{\rm BH}=1.68\times10^{-4}$) relative to fitted non-BH families (best $D^2=4.54\times10^{-8}$). Synthetic BH-closure calibration with 24 SBC realizations yields near-nominal $\log\mu$ coverage (68\%: 0.944; 95\%: 1.000) and low invalid-logprob rate ($1.00\times10^{-3}$). These outputs provide a validated baseline for next-stage joint MG inference.
+\end{abstract}
+
+\maketitle
+\linenumbers
+\modulolinenumbers[5]
+
+\section{Scope}
+We reconstruct the horizon entropy-slope modifier
+\begin{equation}
+\mu(A) \equiv \frac{(dS/dA)_{\mathrm{BH}}}{dS/dA},
+\end{equation}
+with the forward apparent-horizon mapping implemented in the entropy pipeline. The analysis is the completed hardening run
+\path{entropy_submission_hardening_20260210_203502UTC}, with a real-data stage, robustness ablations, and synthetic closure calibration.
+
+The real-data posterior uses the MG-unbiased profile: GR-anchored growth, lensing, and full-shape constraints are excluded from primary inference to reduce cross-sector GR-closure bias. Results therefore quantify the entropy slope required by late-time geometry channels under this mapping.
+
+\section{Real-Data Results}
+\subsection{Primary posterior}
+The real-data stage reports
+\begin{align}
+H_0 &= 70.11^{+2.47}_{-2.43}\;\text{km s}^{-1}\text{Mpc}^{-1},\\
+\Omega_m &= 0.297^{+0.058}_{-0.043},
+\end{align}
+with acceptance fraction $0.337$ and minimum effective sample size $\mathrm{ESS}_{\min}\approx3995$.
+
+The entropy-slope summaries are
+\begin{align}
+\left\langle\frac{d\log\mu}{d\log A}\right\rangle &= -0.23697\pm0.31483,\\
+P\!\left(\frac{d\log\mu}{d\log A}>0\right) &= 0.2143,
+\end{align}
+so $\sim78.6\%$ posterior weight lies at negative slope. The area-averaged offset statistic is consistent with small net displacement,
+\begin{equation}
+\langle m\rangle=-0.0035\pm0.1523.
+\end{equation}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\linewidth]{logmu_logA.png}
+\caption{Posterior band for $\log\mu(\log A)$ from the finalized MG-unbiased real-data stage.}
+\label{fig:logmu_logA}
+\end{figure}
+
+\subsection{Mapping-variant robustness}
+Mapping stress tests are stable relative to posterior width. Relative to the baseline variant (V1\_free), median-shape shifts are:
+\begin{itemize}
+\item V0\_fixedOm: $\mathrm{RMS}(\Delta\mu/\sigma)=0.080$, $\max|\Delta\log\mu|=0.0214$.
+\item V2\_residual: $\mathrm{RMS}(\Delta\mu/\sigma)=0.062$, $\max|\Delta\log\mu|=0.0153$.
+\item V1\_curved: $\mathrm{RMS}(\Delta\mu/\sigma)=0.291$, $\max|\Delta\log\mu|=0.0562$.
+\end{itemize}
+The curved-horizon nuisance is the dominant mapping perturbation but remains sub-$1\sigma$ in RMS significance.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\linewidth]{logmu_logA_variants.png}
+\caption{Mapping-variant comparison of reconstructed $\log\mu(\log A)$.}
+\label{fig:variants}
+\end{figure}
+
+\subsection{Function-space proximity}
+Weighted function-space distances to parametric families (fit to posterior mean) are
+\begin{align}
+D^2_{\rm BH}&=1.68\times10^{-4},\nonumber\\
+D^2_{\rm Tsallis}&=4.54\times10^{-8},\quad
+D^2_{\rm Barrow}=4.54\times10^{-8},\nonumber\\
+D^2_{\rm Kaniadakis}&=1.12\times10^{-7}.
+\end{align}
+In this run, non-BH families track the reconstructed shape much better than strict BH. Best-fit summary parameters are
+$\delta_{\rm Tsallis}=1.23697$, $\Delta_{\rm Barrow}=0.47393$, and
+$\tilde\beta_{\rm Kaniadakis}=0.50660$.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\linewidth]{Hz_forward.png}
+\caption{Forward-reconstructed $H(z)$ band for the same posterior draws.}
+\label{fig:hz}
+\end{figure}
+
+\section{Ablation and Synthetic Closure}
+\subsection{Ablation suite}
+Seven ablation cases were executed (kernel, covariance, and smoothing variations).
+Across cases,
+\begin{equation}
+D^2_{\rm BH}\in[0.117,\,0.553],\qquad
+\min D^2_{\rm Kaniadakis}=4.37\times10^{-3}.
+\end{equation}
+The qualitative ordering is consistent with the real-data stage: non-BH families remain much closer than BH across tested settings.
+
+\subsection{Synthetic BH closure (SBC)}
+The synthetic closure stage completed $N=24$ SBC realizations with BH truth. Coverage metrics are
+\begin{align}
+&\log\mu(x):\; C_{68}=0.944,\; C_{95}=1.000,\\
+&\log\mu(\log A):\; C_{68}=0.940,\; C_{95}=1.000,\\
+&H(z)\ \text{pointwise}:\; C_{68}=0.739,\; C_{95}=0.981,\\
+&H(z)\ \text{simultaneous}:\; C_{68}=0.917,\; C_{95}=0.958.
+\end{align}
+Sampler health remained stable. SBC acceptance was $0.3628$ on average
+(p10/p50/p90 $=0.3589/0.3625/0.3693$). The invalid-logprob rate was
+$1.00\times10^{-3}$ (p90 $1.53\times10^{-3}$; max $1.80\times10^{-3}$),
+dominated by prior-bound hits on $\log\sigma_{d2}$.
+
+\begin{center}
+\includegraphics[width=0.98\linewidth]{coverage_points.png}\\
+\small Figure: Synthetic-closure coverage summary from the BH-truth SBC stage.
+\end{center}
+
+\section{Conclusion}
+The hardening pipeline completed end-to-end and returns a consistent result: under the MG-unbiased geometry profile, the recovered entropy slope is mildly-to-moderately negative in posterior mean, with broad uncertainty but clear sign preference toward negative values. Mapping-variant shifts are limited, ablation behavior is qualitatively stable, and synthetic closure calibration is healthy enough to support next-stage joint analyses.
+
+\acknowledgments
+This work used A.I. tools extensively, including ChatGPT 5.3.
+
+\section*{Data Availability and DOIs}
+\begin{itemize}
+\item O3 modified-gravity tension anomaly repository (Zenodo): \\url{https://doi.org/10.5281/zenodo.18585598}.
+\item O3 search-sensitivity injection data (Zenodo): \\url{https://doi.org/10.5281/zenodo.7890437}.
+\item GWTC-3 catalog: \\url{https://doi.org/10.1103/PhysRevX.13.041039}.
+\item Pantheon+ constraints: \\url{https://doi.org/10.3847/1538-4357/ac8e04}.
+\item Planck 2018 parameters: \\url{https://doi.org/10.1051/0004-6361/201833910}.
+\item Planck 2018 lensing: \\url{https://doi.org/10.1051/0004-6361/201833886}.
+\item SDSS DR12 BAO: \\url{https://doi.org/10.1093/mnras/stx721}.
+\item eBOSS DR16 constraints: \\url{https://doi.org/10.1103/PhysRevD.103.083533}.
+\item DESI 2024 BAO constraints: \\url{https://doi.org/10.1088/1475-7516/2025/02/021}.
+\item Cosmic-chronometer component DOI: \\url{https://doi.org/10.1088/1475-7516/2012/08/006}.
+\item Cosmic-chronometer component DOI: \\url{https://doi.org/10.1103/PhysRevD.71.123001}.
+\item Cosmic-chronometer component DOI: \\url{https://doi.org/10.1088/1475-7516/2010/02/008}.
+\end{itemize}
+
+\end{document}

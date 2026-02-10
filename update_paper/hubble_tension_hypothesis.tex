@@ -39,8 +39,8 @@
 \newcommand{\LPD}{\mathrm{LPD}}
 \newcommand{\dL}{d_L}
 
-\title{Hypothesis-Conditioned Forecast of Hubble-Tension Relief\\
-\large Assuming the GWTC-3 Dark-Siren Propagation Signal is Physical}
+\title{Cosmological Implications of the GWTC-3 Modified-Propagation Anomaly\\
+\large Partial Hubble-Tension Relief and a CMB-Lensing Stress Test}
 \author{Aiden B. Smith}
 \date{February 10, 2026}
 
@@ -49,25 +49,22 @@
 \maketitle
 
 \begin{abstract}
-This work presents hypothesis-conditioned forecasts for the Hubble tension under the assumption that the O3 dark-siren modified-propagation anomaly is physical. The upstream anomaly analysis, archived on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.18585598}{10.5281/zenodo.18585598}), reports $\Delta\LPD_{\mathrm{tot}}\simeq+3.67$, whereas a GR-truth injection calibration gives mean $-0.839$, standard deviation $0.240$, and maximum $+0.076$ over 512 realizations. Posterior draws from the reconstructed modified-gravity model are propagated into late-time anchor observables, CMB-lensing forecasts, and compressed early-universe inversions.
+We propagate the posterior from the O3 dark-siren modified-gravity tension anomaly into late- and early-universe inference tests. The upstream anomaly analysis is archived on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.18585598}{10.5281/zenodo.18585598}) with calibrated GR-injection baselines. In our constrained endpoint, anchor-based relief of the local-vs-Planck Hubble gap is moderate: $\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}}=0.246$ (p16/p50/p84 $=0.205/0.239/0.277$), leaving a typical residual discrepancy of $\sim 1.17\sigma$.
 
-In the constrained, repeatability-calibrated endpoint, the preferred anchor-based relief posterior is moderate: $\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}}$ has mean $0.246$ with p16/p50/p84 $=0.205/0.239/0.277$, and the local-versus-high-$z$ GR gap is typically $\sim1.17\sigma$. A joint SN+BAO+CC transfer-bias fit with O3 metadata yields $\log\mathrm{BF}_{\mathrm{transfer/no-transfer}}=-0.533$, indicating no preference for explicit transfer terms in this setup.
+The key result is a direct CAMB forecast against Planck 2018 lensing bandpowers using 64 posterior draws. The model predicts suppressed lensing power, with median shifts of $-15.29\%$ at $L\simeq106$ and $-9.49\%$ at $L\simeq286$ relative to the Planck-reference model. Draw-level fits are substantially worse than the Planck reference (median $\chi^2=51.77$ vs $\chi^2_{\rm ref}=9.04$), and only $3.1\%$ of draws outperform the reference; an independent 32-draw cross-check is more discrepant. Compressed $\theta_\star$ inversions under GR assumptions still bias inferred $H_0$ upward (mean $\Delta H_0\simeq+1.14$ km s$^{-1}$ Mpc$^{-1}$ for fixed $\Omega_m$, or $+4.57$ for lensing-proxy $\Omega_m$).
 
-For CMB signatures, CAMB-based propagation to Planck 2018 lensing bandpowers predicts suppressed lensing power, with median shifts of about $-14.9\%$ near $L\simeq100$ and $-8.4\%$ near $L\simeq300$ in a direct 16-draw pilot. Compressed $\theta_\star$ inversion under GR assumptions raises inferred $H_0$ relative to model truth: median inferred $H_0\simeq72.55$ (fixed $\Omega_m$) or $75.34$ (lensing-proxy $\Omega_m$). Under the physical-signal hypothesis, partial tension relief is plausible, but decisive resolution requires full Boltzmann-level modified-gravity refits and independent siren data.
+Within this posterior projection, modified propagation shifts $H_0$ in the correct direction but is not sufficient to resolve the tension and is stressed by current CMB-lensing data unless additional perturbation-sector physics is introduced.
 \end{abstract}
 
-\section{Motivation and Scope}
-The present analysis is conditional: it does not re-establish the O3 anomaly detection claim, but asks what follows if that signal is physical. The O3 anomaly replication repository is public on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.18585598}{10.5281/zenodo.18585598}) and provides the calibrated baseline used here. The follow-up objective is to convert that hypothesis into quantitative predictions for:
-\begin{enumerate}[leftmargin=2em]
-\item late-time inferred-$H_0$ behavior,
-\item transfer-bias robustness across SN+BAO+CC,
-\item CMB-lensing and compressed early-universe inference shifts under GR interpretation.
-\end{enumerate}
+\section{Motivation and Framing}
+This work treats the O3 signal phenomenologically: given the inferred modified-propagation posterior, what cosmological consequences follow? The O3 anomaly replication repository is public on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.18585598}{10.5281/zenodo.18585598}) and defines the calibrated baseline used here. We do not re-argue the detection claim in this manuscript.
+
+Modified GW propagation has been discussed in theory-forward frameworks~\cite{Belgacem2018,Nishizawa2018}. Here we instead use a data-driven posterior from the O3 anomaly and map it into: (i) late-time anchor relief, (ii) CMB-lensing compatibility, and (iii) GR mis-inference in compressed early-universe inversions.
 
 \section{Forecast Definitions}
 Posterior draws are taken from
 \texttt{outputs/finalization/highpower\_multistart\_v2/M0\_start101}
-and propagated through synthetic anchor and CMB inference pipelines.
+and propagated through synthetic anchor and CMB pipelines.
 
 \subsection{Late-time relief metrics}
 Define the baseline local-versus-Planck gap
@@ -80,41 +77,39 @@ and the posterior-gap relief fraction
 \frac{\left|H_{0,\mathrm{MG}}^{\mathrm{p50}}-H_0^{\mathrm{local}}\right|}{\Delta H_0^{\mathrm{base}}}.
 \end{equation}
 
-The preferred estimator is anchor-based. For each anchor redshift $z_a$, a synthetic $H(z_a)$ is generated under model truth and inverted with GR assumptions:
+The anchor-based estimator is
 \begin{equation}
 H_{0,\mathrm{GR}}(z_a) = \frac{H_{\mathrm{obs}}(z_a)}
-{\sqrt{\Omega_{m0}^{\mathrm{GR}}(1+z_a)^3 + (1-\Omega_{m0}^{\mathrm{GR}})}}.
+{\sqrt{\Omega_{m0}^{\mathrm{GR}}(1+z_a)^3 + (1-\Omega_{m0}^{\mathrm{GR}})}},
 \end{equation}
-The anchor-averaged relief statistic is
 \begin{equation}
 \mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}} \equiv 1 -
 \frac{\left| \overline{H_{0,\mathrm{GR}}} - H_0^{\mathrm{local}} \right|}{\Delta H_0^{\mathrm{base}}}.
 \end{equation}
 
-\subsection{CMB-focused tests}
+\subsection{CMB-facing tests}
 Two CMB-oriented tests are used:
 \begin{enumerate}[leftmargin=2em]
-\item draw-level propagation of $(H_0,\Omega_{m0},\Omega_{k0},\sigma_8)$ to Planck 2018 lensing bandpowers (template-proxy and direct CAMB modes),
+\item draw-level propagation of $(H_0,\Omega_{m0},\Omega_{k0},\sigma_8)$ to Planck 2018 lensing bandpowers (direct CAMB mode),
 \item compressed early-universe inversion using $\theta_\star=r_d/D_M(z_\star)$ under GR assumptions, with alternative assumptions for inferred $\Omega_m$.
 \end{enumerate}
-These tests target inference shifts and predicted signatures; they are not full TT/TE/EE Boltzmann likelihood refits.
+These are targeted forecasts, not full TT/TE/EE modified-gravity likelihood refits.
 
 \section{Results}
 
-\subsection{Late-time forecast and robustness}
+\subsection{Late-time relief remains partial}
 Using $z_a=\{0.2,0.35,0.5,0.62\}$, 20,000 Monte Carlo replicates per anchor, and reference values $H_0^{\mathrm{local}}=73.0\pm1.0$ and $H_0^{\mathrm{Planck}}=67.4\pm0.5$:
 \begin{itemize}[leftmargin=2em]
 \item model-truth posterior gives $H_0^{\mathrm{p50}}\simeq70.39$ (p16/p84 $=67.70/73.39$),
-\item single-run posterior-gap relief is $\mathcal{R}_{\mathrm{post}}\simeq0.534$,
 \item constrained endpoint gives $\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}}$ mean $0.246$ with p16/p50/p84 $=0.205/0.239/0.277$,
-\item typical local-versus-high-$z$ GR gap significance is $\sim1.17\sigma$.
+\item typical residual local-versus-high-$z$ discrepancy is $\sim1.17\sigma$.
 \end{itemize}
 
 The joint transfer-bias fit over SN+BAO+CC (with O3 support as metadata) yields
 \begin{equation}
 \log\mathrm{BF}_{\mathrm{transfer/no\text{-}transfer}} = -0.533,
 \end{equation}
-so explicit transfer terms are not preferred by these data in this configuration.
+so explicit transfer terms are not preferred in this setup.
 
 \begin{figure}[h!]
 \centering
@@ -124,48 +119,48 @@ $H_{\mathrm{MG}}(z)/H_{\Lambda\mathrm{CDM,Planck}}(z)$.}
 \label{fig:hz_ratio}
 \end{figure}
 
-\begin{figure}[h!]
-\centering
-\maybeincludegraphics[width=0.92\linewidth]{relief_vs_highz_bias.png}
-\caption{Anchor-based relief sensitivity to injected high-$z$ calibration bias (pilot and constrained sweeps).}
-\label{fig:relief_bias}
-\end{figure}
-
-\subsection{CMB lensing signature forecast}
-The direct CAMB pilot run (16 posterior draws, Planck 2018 lensing bandpowers) finds median suppression of the lensing spectrum relative to the Planck-reference model:
+\subsection{CMB lensing is the dominant stress test}
+For a direct CAMB run with 64 posterior draws against Planck 2018 lensing bandpowers:
 \begin{equation}
-\left.\frac{C_L^{\phi\phi}(\mathrm{MG})}{C_L^{\phi\phi}(\mathrm{Planck\ ref})}\right|_{L\approx100}\simeq0.851,
-\qquad
-\left.\frac{C_L^{\phi\phi}(\mathrm{MG})}{C_L^{\phi\phi}(\mathrm{Planck\ ref})}\right|_{L\approx300}\simeq0.916.
+\left.\frac{C_L^{\phi\phi}(\mathrm{MG})}{C_L^{\phi\phi}(\mathrm{Planck\ ref})}\right|_{L\approx106}=0.847^{+0.091}_{-0.127},
+\quad
+\left.\frac{C_L^{\phi\phi}(\mathrm{MG})}{C_L^{\phi\phi}(\mathrm{Planck\ ref})}\right|_{L\approx286}=0.905^{+0.068}_{-0.080},
 \end{equation}
-In the same pilot, only $12.5\%$ of draws outperform the Planck-reference model in lensing-bandpower $\chi^2$.
+corresponding to median suppressions of $-15.29\%$ and $-9.49\%$.
+
+Goodness-of-fit is strongly degraded relative to the Planck reference:
+\begin{equation}
+\chi^2_{\mathrm{MG,draws}}\;\text{(median)}=51.77,
+\qquad
+\chi^2_{\mathrm{Planck\ ref}}=9.04,
+\end{equation}
+with only $p(\chi^2_{\mathrm{draw}}<\chi^2_{\mathrm{ref}})=3.1\%$. A cross-check run (32 draws from \texttt{M0\_start303}) is more discrepant ($L\approx106$: $-18.66\%$, $L\approx286$: $-11.29\%$, $p_{\rm better}=0$).
 
 \begin{figure}[h!]
 \centering
-\maybeincludegraphics[width=0.92\linewidth]{clpp_ratio_to_ref.png}
-\caption{Predicted CMB lensing ratio $C_L^{\phi\phi}(\mathrm{MG})/C_L^{\phi\phi}(\mathrm{Planck\ ref})$ from the direct CAMB pilot.}
-\label{fig:clpp_ratio}
+\maybeincludegraphics[width=0.92\linewidth]{clpp_bandpowers_vs_models.png}
+\caption{Planck 2018 lensing bandpowers (points) compared with the Planck-reference model (dashed) and MG posterior prediction band from the 64-draw CAMB forecast.}
+\label{fig:clpp_bandpowers}
 \end{figure}
 
-\subsection{Early-universe GR mis-inference test}
+\subsection{Early-universe GR mis-inference still biases $H_0$ upward}
 Compressed $\theta_\star$ inversion under GR assumptions gives systematic upward shifts in inferred $H_0$ relative to model-truth draws:
 \begin{itemize}[leftmargin=2em]
-\item fixed-Planck $\Omega_m$ assumption: inferred $H_0$ mean $71.72$, p50 $72.55$, mean $\Delta H_0\equiv H_0^{\mathrm{inf}}-H_0^{\mathrm{true}}\simeq+1.14$ km s$^{-1}$ Mpc$^{-1}$,
-\item lensing-proxy $\Omega_m$ assumption: inferred $H_0$ mean $75.15$, p50 $75.34$, mean $\Delta H_0\simeq+4.57$ km s$^{-1}$ Mpc$^{-1}$.
+\item fixed-Planck $\Omega_m$: inferred $H_0$ mean $71.72$, p50 $72.55$, mean $\Delta H_0\simeq+1.14$ km s$^{-1}$ Mpc$^{-1}$,
+\item lensing-proxy $\Omega_m$: inferred $H_0$ mean $75.15$, p50 $75.34$, mean $\Delta H_0\simeq+4.57$ km s$^{-1}$ Mpc$^{-1}$.
 \end{itemize}
-
-The implied sound-horizon shift required to force exact local-$H_0$ matching is modest in central tendency but broad in distribution: mean $\Delta r_d/r_d\approx-1.74\%$ (fixed-$\Omega_m$ mode) or $+2.92\%$ (lensing-proxy mode).
 
 \begin{figure}[h!]
 \centering
-\maybeincludegraphics[width=0.48\linewidth]{h0_true_vs_inferred_hist_fixed.png}\hfill
-\maybeincludegraphics[width=0.48\linewidth]{h0_true_vs_inferred_hist_lensing.png}
-\caption{Histogram-level comparison of true and GR-inferred $H_0$ in compressed early-universe inversion tests. Left: fixed-$\Omega_m$ assumption. Right: lensing-proxy-$\Omega_m$ assumption.}
-\label{fig:h0_early_hist}
+\maybeincludegraphics[width=0.92\linewidth]{h0_comparative_summary.png}
+\caption{Comparative $H_0$ summary: Planck and SH0ES reference constraints (points with error bars), model-truth posterior, and GR-inferred compressed-CMB results under fixed-$\Omega_m$ and lensing-proxy-$\Omega_m$ assumptions (boxes with 16--84\% whiskers).}
+\label{fig:h0_compare}
 \end{figure}
 
 \section{Interpretation}
-Under the physical-signal hypothesis, the model predicts upward pressure on GR-inferred early/high-$z$ $H_0$ and non-negligible local-versus-high-$z$ tension relief, but not a standalone full resolution. The late-time constrained endpoint remains moderate, and CMB-facing tests indicate detectable but model-dependent signatures that require full perturbation-level treatment for definitive statements.
+The posterior-projection result is now clear: this mechanism moves inferred $H_0$ in the right direction but does not fully close the Hubble gap, and the same posterior predicts substantial CMB-lensing suppression that is disfavored by Planck lensing bandpowers in this implementation.
+
+A pure amplitude rescue would require roughly $\sim18\%$ extra lensing power near $L\sim100$ (or $\sim10\%$ near $L\sim300$) relative to the current MG median prediction. That is outside the present draw-level amplitude proxy envelope ($A_{\mathrm{lens,proxy}}$ p84 $\approx0.999$). Therefore, evading the lensing stress test likely requires additional perturbation-sector physics (for example, nontrivial effective-Planck-mass evolution coupled to growth and Weyl potential transfer) beyond what is encoded in the current posterior projection.
 
 \section*{Reproducibility}
 Core scripts used in this follow-up:
@@ -179,13 +174,13 @@ Core scripts used in this follow-up:
 \item \texttt{scripts/run\_hubble\_tension\_early\_universe\_bias.py}
 \end{itemize}
 
-\section*{AI Use Disclosure}
+\section*{Acknowledgments}
 This work relied extensively on A.I.-assisted tools for code development, pipeline execution support, figure generation, and manuscript drafting/editing.
 
 \section*{Data Availability and DOIs}
 The follow-up uses posterior products from the O3 anomaly pipeline and public cosmology datasets. Data provenance and DOIs are:
 \begin{itemize}[leftmargin=2em]
-\item O3 modified-gravity tension replication repository (Zenodo): DOI \href{https://doi.org/10.5281/zenodo.18585598}{10.5281/zenodo.18585598}.
+\item O3 modified-gravity tension anomaly repository (Zenodo): DOI \href{https://doi.org/10.5281/zenodo.18585598}{10.5281/zenodo.18585598}.
 \item O3 search-sensitivity injection data used in upstream calibration (Zenodo): DOI \href{https://doi.org/10.5281/zenodo.7890437}{10.5281/zenodo.7890437}.
 \item GWTC-3 catalog paper: DOI \href{https://doi.org/10.1103/PhysRevX.13.041039}{10.1103/PhysRevX.13.041039}.
 \item Pantheon+ cosmology constraints: DOI \href{https://doi.org/10.3847/1538-4357/ac8e04}{10.3847/1538-4357/ac8e04}.

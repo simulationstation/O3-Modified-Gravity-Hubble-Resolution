@@ -12,11 +12,14 @@ Standalone pipeline for the O3-conditioned Hubble-relief analysis, updated to th
   - `scripts/run_hubble_tension_bias_transfer_sweep.py`
   - `scripts/run_hubble_tension_final_relief_posterior.py`
   - `scripts/run_joint_transfer_bias_fit.py`
+  - `scripts/run_hubble_tension_cmb_forecast.py`
+  - `scripts/run_hubble_tension_early_universe_bias.py`
 - Detached launchers:
   - `scripts/launch_hubble_tension_mg_forecast_single_nohup.sh`
   - `scripts/launch_hubble_tension_mg_robustness_grid_single_nohup.sh`
   - `scripts/launch_hubble_tension_bias_transfer_sweep_single_nohup.sh`
   - `scripts/launch_joint_transfer_bias_fit_single_nohup.sh`
+  - `scripts/launch_hubble_tension_early_universe_bias_single_nohup.sh`
 - Package code used by these scripts under `src/entropy_horizon_recon/`.
 - Updated paper assets:
   - `update_paper/hubble_tension_hypothesis.tex`

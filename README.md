@@ -14,12 +14,14 @@ Standalone pipeline for the O3-conditioned Hubble-relief analysis, updated to th
   - `scripts/run_joint_transfer_bias_fit.py`
   - `scripts/run_hubble_tension_cmb_forecast.py`
   - `scripts/run_hubble_tension_early_universe_bias.py`
+  - `scripts/run_hubble_tension_mg_lensing_refit.py` (MG-aware Planck-lensing refit with effective `M_*` running + tilt response)
 - Detached launchers:
   - `scripts/launch_hubble_tension_mg_forecast_single_nohup.sh`
   - `scripts/launch_hubble_tension_mg_robustness_grid_single_nohup.sh`
   - `scripts/launch_hubble_tension_bias_transfer_sweep_single_nohup.sh`
   - `scripts/launch_joint_transfer_bias_fit_single_nohup.sh`
   - `scripts/launch_hubble_tension_early_universe_bias_single_nohup.sh`
+  - `scripts/launch_hubble_tension_mg_lensing_refit_single_nohup.sh`
 - Package code used by these scripts under `src/entropy_horizon_recon/`.
 - Updated paper assets:
   - `update_paper/hubble_tension_hypothesis.tex`
@@ -58,4 +60,10 @@ To rerun the full joint transfer fit on a 48-core host:
 ```bash
 CPUSET=0-47 WORKERS=48 O3_DELTA_LPD=3.669945265 \
   scripts/launch_joint_transfer_bias_fit_single_nohup.sh full
+```
+
+To run the MG-aware lensing refit with a conservative core cap:
+
+```bash
+CPUSET=0-31 scripts/launch_hubble_tension_mg_lensing_refit_single_nohup.sh pilot
 ```

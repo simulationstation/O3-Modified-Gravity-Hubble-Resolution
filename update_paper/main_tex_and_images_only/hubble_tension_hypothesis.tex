@@ -1,0 +1,376 @@
+\documentclass[reprint,aps,prd,nofootinbib,floatfix]{revtex4-2}
+
+% ==================== Packages ====================
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+
+\begin{document}
+
+\title{Cosmological Implications of the GWTC-3 Modified-Propagation Anomaly: Inference Bias in the Hubble Tension}
+\author{Aiden B. Smith}
+\affiliation{Independent Researcher}
+\date{February 10, 2026}
+
+\begin{abstract}
+We investigate cosmological implications of the GWTC-3 O3 modified-propagation anomaly with an updated Planck-facing calibration chain. A 60-restart Planck+MG refit defines a revised sound-horizon anchor with posterior medians $H_0^{\mathrm{Planck,MG}}\!\approx\!68.01$, $\Omega_m^{\mathrm{Planck,MG}}\!\approx\!0.3064$, and $A_{\mathrm{lens}}\!\approx\!1.043$.
+
+The leading result is inference bias: if modified-gravity truth is analyzed with GR standard-ruler compression, recovered $H_0$ shifts by mean $\Delta H_0=+1.88$ km s$^{-1}$ Mpc$^{-1}$ (fixed $\Omega_m$) or $+4.55$ km s$^{-1}$ Mpc$^{-1}$ (lensing-proxy $\Omega_m$), i.e. order $+2$ to $+5$ km s$^{-1}$ Mpc$^{-1}$ relative to draw-level truth.
+
+Direct late-time friction closure is weaker. After rebasing constrained transfer sweeps, the anchor-relief posterior is $\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}}=0.155$ (mean; p16/p50/p84 $=0.108/0.147/0.189$), about 15\% of the local-versus-Planck baseline gap.
+
+For CMB lensing, baseline CAMB propagation predicts suppressed power at $L\!\sim\!100$ and $L\!\sim\!300$ ($-15.3\%$ and $-9.5\%$ medians). An MG-aware response refit restores near-reference quality (median $\chi^2=8.06$ versus 9.04 for the Planck reference).
+
+A forward amplitude dial, $R_\alpha(z)=1+\alpha\,[R(z)-1]$, gives a compact sensitivity map: core cross-channel support appears at $\alpha\!\approx\!0.6$, while a material-relief threshold of 0.30 is reached near $\alpha\!\approx\!1.94$ under linear relief coupling. A quick nonlinear bridge scan finds viable late-transition families, e.g.\ $(\alpha_{\mathrm{high}},\alpha_{\mathrm{low}},z_t,w)\!\approx\!(0.60,1.95,0.26,0.03)$, that satisfy both core gates and material-relief targets.
+
+Ancillary predictive checks are directionally consistent but mixed: Pantheon SN-only transfer gives a weak positive Bayes factor ($\log\mathrm{BF}\!\approx\!+0.24$), while the all-transfer variant is mildly negative ($\log\mathrm{BF}\!\approx\!-0.48$). Hero-event leave-one-out for the O3 injection-logit run gives $\Delta\mathrm{LPD}=3.67\rightarrow2.19$ after removing GW200308\_173609, indicating concentration without single-event collapse. These results motivate full re-inference with larger siren samples.
+\end{abstract}
+\maketitle
+
+\section{Scope and Framing}
+This work treats the O3 modified-propagation signal phenomenologically: given the inferred posterior, what cosmological consequences follow? The O3 anomaly analysis and data products are archived on Zenodo~\cite{O3Zenodo}. We do not re-argue detection significance in this manuscript.
+
+Modified GW propagation has been explored in theory-forward frameworks~\cite{Belgacem2018,Nishizawa2018}. In this follow-up, we assume the running effective Planck mass $M_\star(z)$ associated with GW friction is a universal MG sector ingredient, so the same $M_\star(z)$ trajectory also modifies the background/scalar channels probed by CMB compression and lensing~\cite{BelliniSawicki2014,PogosianSilvestri2016}. Here, we use a data-driven posterior and update the pipeline to answer three questions in one chain:
+\begin{enumerate}
+\item How much late-time Hubble tension relief remains after recalibrating the sound-horizon calibration anchor?
+\item Does Planck 2018 lensing necessarily reject this posterior, or can an MG-aware refit absorb the suppression?
+\item How much can GR-based standard-ruler inversion bias inferred $H_0$ if MG truth is assumed?
+\end{enumerate}
+
+\section{Pipeline Summary}
+Posterior draws are taken from
+\path{outputs/finalization/highpower_multistart_v2/M0_start101}
+and propagated through four linked stages:
+\begin{enumerate}
+\item \textbf{Global Planck+MG recalibration:} 60-restart multistart fit (\texttt{cpuset 0-59}) to establish updated sound-horizon calibration anchor values.
+\item \textbf{Late-time rebasing:} constrained/pilot transfer sweeps are rebased to the updated Planck-like anchor and recompressed into a final relief posterior.
+\item \textbf{CMB lensing forecasts:} baseline draw-level CAMB projection to Planck 2018 lensing bandpowers, followed by an MG-aware two-parameter lensing refit.
+\item \textbf{Compressed standard-ruler inversion:} GR inversion of $\theta_\star=r_d/D_M(z_\star)$ under fixed-$\Omega_m$ and lensing-proxy-$\Omega_m$ assumptions.
+\end{enumerate}
+These are targeted forecasts and refits, not a full MG TT/TE/EE perturbation-sector likelihood analysis.
+
+\section{Results}
+
+\subsection{Updated sound-horizon calibration anchor from the global Planck+MG fit}
+The 60-restart Planck+MG run completed all restarts with 5 converged minima and 55 max-evaluation exits. Using converged minima only, we obtain:
+\begin{equation}
+\begin{aligned}
+H_0^{\mathrm{Planck,MG}}&=68.01\;(\mathrm{p50}),\\
+\Omega_m^{\mathrm{Planck,MG}}&=0.3064\;(\mathrm{p50}),\\
+A_{\mathrm{lens}}&=1.043\;(\mathrm{p50}).
+\end{aligned}
+\end{equation}
+
+With local reference $H_0^{\mathrm{local}}=73.0$, the baseline gap used in rebased relief calculations is
+\begin{equation}
+\Delta H_0^{\mathrm{base}}=\left|H_0^{\mathrm{local}}-H_0^{\mathrm{Planck,MG}}\right|=4.99.
+\end{equation}
+
+\subsection{Inference bias from GR standard-ruler inversion}
+To isolate model-assumption bias, we treat MG posterior draws as truth and invert
+$\theta_\star=r_d/D_M(z_\star)$ with a GR compression model:
+\begin{itemize}
+\item fixed $\Omega_m=\Omega_m^{\mathrm{Planck,MG}}$: $H_{0,\mathrm{inferred}}$ mean $72.39$ (p50 $73.17$), with mean $\Delta H_0=+1.88$ km s$^{-1}$ Mpc$^{-1}$ relative to draw-level truth;
+\item lensing-proxy $\Omega_m$: $H_{0,\mathrm{inferred}}$ mean $75.07$ (p50 $75.23$), with mean $\Delta H_0=+4.55$ km s$^{-1}$ Mpc$^{-1}$.
+\end{itemize}
+The wider lensing-proxy interval reflects the expected $H_0$--$\Omega_m$ degeneracy once the artificial rigidity of the $\Lambda$CDM standard ruler is removed; in this channel, the analysis releases model-imposed precision rather than exhibiting numerical instability.
+
+Relative to the recalibrated Planck+MG anchor $H_0^{\mathrm{Planck,MG}}=68.01$, the posterior medians shift by:
+\begin{align}
+\Delta H_0^{\mathrm{truth}} &\approx +2.39,\nonumber\\
+\Delta H_0^{\mathrm{fixed\ inversion}} &\approx +5.16,\nonumber\\
+\Delta H_0^{\mathrm{lensing\ inversion}} &\approx +7.22
+\;\mathrm{km\ s^{-1}\ Mpc^{-1}}.
+\end{align}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{hubble_tension_assets/h0_tension_summary.pdf}
+\caption{$H_0$ tension summary comparing Planck 2018 (GR), direct-friction recalibration, two GR-inversion bias channels, and local-distance-ladder context (SH0ES and TRGB/CCHP~\cite{SH0ES2022,Freedman2019}). The dominant displacement comes from GR standard-ruler inversion bias when MG truth is assumed; the broad lensing-proxy interval is the expected $H_0$--$\Omega_m$ degeneracy once the artificial $\Lambda$CDM standard-ruler rigidity is relaxed.}
+\label{fig:h0_summary}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=\linewidth]{hubble_tension_assets/h0_true_vs_inferred_hist_fixed_rebased.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=\linewidth]{hubble_tension_assets/h0_true_vs_inferred_hist_lensing_rebased.png}
+\end{minipage}
+\caption{Draw-level $H_0$ truth versus GR-inferred $H_0$ under compressed standard-ruler inversion with fixed-$\Omega_m$ (left) and lensing-proxy-$\Omega_m$ (right). Both assumptions bias inferred $H_0$ upward, with larger displacement in the lensing-proxy case.}
+\label{fig:h0_bias}
+\end{figure}
+
+\subsection{Direct friction channel after late-time rebasing}
+After rebasing constrained transfer sweeps to the updated sound-horizon calibration anchor and applying Monte Carlo calibration:
+\begin{equation}
+\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}} = 0.155.
+\end{equation}
+The corresponding posterior summary is p16/p50/p84 $=0.108/0.147/0.189$.
+
+Independent robustness and joint-fit diagnostics are:
+\begin{itemize}
+\item 10-case robustness grid: posterior-shift relief mean $0.530$ (p50 $0.513$, p84 $0.545$), with zero failed cases.
+\item Joint SN+BAO+CC transfer fit: relief posterior mean $0.833$ (p50 $0.839$), but
+\begin{equation}
+\log\mathrm{BF}_{\mathrm{transfer/no\text{-}transfer}}=-0.53,
+\end{equation}
+so explicit transfer terms are not favored in this setup.
+\end{itemize}
+The high-$z$ transfer-bias sensitivity map used for calibration has been moved to supplemental material (Fig.~S1).
+
+\subsection{CMB lensing: baseline suppression and MG-aware response freedom}
+Baseline draw-level CAMB projection against Planck 2018 lensing bandpowers (\texttt{consext8}, 64 draws) gives:
+\begin{equation}
+\left.\frac{C_L^{\phi\phi}(\mathrm{MG})}{C_L^{\phi\phi}(\mathrm{Planck\ ref})}\right|_{L\approx106}
+=0.847^{+0.091}_{-0.127},
+\end{equation}
+\begin{equation}
+\left.\frac{C_L^{\phi\phi}(\mathrm{MG})}{C_L^{\phi\phi}(\mathrm{Planck\ ref})}\right|_{L\approx286}
+=0.905^{+0.068}_{-0.080},
+\end{equation}
+with median suppressions of $-15.29\%$ and $-9.49\%$. The baseline fit quality is poor relative to the Planck-reference model:
+\begin{equation}
+\chi^2_{\mathrm{MG,baseline}}\;(\mathrm{median})=51.77,\qquad
+\chi^2_{\mathrm{Planck\ ref}}=9.04,
+\end{equation}
+and only $3.1\%$ of draws outperform the reference. A 32-draw cross-check from an independent posterior sample is more discrepant ($-18.66\%$ at $L\approx106$, $-11.29\%$ at $L\approx286$; $p_{\mathrm{better}}=0$).
+
+To test whether this baseline mismatch is rigid, we perform an MG-aware lensing refit (32 draws) with a phenomenological effective-$M_\star^2$ amplitude plus $\ell$-tilt response. This freedom is motivated by scalar-tensor/EFT treatments where matter-growth and light-deflection responses need not track identically and can acquire scale dependence~\cite{BelliniSawicki2014,PogosianSilvestri2016}. The refit removes the baseline mismatch:
+\begin{equation}
+\chi^2_{\mathrm{MG\ refit}}\;(\mathrm{median})=8.06,
+\end{equation}
+better than the Planck-reference $\chi^2=9.04$ in 100\% of refit draws. This refit is phenomenological and demonstrates model-class freedom, not a unique derivation of one covariant MG Lagrangian. The fitted median response corresponds to
+\begin{equation}
+\frac{M_\star^2(z=0)}{M_\star^2(z\gg1)}\simeq0.901
+\end{equation}
+(about a 9.9\% drop), with small residual suppression at $L\approx286$.
+
+\subsection{Forward amplitude-dial sensitivity test}
+To quantify how strongly the reconstructed propagation signal must scale to satisfy forward consistency gates, we ran a lightweight amplitude dial around the current posterior signal:
+\begin{equation}
+R_\alpha(z)=1+\alpha\,[R(z)-1].
+\end{equation}
+Using the existing Phase 2--6 gate summaries as a fast emulator (not a full re-inference at each $\alpha$), we find:
+\begin{itemize}
+\item Phase-4 distance-ratio gate passes at $\alpha\approx0.18$;
+\item Phase-2 growth gate passes at $\alpha\approx0.58$;
+\item Phase-3 lensing-growth consistency gate passes at $\alpha\approx0.60$;
+\item Combined target-support gate (M2) turns on at $\alpha\approx0.60$.
+\end{itemize}
+For the material-relief requirement ($\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}}\ge 0.30$), two cases are informative: (i) if relief is held fixed at the current calibrated level, no solution appears for $\alpha\in[0,3]$; (ii) under linear relief coupling, $\mathcal{R}_{\mathrm{anchor}}(\alpha)\propto\alpha$, the threshold is crossed at $\alpha\approx1.95$.
+This points to a simple scale estimate: core cross-channel support is compatible with the present signal level, while material closure needs roughly a factor-of-two stronger effective propagation amplitude under linear coupling.
+
+\subsection{Predictive triplet quick tests (non-waveform)}
+We then ran three lightweight forward checks designed to test whether the current signal can be embedded in a broader predictive picture without adding new heavy global fits.
+
+\paragraph*{Pantheon inference-bias audit.}
+In an SN-only transfer model, we obtain a weak same-sign preference for transfer terms:
+\begin{equation}
+\log\mathrm{BF}_{\mathrm{transfer/no\text{-}transfer}} \approx +0.24.
+\end{equation}
+In the all-transfer variant (SN+BAO+CC+ladder term), the score is mildly negative:
+\begin{equation}
+\log\mathrm{BF}_{\mathrm{transfer/no\text{-}transfer}} \approx -0.48.
+\end{equation}
+This is compatible with a small inference-bias contribution in SN-only compression, but not a decisive multi-probe detection at current calibration depth.
+
+\paragraph*{Hero-event concentration forensics.}
+For the O3 injection-logit configuration, the full score is
+\begin{equation}
+\Delta\mathrm{LPD}_{\mathrm{full}} = 3.67.
+\end{equation}
+Dropping the highest-leverage event (GW200308\_173609) gives
+\begin{equation}
+\Delta\mathrm{LPD}_{\mathrm{drop\ 1}} = 2.19,
+\end{equation}
+and an approximate top-2 leave-out gives
+\begin{equation}
+\Delta\mathrm{LPD}_{\mathrm{drop\ 2}} \approx 1.70.
+\end{equation}
+So the signal is concentrated in a small subset, but it does not collapse when the top event is removed.
+
+\paragraph*{Nonlinear bridge scan.}
+Using a late-transition profile
+\begin{equation}
+\alpha(z)=\alpha_{\mathrm{high}}+\frac{\alpha_{\mathrm{low}}-\alpha_{\mathrm{high}}}{1+\exp[(z-z_t)/w]},
+\end{equation}
+we find broad viable families that satisfy the core gates ($\alpha_{\mathrm{eff}}\!\sim\!0.6$ in the growth/lensing windows) while reaching material-relief targets ($\alpha_{\mathrm{relief,eff}}\!\sim\!1.94$ to 1.95 in low-$z$ windows). A representative solution is
+\begin{equation}
+(\alpha_{\mathrm{high}},\alpha_{\mathrm{low}},z_t,w)\approx(0.60,1.95,0.26,0.03),
+\end{equation}
+with comparable neighboring solutions for other low-$z$ effective windows.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{hubble_tension_assets/clpp_overlay_baseline_vs_mgfit.png}
+\caption{Planck 2018 lensing bandpowers with baseline MG projection and MG-aware refit overlay. The refit absorbs the baseline suppression and restores near-reference fit quality.}
+\label{fig:clpp_refit}
+\end{figure}
+
+\section{Discussion and Conclusion}
+The main implication is that inference bias from GR-assumed standard-ruler inversion can be cosmologically large if the O3 modified-propagation posterior corresponds to physical MG truth. In this pipeline, that channel displaces recovered $H_0$ by order $+2$ to $+5$ km s$^{-1}$ Mpc$^{-1}$ relative to draw-level truth, with larger shifts relative to the recalibrated Planck+MG anchor.
+
+The direct friction channel remains subdominant in the constrained rebased analysis: $\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}}\simeq0.16$. This means the principal lever in this study is model-assumption bias from GR-assumed standard-ruler inversion, not direct late-time closure alone.
+
+For CMB lensing, baseline propagation is strongly discrepant with Planck 2018. An MG-aware response refit motivated by effective-coupling freedom in scalar-tensor/EFT descriptions restores near-reference likelihood performance. If that response freedom is not permitted, the baseline projection remains in strong tension with lensing data.
+
+The new predictive triplet checks sharpen this interpretation. Pantheon SN-only transfer is weakly positive while all-transfer remains mildly negative, consistent with directional compatibility but not decisive closure. Hero-event forensics show concentration in GW200308\_173609 and a small set of high-leverage events, but no single-event collapse. The nonlinear bridge scan shows that late-time transition families can satisfy both sets of requirements simultaneously: core gate consistency near $\alpha\sim0.6$ and material-relief scale near $\alpha\sim2$.
+
+Taken together, these results recast the follow-up question from ``does friction alone close the full tension?'' to ``how much of the inferred early-versus-late mismatch can come from GR-compression bias plus late-time transition structure when MG truth is present?'' This scale should be tested directly with full re-inference as larger siren samples arrive.
+
+\clearpage
+
+\section*{Reproducibility}
+Core scripts used in this follow-up are:
+\begin{itemize}
+\item \path{scripts/run_planck_global_mg_refit_multistart.py}
+\item \path{scripts/rebase_bias_transfer_sweep_to_planck_ref.py}
+\item \path{scripts/run_hubble_tension_final_relief_posterior.py}
+\item \path{scripts/run_hubble_tension_mg_forecast_robustness_grid.py}
+\item \path{scripts/run_joint_transfer_bias_fit.py}
+\item \path{scripts/run_hubble_tension_cmb_forecast.py}
+\item \path{scripts/run_hubble_tension_mg_lensing_refit.py}
+\item \path{scripts/run_hubble_tension_early_universe_bias.py}
+\item \path{scripts/run_forward_tests_signal_amplitude_dial.py}
+\item \path{scripts/run_forward_tests_nonlinear_bridge_quick.py}
+\end{itemize}
+
+\acknowledgments
+This work used A.I. tools extensively, including ChatGPT 5.3.
+
+\section*{Data Availability and DOIs}
+The follow-up uses posterior products from the O3 anomaly pipeline and public cosmology datasets. Data provenance and DOIs are:
+\begin{itemize}
+\item O3 modified-gravity tension anomaly repository (Zenodo): DOI \href{https://doi.org/10.5281/zenodo.18585598}{10.5281/zenodo.18585598}.
+\item O3 search-sensitivity injection data used in upstream calibration (Zenodo): DOI \href{https://doi.org/10.5281/zenodo.7890437}{10.5281/zenodo.7890437}.
+\item GWTC-3 catalog paper: DOI \href{https://doi.org/10.1103/PhysRevX.13.041039}{10.1103/PhysRevX.13.041039}.
+\item Pantheon+ cosmology constraints: DOI \href{https://doi.org/10.3847/1538-4357/ac8e04}{10.3847/1538-4357/ac8e04}.
+\item SH0ES local-$H_0$ reference: DOI \href{https://doi.org/10.3847/2041-8213/ac5c5b}{10.3847/2041-8213/ac5c5b}.
+\item TRGB/CCHP local-$H_0$ context reference: DOI \href{https://doi.org/10.3847/1538-4357/ab2f73}{10.3847/1538-4357/ab2f73}.
+\item SDSS DR12 BOSS consensus BAO (source of \path{sdss_DR12Consensus_bao.dat}): DOI \href{https://doi.org/10.1093/mnras/stx721}{10.1093/mnras/stx721}.
+\item eBOSS DR16 cosmological compilation (source class for \path{sdss_DR16_LRG_BAO_DMDH.dat}): DOI \href{https://doi.org/10.1103/PhysRevD.103.083533}{10.1103/PhysRevD.103.083533}.
+\item DESI 2024 BAO cosmological constraints (source class for \path{desi_2024_gaussian_bao_ALL_GCcomb_mean.txt}): DOI \href{https://doi.org/10.1088/1475-7516/2025/02/021}{10.1088/1475-7516/2025/02/021}.
+\item Cosmic-chronometer compilation components used in \path{Hz_BC03_all.dat}: DOIs \href{https://doi.org/10.1088/1475-7516/2012/08/006}{10.1088/1475-7516/2012/08/006}, \href{https://doi.org/10.1103/PhysRevD.71.123001}{10.1103/PhysRevD.71.123001}, and \href{https://doi.org/10.1088/1475-7516/2010/02/008}{10.1088/1475-7516/2010/02/008}.
+\item Planck 2018 cosmological-parameter and lensing references: DOIs \href{https://doi.org/10.1051/0004-6361/201833910}{10.1051/0004-6361/201833910} and \href{https://doi.org/10.1051/0004-6361/201833886}{10.1051/0004-6361/201833886}.
+\end{itemize}
+
+\begin{thebibliography}{99}
+
+\bibitem{O3Zenodo}
+A.~B.~Smith,
+``O3 Modified Gravity Tension Replication,''
+Zenodo (2026), DOI: \href{https://doi.org/10.5281/zenodo.18585598}{10.5281/zenodo.18585598}.
+
+\bibitem{O3InjZenodo}
+LIGO Scientific Collaboration, Virgo Collaboration, and KAGRA Collaboration,
+``GWTC-3: Compact Binary Coalescences Observed by LIGO and Virgo During the Second Part of the Third Observing Run --- O3 search sensitivity estimates,''
+Zenodo (2023), DOI: \href{https://doi.org/10.5281/zenodo.7890437}{10.5281/zenodo.7890437}.
+
+\bibitem{GWTC3}
+R.~Abbott \textit{et al.} (LIGO Scientific Collaboration, Virgo Collaboration, and KAGRA Collaboration),
+``GWTC-3: Compact Binary Coalescences Observed by LIGO and Virgo During the Second Part of the Third Observing Run,''
+\emph{Phys.\ Rev.\ X} \textbf{13}, 041039 (2023),
+DOI: \href{https://doi.org/10.1103/PhysRevX.13.041039}{10.1103/PhysRevX.13.041039}.
+
+\bibitem{PantheonPlus}
+D.~Brout \textit{et al.},
+``The Pantheon+ Analysis: Cosmological Constraints,''
+\emph{Astrophys.\ J.} \textbf{938}, 110 (2022),
+DOI: \href{https://doi.org/10.3847/1538-4357/ac8e04}{10.3847/1538-4357/ac8e04}.
+
+\bibitem{SH0ES2022}
+A.~G.~Riess \textit{et al.},
+``A Comprehensive Measurement of the Local Value of the Hubble Constant with 1 km s$^{-1}$ Mpc$^{-1}$ Uncertainty from the Hubble Space Telescope and the SH0ES Team,''
+\emph{Astrophys.\ J.\ Lett.} \textbf{934}, L7 (2022),
+DOI: \href{https://doi.org/10.3847/2041-8213/ac5c5b}{10.3847/2041-8213/ac5c5b}.
+
+\bibitem{Freedman2019}
+W.~L.~Freedman \textit{et al.},
+``The Carnegie-Chicago Hubble Program. VIII. An independent determination of the Hubble constant based on the tip of the red giant branch,''
+\emph{Astrophys.\ J.} \textbf{882}, 34 (2019),
+DOI: \href{https://doi.org/10.3847/1538-4357/ab2f73}{10.3847/1538-4357/ab2f73}.
+
+\bibitem{BOSSDR12}
+S.~Alam \textit{et al.},
+``The clustering of galaxies in the completed SDSS-III Baryon Oscillation Spectroscopic Survey: cosmological analysis of the DR12 galaxy sample,''
+\emph{Mon.\ Not.\ R.\ Astron.\ Soc.} \textbf{470}, 2617 (2017),
+DOI: \href{https://doi.org/10.1093/mnras/stx721}{10.1093/mnras/stx721}.
+
+\bibitem{eBOSSDR16}
+S.~Alam \textit{et al.},
+``Completed SDSS-IV extended Baryon Oscillation Spectroscopic Survey: Cosmological implications from two decades of spectroscopic surveys at the Apache Point Observatory,''
+\emph{Phys.\ Rev.\ D} \textbf{103}, 083533 (2021),
+DOI: \href{https://doi.org/10.1103/PhysRevD.103.083533}{10.1103/PhysRevD.103.083533}.
+
+\bibitem{DESI2024VI}
+DESI Collaboration,
+``DESI 2024 VI: cosmological constraints from the measurements of baryon acoustic oscillations,''
+\emph{J.\ Cosmol.\ Astropart.\ Phys.} \textbf{02} (2025) 021,
+DOI: \href{https://doi.org/10.1088/1475-7516/2025/02/021}{10.1088/1475-7516/2025/02/021}.
+
+\bibitem{Moresco2012}
+M.~Moresco \textit{et al.},
+``Improved constraints on the expansion rate of the Universe up to $z\sim1.1$ from the spectroscopic evolution of cosmic chronometers,''
+\emph{J.\ Cosmol.\ Astropart.\ Phys.} \textbf{08} (2012) 006,
+DOI: \href{https://doi.org/10.1088/1475-7516/2012/08/006}{10.1088/1475-7516/2012/08/006}.
+
+\bibitem{Simon2005}
+J.~Simon, L.~Verde, and R.~Jimenez,
+``Constraints on the redshift dependence of the dark energy potential,''
+\emph{Phys.\ Rev.\ D} \textbf{71}, 123001 (2005),
+DOI: \href{https://doi.org/10.1103/PhysRevD.71.123001}{10.1103/PhysRevD.71.123001}.
+
+\bibitem{Stern2010}
+D.~Stern \textit{et al.},
+``Cosmic chronometers: constraining the equation of state of dark energy. I: $H(z)$ measurements,''
+\emph{J.\ Cosmol.\ Astropart.\ Phys.} \textbf{02} (2010) 008,
+DOI: \href{https://doi.org/10.1088/1475-7516/2010/02/008}{10.1088/1475-7516/2010/02/008}.
+
+\bibitem{Planck2018VI}
+N.~Aghanim \textit{et al.} (Planck Collaboration),
+``Planck 2018 results. VI. Cosmological parameters,''
+\emph{Astron.\ Astrophys.} \textbf{641}, A6 (2020),
+DOI: \href{https://doi.org/10.1051/0004-6361/201833910}{10.1051/0004-6361/201833910}.
+
+\bibitem{Planck2018VIII}
+N.~Aghanim \textit{et al.} (Planck Collaboration),
+``Planck 2018 results. VIII. Gravitational lensing,''
+\emph{Astron.\ Astrophys.} \textbf{641}, A8 (2020),
+DOI: \href{https://doi.org/10.1051/0004-6361/201833886}{10.1051/0004-6361/201833886}.
+
+\bibitem{Belgacem2018}
+E.~Belgacem, Y.~Dirian, S.~Foffa, and M.~Maggiore,
+``Modified gravitational-wave propagation and standard sirens,''
+\emph{Phys.\ Rev.\ D} \textbf{98}, 023510 (2018),
+DOI: \href{https://doi.org/10.1103/PhysRevD.98.023510}{10.1103/PhysRevD.98.023510}.
+
+\bibitem{Nishizawa2018}
+A.~Nishizawa,
+``Generalized framework for testing gravity with gravitational-wave propagation,''
+\emph{Phys.\ Rev.\ D} \textbf{97}, 104037 (2018),
+DOI: \href{https://doi.org/10.1103/PhysRevD.97.104037}{10.1103/PhysRevD.97.104037}.
+
+\bibitem{BelliniSawicki2014}
+E.~Bellini and I.~Sawicki,
+``Maximal freedom at minimum cost: linear large-scale structure in general modifications of gravity,''
+\emph{J.\ Cosmol.\ Astropart.\ Phys.} \textbf{07} (2014) 050,
+DOI: \href{https://doi.org/10.1088/1475-7516/2014/07/050}{10.1088/1475-7516/2014/07/050}.
+
+\bibitem{PogosianSilvestri2016}
+L.~Pogosian and A.~Silvestri,
+``What can cosmology tell us about gravity? Constraining Horndeski gravity with $\Sigma$ and $\mu$,''
+\emph{Phys.\ Rev.\ D} \textbf{94}, 104014 (2016),
+DOI: \href{https://doi.org/10.1103/PhysRevD.94.104014}{10.1103/PhysRevD.94.104014}.
+
+\end{thebibliography}
+
+\end{document}

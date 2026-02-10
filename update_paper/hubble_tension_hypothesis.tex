@@ -10,17 +10,19 @@
 
 \begin{document}
 
-\title{Cosmological Implications of the GWTC-3 Modified-Propagation Anomaly: Early-Anchor Recalibration, CMB-Lensing Refit, and Early-Universe H0 Inference Bias}
+\title{Cosmological Implications of the GWTC-3 Modified-Propagation Anomaly: Inference Bias in the Hubble Tension}
 \author{Aiden B. Smith}
 \affiliation{Independent Researcher}
 \date{February 10, 2026}
 
 \begin{abstract}
-We project the GWTC-3 O3 modified-gravity propagation posterior into late- and early-universe inference tests using an updated Planck-facing calibration chain. The upstream O3 anomaly replication repository is archived on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.18585598}{10.5281/zenodo.18585598}). A 60-restart Planck+MG global refit defines an updated early anchor, $H_0^{\mathrm{Planck,MG}}=68.005$ (p50), $\Omega_m^{\mathrm{Planck,MG}}=0.30643$ (p50), and $A_{\mathrm{lens}}=1.0428$ (p50).
+We investigate cosmological implications of the GWTC-3 O3 modified-propagation anomaly using an updated Planck-facing calibration chain. The upstream anomaly repository is archived on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.18585598}{10.5281/zenodo.18585598}). A 60-restart Planck+MG global refit defines a revised sound-horizon calibration anchor, $H_0^{\mathrm{Planck,MG}}=68.005$ (p50), $\Omega_m^{\mathrm{Planck,MG}}=0.30643$ (p50), and $A_{\mathrm{lens}}=1.0428$ (p50).
 
-After rebasing late-time transfer sweeps to this anchor, the constrained anchor-relief posterior is $\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}}=0.1545$ (mean; p16/p50/p84 $=0.108/0.147/0.189$). A 10-case robustness grid gives posterior-shift relief mean $0.5296$ (p50 $0.5125$), while a joint SN+BAO+CC transfer model yields $\mathcal{R}_{\mathrm{joint}}=0.8329$ (mean) but no Bayes preference for explicit transfer terms ($\log \mathrm{BF}=-0.533$).
+The leading result is inference bias: if a modified-gravity truth is analyzed with standard GR sound-horizon compression (standard-ruler inversion), recovered $H_0$ shifts by mean $\Delta H_0=+1.88$ km s$^{-1}$ Mpc$^{-1}$ (fixed $\Omega_m$) or $+4.55$ km s$^{-1}$ Mpc$^{-1}$ (lensing-proxy $\Omega_m$), i.e. typical net displacements of order $+2$ to $+5$ km s$^{-1}$ Mpc$^{-1}$ relative to posterior truth.
 
-For CMB lensing, direct CAMB propagation of MG draws still predicts baseline suppression at $L\!\sim\!100$ and $L\!\sim\!300$ (medians $-15.29\%$ and $-9.49\%$). However, an MG-aware lensing refit recovers good fits (median $\chi^2=8.06$ vs Planck-reference $9.04$; 100\% of refit draws better than reference) with median $M_\star^2(z\!=\!0)/M_\star^2(z\!\gg\!1)\simeq0.901$. Compressed-$\theta_\star$ inversions under GR assumptions bias inferred $H_0$ upward (mean $\Delta H_0=+1.88$ km s$^{-1}$ Mpc$^{-1}$ for fixed $\Omega_m$, or $+4.55$ for lensing-proxy $\Omega_m$), indicating that early-universe inference assumptions can materially shift recovered expansion rates in this MG-conditioned scenario.
+By contrast, the direct late-time friction channel alone provides limited closure: after rebasing constrained transfer sweeps, the anchor-relief posterior is $\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}}=0.1545$ (mean; p16/p50/p84 $=0.108/0.147/0.189$), about 15\% of the local-versus-Planck baseline gap.
+
+For CMB lensing, baseline CAMB propagation predicts suppressed power at $L\!\sim\!100$ and $L\!\sim\!300$ ($-15.29\%$ and $-9.49\%$ medians). An MG-aware response refit then reaches near-reference quality (median $\chi^2=8.06$ vs Planck-reference 9.04). If that additional response freedom is disallowed, the baseline projection remains in strong tension with Planck lensing.
 \end{abstract}
 \maketitle
 
@@ -29,9 +31,9 @@ This work treats the O3 modified-propagation signal phenomenologically: given th
 
 Modified GW propagation has been explored in theory-forward frameworks~\cite{Belgacem2018,Nishizawa2018}. Here, we use a data-driven posterior and update the pipeline to answer three questions in one chain:
 \begin{enumerate}
-\item How much late-time Hubble tension relief remains after recalibrating the early anchor?
+\item How much late-time Hubble tension relief remains after recalibrating the sound-horizon calibration anchor?
 \item Does Planck 2018 lensing necessarily reject this posterior, or can an MG-aware refit absorb the suppression?
-\item How much can GR-based early-universe compression bias inferred $H_0$ if MG truth is assumed?
+\item How much can GR-based standard-ruler inversion bias inferred $H_0$ if MG truth is assumed?
 \end{enumerate}
 
 \section{Pipeline Summary}
@@ -39,16 +41,16 @@ Posterior draws are taken from
 \texttt{outputs/finalization/highpower\_multistart\_v2/M0\_start101}
 and propagated through four linked stages:
 \begin{enumerate}
-\item \textbf{Global Planck+MG recalibration:} 60-restart multistart fit (\texttt{cpuset 0-59}) to establish updated early-anchor reference values.
-\item \textbf{Late-time rebasing:} constrained/pilot transfer sweeps are rebased to the new Planck-like anchor and recompressed into a final relief posterior.
+\item \textbf{Global Planck+MG recalibration:} 60-restart multistart fit (\texttt{cpuset 0-59}) to establish updated sound-horizon calibration anchor values.
+\item \textbf{Late-time rebasing:} constrained/pilot transfer sweeps are rebased to the updated Planck-like anchor and recompressed into a final relief posterior.
 \item \textbf{CMB lensing forecasts:} baseline draw-level CAMB projection to Planck 2018 lensing bandpowers, followed by an MG-aware two-parameter lensing refit.
-\item \textbf{Compressed early-universe inversion:} GR inversion of $\theta_\star=r_d/D_M(z_\star)$ under fixed-$\Omega_m$ and lensing-proxy-$\Omega_m$ assumptions.
+\item \textbf{Compressed standard-ruler inversion:} GR inversion of $\theta_\star=r_d/D_M(z_\star)$ under fixed-$\Omega_m$ and lensing-proxy-$\Omega_m$ assumptions.
 \end{enumerate}
 These are targeted forecasts and refits, not a full MG TT/TE/EE perturbation-sector likelihood analysis.
 
 \section{Results}
 
-\subsection{Updated early anchor from the global Planck+MG fit}
+\subsection{Updated sound-horizon calibration anchor from the global Planck+MG fit}
 The 60-restart Planck+MG run completed all restarts with 5 converged minima and 55 max-evaluation exits. Using converged minima only, we obtain:
 \begin{equation}
 H_0^{\mathrm{Planck,MG}}=68.005302\;(\mathrm{p50}),\quad
@@ -61,8 +63,45 @@ With local reference $H_0^{\mathrm{local}}=73.0$, the baseline gap used in rebas
 \Delta H_0^{\mathrm{base}}=\left|H_0^{\mathrm{local}}-H_0^{\mathrm{Planck,MG}}\right|=4.994698.
 \end{equation}
 
-\subsection{Late-time relief after rebasing}
-After rebasing constrained transfer sweeps to the updated early anchor and applying Monte Carlo calibration:
+\subsection{Inference bias from GR standard-ruler inversion}
+To isolate model-assumption bias, we treat MG posterior draws as truth and invert
+$\theta_\star=r_d/D_M(z_\star)$ with a GR compression model:
+\begin{itemize}
+\item fixed $\Omega_m=\Omega_m^{\mathrm{Planck,MG}}$: $H_{0,\mathrm{inferred}}$ mean $72.394$ (p50 $73.170$), with mean $\Delta H_0=+1.876$ km s$^{-1}$ Mpc$^{-1}$ relative to draw-level truth;
+\item lensing-proxy $\Omega_m$: $H_{0,\mathrm{inferred}}$ mean $75.065$ (p50 $75.226$), with mean $\Delta H_0=+4.547$ km s$^{-1}$ Mpc$^{-1}$.
+\end{itemize}
+
+Relative to the recalibrated Planck+MG anchor $H_0^{\mathrm{Planck,MG}}=68.005$, the posterior medians shift by:
+\begin{equation}
+\Delta H_0^{\mathrm{truth}}\approx+2.39,\quad
+\Delta H_0^{\mathrm{fixed\ inversion}}\approx+5.16,\quad
+\Delta H_0^{\mathrm{lensing\ inversion}}\approx+7.22\;\mathrm{km\ s^{-1}\ Mpc^{-1}}.
+\end{equation}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{hubble_tension_assets/h0_tension_summary.png}
+\caption{$H_0$ tension summary comparing Planck 2018 (GR), direct-friction recalibration, two GR-inversion bias channels, and local-distance-ladder context (SH0ES and TRGB/CCHP~\cite{SH0ES2022,Freedman2019}). The dominant displacement comes from GR standard-ruler inversion bias when MG truth is assumed.}
+\label{fig:h0_summary}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=\linewidth]{hubble_tension_assets/h0_true_vs_inferred_hist_fixed_rebased.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\linewidth}
+\centering
+\includegraphics[width=\linewidth]{hubble_tension_assets/h0_true_vs_inferred_hist_lensing_rebased.png}
+\end{minipage}
+\caption{Draw-level $H_0$ truth versus GR-inferred $H_0$ under compressed standard-ruler inversion with fixed-$\Omega_m$ (left) and lensing-proxy-$\Omega_m$ (right). Both assumptions bias inferred $H_0$ upward, with larger displacement in the lensing-proxy case.}
+\label{fig:h0_bias}
+\end{figure}
+
+\subsection{Direct friction channel after late-time rebasing}
+After rebasing constrained transfer sweeps to the updated sound-horizon calibration anchor and applying Monte Carlo calibration:
 \begin{equation}
 \mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}} = 0.1545
 \quad\text{(mean; p16/p50/p84 }=0.1085/0.1475/0.1891\text{)}.
@@ -77,15 +116,9 @@ Independent robustness and joint-fit diagnostics are:
 \end{equation}
 so explicit transfer terms are not favored in this setup.
 \end{itemize}
+The high-$z$ transfer-bias sensitivity map used for calibration has been moved to supplemental material (Fig.~S1).
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\linewidth]{hubble_tension_assets/relief_vs_highz_bias_rebased.png}
-\caption{Rebased relief sensitivity to high-$z$ transfer bias from constrained and pilot sweeps. The final calibrated posterior is centered at $\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}}\approx0.15$.}
-\label{fig:relief_rebased}
-\end{figure}
-
-\subsection{CMB lensing: baseline suppression and MG-aware refit}
+\subsection{CMB lensing: baseline suppression and MG-aware response freedom}
 Baseline draw-level CAMB projection against Planck 2018 lensing bandpowers (\texttt{consext8}, 64 draws) gives:
 \begin{equation}
 \left.\frac{C_L^{\phi\phi}(\mathrm{MG})}{C_L^{\phi\phi}(\mathrm{Planck\ ref})}\right|_{L\approx106}
@@ -102,7 +135,7 @@ with median suppressions of $-15.29\%$ and $-9.49\%$. The baseline fit quality i
 \end{equation}
 and only $3.1\%$ of draws outperform the reference. A 32-draw cross-check from an independent posterior sample is more discrepant ($-18.66\%$ at $L\approx106$, $-11.29\%$ at $L\approx286$; $p_{\mathrm{better}}=0$).
 
-We then perform an MG-aware lensing refit (32 draws) with a phenomenological effective-$M_\star^2$ amplitude plus $\ell$-tilt response. This removes the baseline mismatch:
+To test whether this baseline mismatch is rigid, we perform an MG-aware lensing refit (32 draws) with a phenomenological effective-$M_\star^2$ amplitude plus $\ell$-tilt response. This freedom is motivated by scalar-tensor/EFT treatments where matter-growth and light-deflection responses need not track identically and can acquire scale dependence~\cite{BelliniSawicki2014,PogosianSilvestri2016}. The refit removes the baseline mismatch:
 \begin{equation}
 \chi^2_{\mathrm{MG\ refit}}\;(\mathrm{median})=8.06,
 \end{equation}
@@ -119,47 +152,14 @@ better than the Planck-reference $\chi^2=9.04$ in 100\% of refit draws. The fitt
 \label{fig:clpp_refit}
 \end{figure}
 
-\subsection{Early-universe GR inversion biases inferred $H_0$ upward}
-Using the rebased early-anchor assumptions in compressed-$\theta_\star$ inversion:
-\begin{itemize}
-\item fixed $\Omega_m=\Omega_m^{\mathrm{Planck,MG}}$:
-$H_{0,\mathrm{inferred}}$ mean $72.394$ (p50 $73.170$), with mean $\Delta H_0=+1.876$ km s$^{-1}$ Mpc$^{-1}$ relative to draw-level truth;
-\item lensing-proxy $\Omega_m$:
-$H_{0,\mathrm{inferred}}$ mean $75.065$ (p50 $75.226$), with mean $\Delta H_0=+4.547$ km s$^{-1}$ Mpc$^{-1}$.
-\end{itemize}
+\section{Discussion and Conclusion}
+The main implication is that inference bias from GR-assumed standard-ruler inversion can be cosmologically large if the O3 modified-propagation posterior corresponds to physical MG truth. In this pipeline, that channel displaces recovered $H_0$ by order $+2$ to $+5$ km s$^{-1}$ Mpc$^{-1}$ relative to draw-level truth, with larger shifts relative to the recalibrated Planck+MG anchor.
 
-Relative to the recalibrated early anchor $H_0^{\mathrm{Planck,MG}}=68.005$, the posterior medians shift by approximately:
-\begin{equation}
-\Delta H_0^{\mathrm{truth}}\approx+2.39,\quad
-\Delta H_0^{\mathrm{fixed\ inversion}}\approx+5.16,\quad
-\Delta H_0^{\mathrm{lensing\ inversion}}\approx+7.22\;\mathrm{km\ s^{-1}\ Mpc^{-1}}.
-\end{equation}
+The direct friction channel remains subdominant in the constrained rebased analysis: $\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}}\simeq0.15$. This means the principal lever in this study is model-assumption bias from GR-assumed standard-ruler inversion, not direct late-time closure alone.
 
-\begin{figure}[htbp]
-\centering
-\begin{minipage}{0.49\linewidth}
-\centering
-\includegraphics[width=\linewidth]{hubble_tension_assets/h0_true_vs_inferred_hist_fixed_rebased.png}
-\end{minipage}
-\hfill
-\begin{minipage}{0.49\linewidth}
-\centering
-\includegraphics[width=\linewidth]{hubble_tension_assets/h0_true_vs_inferred_hist_lensing_rebased.png}
-\end{minipage}
-\caption{Draw-level $H_0$ truth versus GR-inferred $H_0$ under compressed-$\theta_\star$ inversion with fixed-$\Omega_m$ (left) and lensing-proxy-$\Omega_m$ (right). Both assumptions bias inferred $H_0$ upward, with larger shift in the lensing-proxy case.}
-\label{fig:h0_bias}
-\end{figure}
+For CMB lensing, baseline propagation is strongly discrepant with Planck 2018. An MG-aware response refit motivated by effective-coupling freedom in scalar-tensor/EFT descriptions restores near-reference likelihood performance. If that response freedom is not permitted, the baseline projection remains in strong tension with lensing data.
 
-\section{Interpretation}
-The updated pipeline supports three conclusions.
-
-First, recalibrating the Planck-like early anchor materially lowers the constrained anchor-relief estimate (now centered near $\sim0.15$), while robustness-grid and joint-transfer diagnostics still indicate that meaningful upward $H_0$ shifts are available in broader transfer-conditioned settings.
-
-Second, baseline CAMB propagation of the O3 MG posterior predicts lensing suppression, but this does not by itself imply exclusion once MG-aware response freedom is included: the phenomenological refit reaches $\chi^2$ comparable to or better than the Planck-reference model.
-
-Third, if MG truth holds while early-universe compression is interpreted under GR assumptions, inferred $H_0$ can be biased high by order $+2$ to $+5$ km s$^{-1}$ Mpc$^{-1}$ relative to posterior truth, and by up to $\sim+7$ km s$^{-1}$ Mpc$^{-1}$ relative to the recalibrated Planck-like anchor median.
-
-Within this study scope, the largest systematic lever is not only late-time transfer, but also model-assumption bias in early-universe inference compression.
+Taken together, these results recast the follow-up question from ``does friction alone close the full tension?'' to ``how much of the inferred early-versus-late mismatch can come from GR-compression bias when MG truth is present?'' In this analysis, that range is material and should be included in future MG-aware CMB-to-late-time consistency tests.
 
 \clearpage
 
@@ -187,6 +187,7 @@ The follow-up uses posterior products from the O3 anomaly pipeline and public co
 \item GWTC-3 catalog paper: DOI \href{https://doi.org/10.1103/PhysRevX.13.041039}{10.1103/PhysRevX.13.041039}.
 \item Pantheon+ cosmology constraints: DOI \href{https://doi.org/10.3847/1538-4357/ac8e04}{10.3847/1538-4357/ac8e04}.
 \item SH0ES local-$H_0$ reference: DOI \href{https://doi.org/10.3847/2041-8213/ac5c5b}{10.3847/2041-8213/ac5c5b}.
+\item TRGB/CCHP local-$H_0$ context reference: DOI \href{https://doi.org/10.3847/1538-4357/ab2f73}{10.3847/1538-4357/ab2f73}.
 \item SDSS DR12 BOSS consensus BAO (source of \texttt{sdss\_DR12Consensus\_bao.dat}): DOI \href{https://doi.org/10.1093/mnras/stx721}{10.1093/mnras/stx721}.
 \item eBOSS DR16 cosmological compilation (source class for \texttt{sdss\_DR16\_LRG\_BAO\_DMDH.dat}): DOI \href{https://doi.org/10.1103/PhysRevD.103.083533}{10.1103/PhysRevD.103.083533}.
 \item DESI 2024 BAO cosmological constraints (source class for \texttt{desi\_2024\_gaussian\_bao\_ALL\_GCcomb\_mean.txt}): DOI \href{https://doi.org/10.1088/1475-7516/2025/02/021}{10.1088/1475-7516/2025/02/021}.
@@ -223,6 +224,12 @@ A.~G.~Riess \textit{et al.},
 ``A Comprehensive Measurement of the Local Value of the Hubble Constant with 1 km s$^{-1}$ Mpc$^{-1}$ Uncertainty from the Hubble Space Telescope and the SH0ES Team,''
 \emph{Astrophys.\ J.\ Lett.} \textbf{934}, L7 (2022),
 DOI: \href{https://doi.org/10.3847/2041-8213/ac5c5b}{10.3847/2041-8213/ac5c5b}.
+
+\bibitem{Freedman2019}
+W.~L.~Freedman \textit{et al.},
+``The Carnegie-Chicago Hubble Program. VIII. An independent determination of the Hubble constant based on the tip of the red giant branch,''
+\emph{Astrophys.\ J.} \textbf{882}, 34 (2019),
+DOI: \href{https://doi.org/10.3847/1538-4357/ab2f73}{10.3847/1538-4357/ab2f73}.
 
 \bibitem{BOSSDR12}
 S.~Alam \textit{et al.},
@@ -283,6 +290,18 @@ A.~Nishizawa,
 ``Generalized framework for testing gravity with gravitational-wave propagation,''
 \emph{Phys.\ Rev.\ D} \textbf{97}, 104037 (2018),
 DOI: \href{https://doi.org/10.1103/PhysRevD.97.104037}{10.1103/PhysRevD.97.104037}.
+
+\bibitem{BelliniSawicki2014}
+E.~Bellini and I.~Sawicki,
+``Maximal freedom at minimum cost: linear large-scale structure in general modifications of gravity,''
+\emph{J.\ Cosmol.\ Astropart.\ Phys.} \textbf{07} (2014) 050,
+DOI: \href{https://doi.org/10.1088/1475-7516/2014/07/050}{10.1088/1475-7516/2014/07/050}.
+
+\bibitem{PogosianSilvestri2016}
+L.~Pogosian and A.~Silvestri,
+``What can cosmology tell us about gravity? Constraining Horndeski gravity with $\Sigma$ and $\mu$,''
+\emph{Phys.\ Rev.\ D} \textbf{94}, 104014 (2016),
+DOI: \href{https://doi.org/10.1103/PhysRevD.94.104014}{10.1103/PhysRevD.94.104014}.
 
 \end{thebibliography}
 

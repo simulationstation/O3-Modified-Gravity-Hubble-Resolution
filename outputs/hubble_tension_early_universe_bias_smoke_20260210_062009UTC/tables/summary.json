@@ -1,0 +1,194 @@
+{
+  "assumptions": {
+    "h0_local_ref": 73.0,
+    "h0_planck_ref": 67.4,
+    "lensing_alpha": 0.25,
+    "lensing_noise": 0.0,
+    "n_int": 6000,
+    "omega_k_assumed": 0.0,
+    "omega_m_assumed_mode": "fixed_planck",
+    "omega_m_planck_ref": 0.315,
+    "r_d_assumed_mode": "planck_fixed",
+    "r_d_planck_ref": 147.09,
+    "sigma8_planck_ref": 0.811,
+    "theta_noise_frac": 0.0,
+    "z_star": 1089.0
+  },
+  "created_utc": "2026-02-10T06:20:11Z",
+  "draws_inferred_ok": 64,
+  "draws_requested": 64,
+  "draws_total_available": 1600,
+  "draws_used": 64,
+  "elapsed_sec": 0.796156644821167,
+  "gr_inference_stats": {
+    "H0_inferred": {
+      "max": 76.2264417346747,
+      "mean": 71.15237652320481,
+      "min": 58.546444884753114,
+      "p16": 67.38049504212435,
+      "p50": 71.43980037692864,
+      "p84": 75.20043541506897,
+      "sd": 3.814730346845836
+    },
+    "delta_H0_inferred_minus_true": {
+      "max": 10.55907698060787,
+      "mean": 0.8493950019637948,
+      "min": -12.208568026468384,
+      "p16": -4.024626546582462,
+      "p50": 1.1587031182549552,
+      "p84": 6.359560600163945,
+      "sd": 4.98666487129854
+    },
+    "omega_m_assumed": {
+      "max": 0.315,
+      "mean": 0.315,
+      "min": 0.315,
+      "p16": 0.315,
+      "p50": 0.315,
+      "p84": 0.315,
+      "sd": 0.0
+    },
+    "r_d_assumed": {
+      "max": 147.09,
+      "mean": 147.09,
+      "min": 147.09,
+      "p16": 147.09,
+      "p50": 147.09,
+      "p84": 147.09,
+      "sd": 0.0
+    },
+    "theta_star_obs": {
+      "max": 0.011981618998604494,
+      "mean": 0.011190182728625955,
+      "min": 0.009225336256204085,
+      "p16": 0.01060190676525925,
+      "p50": 0.011234903640275556,
+      "p84": 0.011821537110050757,
+      "sd": 0.0005948525494014887
+    }
+  },
+  "posterior_true_stats": {
+    "A_lens_true": {
+      "max": 1.0922897075101714,
+      "mean": 0.9484723266069002,
+      "min": 0.8182334047983645,
+      "p16": 0.9056100951452665,
+      "p50": 0.9471816833719995,
+      "p84": 0.992019014412798,
+      "sd": 0.04806315819642344
+    },
+    "H0_true": {
+      "max": 78.77304663076934,
+      "mean": 70.30298152124101,
+      "min": 65.23842881796016,
+      "p16": 67.3565608970444,
+      "p50": 70.29803256309066,
+      "p84": 73.25857603365985,
+      "sd": 2.864143983784
+    },
+    "omega_k_true": {
+      "max": 0.0,
+      "mean": 0.0,
+      "min": 0.0,
+      "p16": 0.0,
+      "p50": 0.0,
+      "p84": 0.0,
+      "sd": 0.0
+    },
+    "omega_m_true": {
+      "max": 0.39990678046258593,
+      "mean": 0.34050132501383684,
+      "min": 0.20398366059983802,
+      "p16": 0.29752928907956394,
+      "p50": 0.34171157060886215,
+      "p84": 0.38678810572887,
+      "sd": 0.04389766328032467
+    },
+    "r_d_true": {
+      "max": 157.61940866112596,
+      "mean": 144.80211252911937,
+      "min": 132.03642297387944,
+      "p16": 139.1404088110427,
+      "p50": 144.63728158572232,
+      "p84": 150.79629903702008,
+      "sd": 5.653450649506952
+    },
+    "sigma8_true": {
+      "max": 0.8759425880266762,
+      "mean": 0.7764167768536185,
+      "min": 0.7129971172056576,
+      "p16": 0.7509102712244152,
+      "p50": 0.7747825621449926,
+      "p84": 0.8064539288210112,
+      "sd": 0.02974561429520921
+    },
+    "theta_star_true": {
+      "max": 0.011981618998604494,
+      "mean": 0.011190182728625955,
+      "min": 0.009225336256204085,
+      "p16": 0.01060190676525925,
+      "p50": 0.011234903640275556,
+      "p84": 0.011821537110050757,
+      "sd": 0.0005948525494014887
+    }
+  },
+  "required_rd_shift_for_full_match": {
+    "note": "Fractional shift in assumed r_d needed (with current theta* obs and assumed Omega_m) for inferred H0 to match local reference.",
+    "rd_shift_needed_frac": {
+      "max": 0.04385315118044497,
+      "mean": -0.025097734711671805,
+      "min": -0.1962775378803614,
+      "p16": -0.07634904876159837,
+      "p50": -0.021201594753078923,
+      "p84": 0.029906623266880008,
+      "sd": 0.05182427418638385
+    },
+    "rd_shift_needed_pct": {
+      "max": 4.385315118044497,
+      "mean": -2.5097734711671804,
+      "min": -19.627753788036138,
+      "p16": -7.634904876159838,
+      "p50": -2.1201594753078923,
+      "p84": 2.990662326688001,
+      "sd": 5.182427418638385
+    }
+  },
+  "run_dir": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/outputs/finalization/highpower_multistart_v2/M0_start101",
+  "scope_notes": {
+    "modeled": [
+      "Compressed CMB geometry observable theta* = r_d / D_M(z*)",
+      "Optional CMB-lensing-amplitude proxy to set assumed Omega_m in GR inversion",
+      "Draw-level MG-truth posterior from run_dir"
+    ],
+    "not_modeled": [
+      "Full TT/TE/EE likelihood with nuisance/marginalization",
+      "Full modified perturbation equations in early universe",
+      "A Boltzmann-level MG transfer-function refit"
+    ]
+  },
+  "tension_reconciliation": {
+    "baseline_gap_local_minus_planck": 5.599999999999994,
+    "p_inferred_above_70": 0.6875,
+    "p_inferred_above_72": 0.453125,
+    "p_inferred_above_planck_ref": 0.828125,
+    "p_inferred_at_or_above_local_ref": 0.359375,
+    "relief_fraction": {
+      "max": 0.9997371561236902,
+      "mean": 0.42182067110163923,
+      "min": -1.580991984865518,
+      "p16": -0.0034830281920822503,
+      "p50": 0.5491331873370842,
+      "p84": 0.8226987452690853,
+      "sd": 0.4847905783750971
+    },
+    "remaining_gap_local_minus_inferred": {
+      "max": 14.453555115246886,
+      "mean": 3.2378042418308173,
+      "min": 0.001471925707335231,
+      "p16": 0.9928870264931198,
+      "p50": 2.5248541509123257,
+      "p84": 5.619504957875654,
+      "sd": 2.714827238900541
+    }
+  }
+}

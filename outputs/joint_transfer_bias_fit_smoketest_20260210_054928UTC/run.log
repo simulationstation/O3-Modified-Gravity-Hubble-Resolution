@@ -1,0 +1,4 @@
+[start] utc=2026-02-10T05:49:30Z out=outputs/joint_transfer_bias_fit_smoketest_20260210_054928UTC
+[eval] start chunks=1
+[chunk] done i=0 span=0:16
+[done] utc=2026-02-10T05:49:34Z summary=outputs/joint_transfer_bias_fit_smoketest_20260210_054928UTC/tables/summary.json

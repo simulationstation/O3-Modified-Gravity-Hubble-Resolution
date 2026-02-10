@@ -1,0 +1,264 @@
+{
+  "assumptions_and_scope": {
+    "not_included_here": [
+      "Full modified-gravity perturbation equations for primary TT/TE/EE spectra",
+      "A dedicated early-universe recombination-sector refit"
+    ],
+    "what_is_held_fixed": [
+      "Baryon density, tilt, optical depth, neutrino mass, and primordial-shape fiducials unless overridden"
+    ],
+    "what_is_modeled": [
+      "Planck 2018 lensing bandpowers C_L^{phi phi}",
+      "Draw-level propagation of (H0, Omega_m0, Omega_k0, sigma8_0) through CAMB"
+    ]
+  },
+  "camb_fiducial": {
+    "As": 2.1e-09,
+    "mnu": 0.06,
+    "ns": 0.9649,
+    "ombh2": 0.02237,
+    "tau": 0.0544
+  },
+  "created_utc": "2026-02-10T06:08:38Z",
+  "draws_failed": 0,
+  "draws_requested": 4,
+  "draws_successful": 4,
+  "draws_total_available": 1600,
+  "draws_used": 4,
+  "elapsed_sec": 28.427844524383545,
+  "ell_bandpower_summary": [
+    {
+      "clpp_mg_q16": 8.980451387540725e-08,
+      "clpp_mg_q50": 9.886900118084899e-08,
+      "clpp_mg_q84": 1.1203805194404068e-07,
+      "clpp_planck_data": 1.4696e-07,
+      "clpp_planck_ref_model": 1.374160780881476e-07,
+      "delta_frac_pct_q50": -28.051358650020575,
+      "ell_eff": 28.0,
+      "ratio_mg_to_ref_q16": 0.6535226090341538,
+      "ratio_mg_to_ref_q50": 0.7194864134997943,
+      "ratio_mg_to_ref_q84": 0.8153198192148389
+    },
+    {
+      "clpp_mg_q16": 8.774021371665395e-08,
+      "clpp_mg_q50": 9.48800949570601e-08,
+      "clpp_mg_q84": 1.0582954824782277e-07,
+      "clpp_planck_data": 1.3223e-07,
+      "clpp_planck_ref_model": 1.2539684042289332e-07,
+      "delta_frac_pct_q50": -24.336135873054964,
+      "ell_eff": 64.0,
+      "ratio_mg_to_ref_q16": 0.6997003546561089,
+      "ratio_mg_to_ref_q50": 0.7566386412694504,
+      "ratio_mg_to_ref_q84": 0.8439570557832157
+    },
+    {
+      "clpp_mg_q16": 7.299485555581965e-08,
+      "clpp_mg_q50": 7.766084607099462e-08,
+      "clpp_mg_q84": 8.539339295104214e-08,
+      "clpp_planck_data": 1.0031e-07,
+      "clpp_planck_ref_model": 9.78206177807051e-08,
+      "delta_frac_pct_q50": -20.608918822108446,
+      "ell_eff": 106.0,
+      "ratio_mg_to_ref_q16": 0.7462113531061517,
+      "ratio_mg_to_ref_q50": 0.7939108117789155,
+      "ratio_mg_to_ref_q84": 0.8729590436903354
+    },
+    {
+      "clpp_mg_q16": 5.890554598838564e-08,
+      "clpp_mg_q50": 6.180945065165142e-08,
+      "clpp_mg_q84": 6.714811303014206e-08,
+      "clpp_planck_data": 7.037e-08,
+      "clpp_planck_ref_model": 7.468911270308867e-08,
+      "delta_frac_pct_q50": -17.244363449111688,
+      "ell_eff": 151.0,
+      "ratio_mg_to_ref_q16": 0.7886764731367559,
+      "ratio_mg_to_ref_q50": 0.8275563655088831,
+      "ratio_mg_to_ref_q84": 0.8990348204707652
+    },
+    {
+      "clpp_mg_q16": 4.84194513617929e-08,
+      "clpp_mg_q50": 5.027972150803484e-08,
+      "clpp_mg_q84": 5.4137592640276e-08,
+      "clpp_planck_data": 5.291e-08,
+      "clpp_planck_ref_model": 5.8907643223203765e-08,
+      "delta_frac_pct_q50": -14.646523342441887,
+      "ell_eff": 195.0,
+      "ratio_mg_to_ref_q16": 0.8219553306237253,
+      "ratio_mg_to_ref_q50": 0.8535347665755811,
+      "ratio_mg_to_ref_q84": 0.9190249291615041
+    },
+    {
+      "clpp_mg_q16": 4.0376271172980096e-08,
+      "clpp_mg_q50": 4.1593197742036113e-08,
+      "clpp_mg_q84": 4.448906879290353e-08,
+      "clpp_planck_data": 4.206e-08,
+      "clpp_planck_ref_model": 4.761972866080483e-08,
+      "delta_frac_pct_q50": -12.655533931525898,
+      "ell_eff": 240.0,
+      "ratio_mg_to_ref_q16": 0.8478895682203513,
+      "ratio_mg_to_ref_q50": 0.873444660684741,
+      "ratio_mg_to_ref_q84": 0.9342570830211784
+    },
+    {
+      "clpp_mg_q16": 3.410704473178127e-08,
+      "clpp_mg_q50": 3.492041283711555e-08,
+      "clpp_mg_q84": 3.7172516815949177e-08,
+      "clpp_planck_data": 4.296e-08,
+      "clpp_planck_ref_model": 3.931046682966447e-08,
+      "delta_frac_pct_q50": -11.167646549636245,
+      "ell_eff": 286.0,
+      "ratio_mg_to_ref_q16": 0.8676326556886219,
+      "ratio_mg_to_ref_q50": 0.8883235345036375,
+      "ratio_mg_to_ref_q84": 0.94561372107385
+    },
+    {
+      "clpp_mg_q16": 2.9299873187190926e-08,
+      "clpp_mg_q50": 2.9858227507561906e-08,
+      "clpp_mg_q84": 3.167341903729143e-08,
+      "clpp_planck_data": 3.936e-08,
+      "clpp_planck_ref_model": 3.3196517337950745e-08,
+      "delta_frac_pct_q50": -10.056144734714255,
+      "ell_eff": 331.0,
+      "ratio_mg_to_ref_q16": 0.8826188870630378,
+      "ratio_mg_to_ref_q50": 0.8994385526528574,
+      "ratio_mg_to_ref_q84": 0.9541187322406834
+    },
+    {
+      "clpp_mg_q16": 2.5346080481472774e-08,
+      "clpp_mg_q50": 2.572455638064664e-08,
+      "clpp_mg_q84": 2.7210337466161858e-08,
+      "clpp_planck_data": 2.553e-08,
+      "clpp_planck_ref_model": 2.83036360020056e-08,
+      "delta_frac_pct_q50": -9.112184813202816,
+      "ell_eff": 377.0,
+      "ratio_mg_to_ref_q16": 0.8955061632249914,
+      "ratio_mg_to_ref_q50": 0.9088781518679718,
+      "ratio_mg_to_ref_q84": 0.9613725057880806
+    }
+  ],
+  "headline_multipoles": {
+    "near_L100": {
+      "delta_frac_pct_q50": -20.608918822108446,
+      "ell_eff": 106.0,
+      "ratio_q16": 0.7462113531061517,
+      "ratio_q50": 0.7939108117789155,
+      "ratio_q84": 0.8729590436903354
+    },
+    "near_L300": {
+      "delta_frac_pct_q50": -11.167646549636245,
+      "ell_eff": 286.0,
+      "ratio_q16": 0.8676326556886219,
+      "ratio_q50": 0.8883235345036375,
+      "ratio_q84": 0.94561372107385
+    }
+  },
+  "lensing_chi2": {
+    "chi2_draws": {
+      "max": 140.62305651730418,
+      "mean": 80.2980124020531,
+      "min": 19.768830236365428,
+      "p16": 44.55531711657923,
+      "p50": 80.4000814272714,
+      "p84": 116.0325421655095,
+      "sd": 49.88203520870975
+    },
+    "chi2_planck_ref_model": 9.040967206938303,
+    "chi2_planck_template_model": 9.312468806827926,
+    "delta_chi2_draw_minus_ref": {
+      "max": 131.5820893103659,
+      "mean": 71.2570451951148,
+      "min": 10.727863029427125,
+      "p16": 35.51434990964093,
+      "p50": 71.35911422033308,
+      "p84": 106.9915749585712,
+      "sd": 49.88203520870976
+    },
+    "p_draw_better_than_ref": 0.0,
+    "p_draw_worse_than_ref": 1.0
+  },
+  "model_mode": "camb",
+  "planck_lensing_dataset": "consext8",
+  "planck_reference": {
+    "H0": 67.4,
+    "omega_k0": 0.0,
+    "omega_m0": 0.315,
+    "s8om_alpha": 0.25,
+    "sigma8_0": 0.811
+  },
+  "posterior_parameter_stats": {
+    "A_lens_proxy": {
+      "max": 1.0187836006739082,
+      "mean": 0.9657351132632149,
+      "min": 0.9407793046533524,
+      "p16": 0.9459835689577463,
+      "p50": 0.9516887738627995,
+      "p84": 0.9866103647207167,
+      "sd": 0.03573766802071413
+    },
+    "H0": {
+      "max": 73.71617656733687,
+      "mean": 70.05191665152859,
+      "min": 67.0181746583159,
+      "p16": 67.509860894188,
+      "p50": 69.73665769023079,
+      "p84": 72.61919312577301,
+      "sd": 3.0859556057822757
+    },
+    "S8": {
+      "max": 0.8633042062258722,
+      "mean": 0.8480151212140481,
+      "min": 0.8298403518361073,
+      "p16": 0.8388192702806576,
+      "p50": 0.8494579633971064,
+      "p84": 0.8570955447727938,
+      "sd": 0.013782884661849418
+    },
+    "omega_k0": {
+      "max": 0.0,
+      "mean": 0.0,
+      "min": 0.0,
+      "p16": 0.0,
+      "p50": 0.0,
+      "p84": 0.0,
+      "sd": 0.0
+    },
+    "omega_m0": {
+      "max": 0.3812658948568911,
+      "mean": 0.36667889517058927,
+      "min": 0.35345983905849737,
+      "p16": 0.35365964124296734,
+      "p50": 0.36599492338348427,
+      "p84": 0.37975286684117954,
+      "sd": 0.015079696165558397
+    },
+    "sigma8_0": {
+      "max": 0.7953429697437454,
+      "mean": 0.7673889818766799,
+      "min": 0.7543177384024655,
+      "p16": 0.7550443558762978,
+      "p50": 0.7599476096802542,
+      "p84": 0.780328917652776,
+      "sd": 0.019121673508919874
+    },
+    "sigma8_omega_m_alpha": {
+      "max": 0.6132526949824152,
+      "mean": 0.5969977174421163,
+      "min": 0.5893080454084224,
+      "p16": 0.5909333623298064,
+      "p50": 0.5927150646888137,
+      "p84": 0.6034046847746903,
+      "sd": 0.010955036242098724
+    }
+  },
+  "r_d_mpc_stats": {
+    "max": 150.76036078141178,
+    "mean": 145.58762019145215,
+    "min": 139.0444757253261,
+    "p16": 141.6619474757478,
+    "p50": 146.27282212953534,
+    "p84": 149.45847675210982,
+    "sd": 5.060047038412373
+  },
+  "run_dir": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/outputs/finalization/highpower_multistart_v2/M0_start101",
+  "sigma8_source": "posterior"
+}

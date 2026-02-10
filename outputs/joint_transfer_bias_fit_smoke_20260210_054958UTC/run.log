@@ -1,0 +1,11 @@
+[job] started 2026-02-10T05:49:58Z
+[heartbeat] done=8/8 failed=0 pct=100.0% elapsed=0.5s
+[done] wrote outputs/joint_transfer_bias_fit_smoke_20260210_054958UTC/tables/summary.json
+[job] finished 2026-02-10T05:50:02Z
+done i=3 span=192:256
+[chunk] done i=2 span=128:192
+[chunk] done i=5 span=320:384
+[chunk] done i=6 span=384:448
+[chunk] done i=7 span=448:512
+[chunk] done i=4 span=256:320
+[done] utc=2026-02-10T05:50:01Z summary=outputs/joint_transfer_bias_fit_smoke_20260210_054958UTC/tables/summary.json

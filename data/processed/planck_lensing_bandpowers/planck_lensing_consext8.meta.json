@@ -1,0 +1,8 @@
+{
+  "source":"CobayaSampler\/planck_supp_data_and_covmats",
+  "commit":"4c160c735f2f3741c2429160743b1faca7a29474",
+  "dataset":"consext8",
+  "bandpowers_file":"smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8_bandpowers.dat",
+  "cov_file":"smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8_cov.dat",
+  "n_bins":9
+}

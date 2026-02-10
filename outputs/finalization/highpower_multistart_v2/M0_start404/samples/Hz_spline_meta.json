@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "smooth_lambda": 8.0,
+    "n_bootstrap": 120,
+    "monotone": true,
+    "monotone_tol": 0.001,
+    "monotone_fraction": 1.0,
+    "roughness_median": 0.2202658753929193,
+    "roughness_p90": 0.220460659915045,
+    "bootstrap_success_fraction": 1.0,
+    "r_d_boot_mean": 145.78194709966812,
+    "r_d_boot_std": 3.4359139163553665
+  }
+}

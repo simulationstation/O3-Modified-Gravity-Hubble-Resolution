@@ -1,0 +1,12 @@
+{
+  "created_utc": "2026-02-10T05:49:58Z",
+  "mode": "smoke",
+  "out_root": "outputs/joint_transfer_bias_fit_smoke_20260210_054958UTC",
+  "cpuset": "0-1",
+  "workers": 2,
+  "draws_total": 512,
+  "theta_samples": 512,
+  "theta_chunk": 64,
+  "seed": 0,
+  "heartbeat_sec": 60
+}

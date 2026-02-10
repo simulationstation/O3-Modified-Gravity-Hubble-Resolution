@@ -1,0 +1,12 @@
+{
+  "source":"CobayaSampler\/bao_data",
+  "commit":"bb0c1c9009dc76d1391300e169e8df38fd1096db",
+  "dataset":"sdss_dr16_lrg_bao_dmdh",
+  "measurement_file":"sdss_DR16_LRG_BAO_DMDH.dat",
+  "cov_file":"sdss_DR16_LRG_BAO_DMDH_covtot.txt",
+  "n_total":2,
+  "obs":[
+    "DH_over_rs",
+    "DM_over_rs"
+  ]
+}

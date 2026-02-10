@@ -1,0 +1,12 @@
+{
+  "source":"CobayaSampler\/bao_data",
+  "commit":"bb0c1c9009dc76d1391300e169e8df38fd1096db",
+  "dataset":"sdss_dr12_consensus_bao",
+  "measurement_file":"sdss_DR12Consensus_bao.dat",
+  "cov_file":"BAO_consensus_covtot_dM_Hz.txt",
+  "n_total":6,
+  "obs":[
+    "DM_over_rs",
+    "bao_Hz_rs"
+  ]
+}

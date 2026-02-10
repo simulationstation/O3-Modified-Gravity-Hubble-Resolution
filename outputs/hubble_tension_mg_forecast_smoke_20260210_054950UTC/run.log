@@ -1,0 +1,6 @@
+[job] started 2026-02-10T05:49:50Z
+[job] phase=smoke out_root=outputs/hubble_tension_mg_forecast_smoke_20260210_054950UTC run_dir=outputs/finalization/highpower_multistart_v2/M0_start101
+[heartbeat] anchors_done=1/4 (25.0%) current_z=0.200 elapsed_sec=0.7
+[heartbeat] anchors_done=4/4 (100.0%) current_z=0.620 elapsed_sec=0.7
+Wrote forecast outputs: outputs/hubble_tension_mg_forecast_smoke_20260210_054950UTC
+[job] finished 2026-02-10T05:49:53Z

@@ -1,0 +1,13 @@
+{
+  "source":"CobayaSampler\/bao_data",
+  "commit":"bb0c1c9009dc76d1391300e169e8df38fd1096db",
+  "dataset":"desi_2024_bao_all",
+  "measurement_file":"desi_2024_gaussian_bao_ALL_GCcomb_mean.txt",
+  "cov_file":"desi_2024_gaussian_bao_ALL_GCcomb_cov.txt",
+  "n_total":12,
+  "obs":[
+    "DH_over_rs",
+    "DM_over_rs",
+    "DV_over_rs"
+  ]
+}

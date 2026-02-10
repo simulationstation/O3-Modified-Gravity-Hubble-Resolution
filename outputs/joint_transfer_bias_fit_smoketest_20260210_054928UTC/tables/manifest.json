@@ -1,0 +1,56 @@
+{
+  "argv": [
+    "scripts/run_joint_transfer_bias_fit.py",
+    "--out",
+    "outputs/joint_transfer_bias_fit_smoketest_20260210_054928UTC",
+    "--run-dirs",
+    "outputs/finalization/highpower_multistart_v2/M0_start101",
+    "--draws-total",
+    "64",
+    "--theta-samples",
+    "64",
+    "--theta-chunk",
+    "16",
+    "--workers",
+    "2",
+    "--seed",
+    "123",
+    "--heartbeat-sec",
+    "5",
+    "--max-chunks",
+    "1",
+    "--resume"
+  ],
+  "bao_datasets": [
+    "sdss_dr12_consensus_bao",
+    "sdss_dr16_lrg_bao_dmdh",
+    "desi_2024_bao_all"
+  ],
+  "cc_variant": "BC03_all",
+  "created_utc": "2026-02-10T05:49:33Z",
+  "draws_effective": 64,
+  "draws_total_requested": 64,
+  "h0_local_ref_input": 73.0,
+  "h0_local_ref_used": 73.0,
+  "h0_local_sigma": 1.0,
+  "h0_planck_ref": 67.4,
+  "o3_delta_lpd_metadata": 3.669945265,
+  "priors": {
+    "beta_bao_sigma": 0.03,
+    "beta_cc_sigma": 0.2,
+    "beta_ia_sigma": 0.05,
+    "delta_h0_ladder_sigma": 1.0
+  },
+  "run_dirs": [
+    "/home/primary/O3-Modified-Gravity-Hubble-Resolution/outputs/finalization/highpower_multistart_v2/M0_start101"
+  ],
+  "sn_bin_count": 12,
+  "synthetic_mode": {
+    "enabled": false
+  },
+  "theta_chunk": 16,
+  "theta_samples": 64,
+  "workers": 2,
+  "z_max": 0.62,
+  "z_min": 0.02
+}

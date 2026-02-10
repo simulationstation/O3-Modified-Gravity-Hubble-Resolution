@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-02-10T06:21:43Z",
+  "repo_root": "/home/primary/O3-Modified-Gravity-Hubble-Resolution",
+  "out_root": "outputs/hubble_tension_early_universe_bias_fixed_smoke_20260210_062143UTC",
+  "phase": "smoke",
+  "mode": "fixed",
+  "run_dir": "outputs/finalization/highpower_multistart_v2/M0_start101",
+  "cpuset": "0-1",
+  "n_total_cores": 256,
+  "draws": 256,
+  "seed": 0,
+  "theta_noise_frac": 0.0,
+  "lensing_noise": 0.0,
+  "n_int": 6000,
+  "omega_m_assumed_mode": "fixed_planck"
+}

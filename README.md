@@ -22,6 +22,7 @@ Standalone pipeline for the O3-conditioned Hubble-relief analysis, updated to th
   - `scripts/launch_joint_transfer_bias_fit_single_nohup.sh`
   - `scripts/launch_hubble_tension_early_universe_bias_single_nohup.sh`
   - `scripts/launch_hubble_tension_mg_lensing_refit_single_nohup.sh`
+  - `scripts/launch_planck_global_mg_refit_single_nohup.sh` (multi-start global Planck+MG minimization with heartbeat logging)
 - Package code used by these scripts under `src/entropy_horizon_recon/`.
 - Updated paper assets:
   - `update_paper/hubble_tension_hypothesis.tex`
@@ -66,4 +67,18 @@ To run the MG-aware lensing refit with a conservative core cap:
 
 ```bash
 CPUSET=0-31 scripts/launch_hubble_tension_mg_lensing_refit_single_nohup.sh pilot
+```
+
+To run the global Planck+MG minimizer with full cpuset saturation and live progress logging:
+
+```bash
+CPUSET=0-31 MODE=multistart WORKERS=32 RESTARTS=64 \
+  scripts/launch_planck_global_mg_refit_single_nohup.sh pilot
+```
+
+Monitor with:
+
+```bash
+tail -n 80 outputs/planck_global_mg_refit_*/run.log
+tail -n 80 outputs/planck_global_mg_refit_*/monitor/monitor.log
 ```

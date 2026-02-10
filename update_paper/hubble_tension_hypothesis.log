@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.6)  10 FEB 2026 06:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.6)  10 FEB 2026 06:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -706,14 +706,14 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [4 <./hubble_tension_assets/clpp_ratio_to_ref.png>] [5 <./hubble_tension_assets
 /h0_true_vs_inferred_hist_fixed.png> <./hubble_tension_assets/h0_true_vs_inferr
 ed_hist_lensing.png>]
-Overfull \hbox (2.17493pt too wide) in paragraph at lines 190--191
+Overfull \hbox (2.17493pt too wide) in paragraph at lines 193--194
 []\T1/lmr/m/n/10.95 (-20) SDSS DR12 BOSS con-sen-sus BAO (source of $\T1/lmtt/m
 /n/10.95 sdss _ DR12Consensus _ bao . dat$\T1/lmr/m/n/10.95 (-20) ): DOI []10.1
 093/mn-
  []
 
 
-Overfull \hbox (0.42903pt too wide) in paragraph at lines 194--195
+Overfull \hbox (0.42903pt too wide) in paragraph at lines 197--198
 []\T1/lmr/m/n/10.95 (-20) Planck 2018 cos-mo-log-i-cal pa-ram-e-ters and lens-i
 ng ref-er-ences: DOIs []10.1051/0004-6361/201833910[]
  []
@@ -728,13 +728,13 @@ ed.
 (rerunfilecheck)             Checksum: 90F2E3B7D6E366460AB47B4D14063221;1507.
  ) 
 Here is how much of TeX's memory you used:
- 14127 strings out of 476182
- 223484 string characters out of 5795596
+ 14128 strings out of 476182
+ 223494 string characters out of 5795596
  1941975 words of memory out of 5000000
  35710 multiletter control sequences out of 15000+600000
  635180 words of font info for 168 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,6n,79p,1022b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,1022b,610s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/p
@@ -746,10 +746,10 @@ fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb
 e1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr
 /share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/publ
 ic/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on hubble_tension_hypothesis.pdf (7 pages, 560920 bytes).
+Output written on hubble_tension_hypothesis.pdf (7 pages, 561237 bytes).
 PDF statistics:
- 279 PDF objects out of 1000 (max. 8388607)
- 220 compressed objects within 3 object streams
- 50 named destinations out of 1000 (max. 500000)
+ 280 PDF objects out of 1000 (max. 8388607)
+ 221 compressed objects within 3 object streams
+ 51 named destinations out of 1000 (max. 500000)
  43618 words of extra memory for PDF output out of 51595 (max. 10000000)
 

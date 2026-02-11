@@ -14,7 +14,7 @@
 \title{Cosmological Implications of the GWTC-3 Modified-Propagation Anomaly: Inference Bias in the Hubble Tension}
 \author{Aiden B. Smith}
 \affiliation{Independent Researcher}
-\date{February 10, 2026}
+\date{February 11, 2026}
 
 \begin{abstract}
 We investigate cosmological implications of the GWTC-3 O3 modified-propagation anomaly with an updated Planck-facing calibration chain. A 60-restart Planck+MG refit defines a revised sound-horizon anchor with posterior medians $H_0^{\mathrm{Planck,MG}}\!\approx\!68.01$, $\Omega_m^{\mathrm{Planck,MG}}\!\approx\!0.3064$, and $A_{\mathrm{lens}}\!\approx\!1.043$.
@@ -27,7 +27,7 @@ For CMB lensing, baseline CAMB propagation predicts suppressed power at $L\!\sim
 
 A forward amplitude dial, $R_\alpha(z)=1+\alpha\,[R(z)-1]$, gives a compact sensitivity map: core cross-channel support appears at $\alpha\!\approx\!0.6$, while a material-relief threshold of 0.30 is reached near $\alpha\!\approx\!1.94$ under linear relief coupling. A quick nonlinear bridge scan finds viable late-transition families, e.g.\ $(\alpha_{\mathrm{high}},\alpha_{\mathrm{low}},z_t,w)\!\approx\!(0.60,1.95,0.26,0.03)$, that satisfy both core gates and material-relief targets.
 
-Ancillary predictive checks are directionally consistent but mixed: Pantheon SN-only transfer gives a weak positive Bayes factor ($\log\mathrm{BF}\!\approx\!+0.24$), while the all-transfer variant is mildly negative ($\log\mathrm{BF}\!\approx\!-0.48$). Hero-event leave-one-out for the O3 injection-logit run gives $\Delta\mathrm{LPD}=3.67\rightarrow2.19$ after removing GW200308\_173609, indicating concentration without single-event collapse. These results motivate full re-inference with larger siren samples.
+Ancillary predictive checks are directionally consistent but mixed: Pantheon SN-only transfer gives a weak positive Bayes factor ($\log\mathrm{BF}\!\approx\!+0.24$), while the all-transfer variant is mildly negative ($\log\mathrm{BF}\!\approx\!-0.48$). In the O3 injection-logit dark-siren score, the baseline posterior gives $\Delta\mathrm{LPD}=3.67$, while an entropy-derived direct re-score gives $\Delta\mathrm{LPD}=2.26$; leave-one-out on GW200308\_173609 gives 2.19 and 1.20, respectively. The support remains same-sign but reduced in amplitude, motivating full re-inference with larger siren samples.
 \end{abstract}
 \maketitle
 
@@ -209,6 +209,19 @@ we find broad viable families that satisfy the core gates ($\alpha_{\mathrm{eff}
 \end{equation}
 with comparable neighboring solutions for other low-$z$ effective windows.
 
+\paragraph*{Entropy-anchored direct dark-siren re-score.}
+We also replaced the phenomenological propagation posterior with the entropy-reconstruction posterior from the submission-hardening run and re-scored the same O3 injection-logit dark-siren set. The total support remains positive but is reduced:
+\begin{equation}
+\Delta\mathrm{LPD}_{\mathrm{entropy\ direct}} = 2.26
+\quad
+(\mathrm{vs.}\ 3.67\ \mathrm{baseline}).
+\end{equation}
+The same highest-leverage event remains GW200308\_173609; leave-one-out gives
+\begin{equation}
+\Delta\mathrm{LPD}_{\mathrm{entropy,\ drop\ GW200308}} = 1.20.
+\end{equation}
+Numerically this is about 0.62 of the baseline support, consistent with the entropy-alignment quick test indicating effective amplitudes below the material-relief scale.
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\linewidth]{hubble_tension_assets/clpp_overlay_baseline_vs_mgfit.png}
@@ -223,7 +236,7 @@ The direct friction channel remains subdominant in the constrained rebased analy
 
 For CMB lensing, baseline propagation is strongly discrepant with Planck 2018. An MG-aware response refit motivated by effective-coupling freedom in scalar-tensor/EFT descriptions restores near-reference likelihood performance. If that response freedom is not permitted, the baseline projection remains in strong tension with lensing data.
 
-The new predictive triplet checks sharpen this interpretation. Pantheon SN-only transfer is weakly positive while all-transfer remains mildly negative, consistent with directional compatibility but not decisive closure. Hero-event forensics show concentration in GW200308\_173609 and a small set of high-leverage events, but no single-event collapse. The nonlinear bridge scan shows that late-time transition families can satisfy both sets of requirements simultaneously: core gate consistency near $\alpha\sim0.6$ and material-relief scale near $\alpha\sim2$.
+The new predictive checks sharpen this interpretation. Pantheon SN-only transfer is weakly positive while all-transfer remains mildly negative, consistent with directional compatibility but not decisive closure. Hero-event forensics show concentration in GW200308\_173609 and a small set of high-leverage events, but no single-event collapse. The entropy-anchored direct re-score remains same-sign ($\Delta\mathrm{LPD}=+2.26$) but below the baseline ($+3.67$), indicating that entropy-derived propagation captures part, but not all, of the phenomenological O3 amplitude. The nonlinear bridge scan still identifies late-time transition families that satisfy both requirements simultaneously: core gate consistency near $\alpha\sim0.6$ and material-relief scale near $\alpha\sim2$.
 
 Taken together, these results recast the follow-up question from ``does friction alone close the full tension?'' to ``how much of the inferred early-versus-late mismatch can come from GR-compression bias plus late-time transition structure when MG truth is present?'' This scale should be tested directly with full re-inference as larger siren samples arrive.
 
@@ -242,6 +255,7 @@ Core scripts used in this follow-up are:
 \item \path{scripts/run_hubble_tension_early_universe_bias.py}
 \item \path{scripts/run_forward_tests_signal_amplitude_dial.py}
 \item \path{scripts/run_forward_tests_nonlinear_bridge_quick.py}
+\item \path{scripts/run_forward_tests_entropy_bridge_alignment.py}
 \end{itemize}
 
 \acknowledgments

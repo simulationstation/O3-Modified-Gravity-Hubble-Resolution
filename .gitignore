@@ -30,3 +30,6 @@ forward_tests_manifest.json
 *.synctex.gz
 *.fdb_latexmk
 *.fls
+
+# RevTeX control stubs occasionally generated during local builds
+update_paper/*Notes.bib

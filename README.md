@@ -15,6 +15,7 @@ Standalone pipeline for the O3-conditioned Hubble-relief analysis, updated to th
   - `scripts/run_hubble_tension_cmb_forecast.py`
   - `scripts/run_hubble_tension_early_universe_bias.py`
   - `scripts/run_hubble_tension_mg_lensing_refit.py` (MG-aware Planck-lensing refit with effective `M_*` running + tilt response)
+  - `scripts/run_horizon_anisotropy_scan.py` (sky-direction slope scan with HEALPix/Mollweide outputs; hemisphere/patch/crossfit modes)
 - Detached launchers:
   - `scripts/launch_hubble_tension_mg_forecast_single_nohup.sh`
   - `scripts/launch_hubble_tension_mg_robustness_grid_single_nohup.sh`
@@ -23,6 +24,7 @@ Standalone pipeline for the O3-conditioned Hubble-relief analysis, updated to th
   - `scripts/launch_hubble_tension_early_universe_bias_single_nohup.sh`
   - `scripts/launch_hubble_tension_mg_lensing_refit_single_nohup.sh`
   - `scripts/launch_planck_global_mg_refit_single_nohup.sh` (multi-start global Planck+MG minimization with heartbeat logging)
+  - `scripts/launch_horizon_anisotropy_crossfit_from_entropy_single_nohup.sh` (post-entropy crossfit sky-direction scan)
 - Package code used by these scripts under `src/entropy_horizon_recon/`.
 - Updated paper assets:
   - `update_paper/hubble_tension_hypothesis.tex`
@@ -82,3 +84,27 @@ Monitor with:
 tail -n 80 outputs/planck_global_mg_refit_*/run.log
 tail -n 80 outputs/planck_global_mg_refit_*/monitor/monitor.log
 ```
+
+## Slope-Direction Sky Map Test
+
+Imported from `/home/primary/PROJECT`: this is the Pantheon+ sky-direction test that scans hemisphere axes and maps direction-dependent slope behavior.
+
+- Main runner:
+  - `scripts/run_horizon_anisotropy_scan.py`
+- Post-entropy launcher (auto-loads `z` domain and SN settings from the entropy run summary):
+  - `scripts/launch_horizon_anisotropy_crossfit_from_entropy_single_nohup.sh`
+
+Typical command after the entropy hardening run finishes:
+
+```bash
+scripts/launch_horizon_anisotropy_crossfit_from_entropy_single_nohup.sh pilot
+```
+
+Or explicitly point at a finished hardening run:
+
+```bash
+scripts/launch_horizon_anisotropy_crossfit_from_entropy_single_nohup.sh \
+  outputs/entropy_submission_hardening_20260210_175840UTC full
+```
+
+Outputs include fold-level train/test axis products and a final `crossfit_summary.json` under the chosen output directory.

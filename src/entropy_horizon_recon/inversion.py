@@ -164,7 +164,7 @@ def infer_logmu_forward(
     n_draws: int = 800,
     progress: bool = True,
     max_rss_mb: float | None = None,
-    maxrss_check_every: int = 50,
+    maxrss_check_every: int = 20,
     debug_log_path: str | Path | None = None,
     timing_log_path: str | Path | None = None,
     timing_every: int = 200,
@@ -1212,27 +1212,54 @@ def infer_logmu_forward(
     maybe_check_maxrss()
 
     def run_sampler(sampler: emcee.EnsembleSampler, *, state: emcee.State, n_steps_to_run: int, show_progress: bool) -> emcee.State:
-        """Run emcee in chunks to allow RSS watchdog checks."""
+        """Run emcee in chunks to allow RSS watchdog checks and progress heartbeats."""
         if n_steps_to_run <= 0:
             return state
+
+        run_t0 = time.perf_counter()
+
+        def _log_chunk(step_done: int, chunk_steps: int, chunk_dt: float) -> None:
+            elapsed = max(1e-9, float(time.perf_counter() - run_t0))
+            remaining_steps = max(0, int(n_steps_to_run) - int(step_done))
+            eta_s = float(elapsed * (remaining_steps / max(1, int(step_done))))
+            pct = 100.0 * (float(step_done) / float(max(1, int(n_steps_to_run))))
+            step_s = float(chunk_dt / max(1, int(chunk_steps)))
+            _safe_log(
+                "[emcee] progress "
+                f"{int(step_done)}/{int(n_steps_to_run)} "
+                f"({pct:.1f}%) "
+                f"chunk={int(chunk_steps)} "
+                f"chunk_s={chunk_dt:.1f} "
+                f"step_s={step_s:.2f} "
+                f"eta_min={eta_s / 60.0:.1f}"
+            )
+
         if maxrss_check_every <= 0:
+            t0 = time.perf_counter()
             try:
-                return sampler.run_mcmc(state, n_steps_to_run, progress=show_progress)
+                state = sampler.run_mcmc(state, n_steps_to_run, progress=show_progress)
             except BrokenPipeError:
                 # Progress bar output can fail if stdout/stderr is a broken pipe.
-                return sampler.run_mcmc(state, n_steps_to_run, progress=False)
+                state = sampler.run_mcmc(state, n_steps_to_run, progress=False)
+            maybe_check_maxrss()
+            _log_chunk(int(n_steps_to_run), int(n_steps_to_run), float(time.perf_counter() - t0))
+            return state
+
         step = 0
-        chunk = int(maxrss_check_every)
+        chunk = max(1, int(maxrss_check_every))
         while step < n_steps_to_run:
             n_chunk = min(chunk, n_steps_to_run - step)
+            t0 = time.perf_counter()
             try:
                 state = sampler.run_mcmc(state, n_chunk, progress=show_progress and step == 0)
             except BrokenPipeError:
                 # Disable progress for the rest of the run if the output stream broke.
                 state = sampler.run_mcmc(state, n_chunk, progress=False)
                 show_progress = False
+            chunk_dt = float(time.perf_counter() - t0)
             step += n_chunk
             maybe_check_maxrss()
+            _log_chunk(step, n_chunk, chunk_dt)
         return state
 
     def compute_min_ess_from_chain(

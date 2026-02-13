@@ -21,13 +21,13 @@
 
 \begin{document}
 
-\title{\large Entropy-Slope Reconstruction from Late-Time Geometry in an MG-Unbiased Pipeline}
+\title{\large Entropy-Slope Reconstruction from Late-Time Geometry in an MG-Unbiased Framework}
 \author{Aiden B. Smith}
 \affiliation{Independent Researcher}
 \date{February 10, 2026}
 
 \begin{abstract}
-We report finalized results from the entropy submission-hardening pipeline using an MG-unbiased late-time geometry profile. The forward inversion reconstructs the apparent-horizon entropy-slope function $\mu(A)$ from Pantheon+, cosmic chronometers, and BAO while excluding GR-anchored growth, lensing, and full-shape closure terms from the primary posterior. For the real-data stage, the recovered slope is negative on average, $\langle d\log\mu/d\log A\rangle=-0.237\pm0.315$, with $P(d\log\mu/d\log A>0)=0.214$. The background posterior is broad but well sampled ($H_0=70.11^{+2.47}_{-2.43}$ km s$^{-1}$ Mpc$^{-1}$, $\Omega_m=0.297^{+0.058}_{-0.043}$, acceptance $0.337$, minimum ESS $\approx 3995$). Mapping-variant stress tests remain sub-dominant relative to posterior width: fixed-$\Omega_m$ and residual variants shift median $\log\mu$ by at most $0.021$ and $0.015$, while the curved-horizon variant gives the largest shift, $0.056$ (RMS significance $0.291\sigma$). Function-space distances strongly disfavor strict BH ($D^2_{\rm BH}=1.68\times10^{-4}$) relative to fitted non-BH families (best $D^2=4.54\times10^{-8}$). Synthetic BH-closure calibration with 24 SBC realizations yields near-nominal $\log\mu$ coverage (68\%: 0.944; 95\%: 1.000) and low invalid-logprob rate ($1.00\times10^{-3}$). These outputs provide a validated baseline for next-stage joint MG inference.
+We present a data-constrained reconstruction of the apparent-horizon entropy-slope function $\mu(A)$ from Pantheon+, cosmic chronometers, and BAO in a modified-gravity-unbiased late-time geometry framework. The primary posterior excludes GR-anchored growth, lensing, and full-shape closure inputs, so the entropy-sector inference is not pre-compressed by GR assumptions. For real data we find $\langle d\log\mu/d\log A\rangle=-0.237\pm0.315$, with $P(d\log\mu/d\log A>0)=0.214$, favoring negative slope. The same posterior gives $H_0=70.11^{+2.47}_{-2.43}$ km s$^{-1}$ Mpc$^{-1}$ and $\Omega_m=0.297^{+0.058}_{-0.043}$. Mapping-systematic tests are subdominant to posterior width: fixed-$\Omega_m$ and residual variants shift median $\log\mu$ by at most $0.021$ and $0.015$, while the curved-horizon variant gives the largest shift, $0.056$ (RMS significance $0.291\sigma$). Function-space distances disfavor strict BH ($D^2_{\rm BH}=1.68\times10^{-4}$) relative to fitted non-BH families (best $D^2=4.54\times10^{-8}$). Synthetic BH-closure calibration with 24 simulation-based realizations yields near-nominal $\log\mu$ coverage (68\%: 0.944; 95\%: 1.000) and low invalid-logprob rate ($1.00\times10^{-3}$). This provides a calibrated primary entropy-slope result for joint modified-gravity and Hubble-tension inference.
 \end{abstract}
 
 \maketitle
@@ -40,8 +40,8 @@ We reconstruct the horizon entropy-slope modifier
 \begin{equation}
 \mu(A) \equiv \frac{(dS/dA)_{\mathrm{BH}}}{dS/dA},
 \end{equation}
-with the forward apparent-horizon mapping implemented in the entropy pipeline. The analysis is the completed hardening run
-\path{entropy_submission_hardening_20260210_203502UTC}, with a real-data stage, robustness ablations, and synthetic closure calibration.
+with the forward apparent-horizon mapping implemented in the entropy pipeline. We use the production configuration
+\path{entropy_submission_hardening_20260210_203502UTC}, including the real-data stage, robustness ablations, and synthetic closure calibration.
 
 The real-data posterior uses the MG-unbiased profile: GR-anchored growth, lensing, and full-shape constraints are excluded from primary inference to reduce cross-sector GR-closure bias. Results therefore quantify the entropy slope required by late-time geometry channels under this mapping.
 
@@ -135,7 +135,7 @@ dominated by prior-bound hits on $\log\sigma_{d2}$.
 \end{center}
 
 \section{Conclusion}
-The hardening pipeline completed end-to-end and returns a consistent result: under the MG-unbiased geometry profile, the recovered entropy slope is mildly-to-moderately negative in posterior mean, with broad uncertainty but clear sign preference toward negative values. Mapping-variant shifts are limited, ablation behavior is qualitatively stable, and synthetic closure calibration is healthy enough to support next-stage joint analyses.
+This work delivers a standalone entropy-slope measurement from MG-unbiased late-time geometry. The posterior favors negative slope with broad but finite uncertainty; mapping-variant shifts remain subdominant; and function-space tests prefer non-BH families over strict BH for the recovered profile. Synthetic closure calibration indicates numerically stable, near-nominal coverage behavior. Taken together, these results define a calibrated entropy-sector constraint that can be propagated directly into joint modified-gravity and Hubble-tension analyses.
 
 \acknowledgments
 This work used A.I. tools extensively, including ChatGPT 5.3.

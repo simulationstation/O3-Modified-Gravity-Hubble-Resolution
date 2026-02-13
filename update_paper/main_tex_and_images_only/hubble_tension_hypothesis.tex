@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{xurl}
+\usepackage{lastpage}
 
 \title[Inference Bias in Dark-Siren Cosmology]{The Hubble Tension as an Inference-Bias Signal: Dark Sirens with Modified Gravitational-Wave Propagation}
 \author[A. B. Smith]{
@@ -26,6 +27,8 @@ $^{1}$Independent Researcher
 The Hubble tension is commonly interpreted as a mismatch in expansion history between early- and late-universe probes. If gravitational-wave (GW) luminosity distances deviate from electromagnetic distances through modified propagation, then applying a GR standard ruler introduces an inference bias in $H_0$. Motivated by the recently reported GWTC-3 dark-siren propagation posterior, treated here as a phenomenological template, we propagate this effect through a Planck-facing modified-gravity recalibration and obtain $H_0^{\mathrm{Planck,MG}}=68.0$, $\Omega_m^{\mathrm{Planck,MG}}=0.306$, and $A_{\mathrm{lens}}=1.04$.
 
 GR standard-ruler inversion of MG-consistent draws yields a tension-scale shift: mean $\Delta H_0=+1.9$ km s$^{-1}$ Mpc$^{-1}$ for fixed $\Omega_m$ and $+4.6$ km s$^{-1}$ Mpc$^{-1}$ for a lensing-proxy $\Omega_m$. Direct late-time friction closure is smaller ($\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}}=0.155$). Baseline CAMB projection predicts suppressed CMB lensing, while an MG-aware response refit restores near-reference quality (median $\chi^2=8.1$ versus 9.0 for the Planck reference). An amplitude dial, $R_\alpha(z)=1+\alpha\,[R(z)-1]$, indicates cross-channel consistency near $\alpha\simeq0.6$, whereas material relief at 0.30 would require $\alpha\simeq2$ under linear coupling.
+
+Within the tested nuisance families, the dark-siren preference remains positive under bounded selection-function deformations and catalogue/photo-$z$ stresses.
 
 This Letter is an implications analysis: if a propagation deviation of this form is confirmed, corrected dark-siren inference aligns with a Planck-like anchor and GR propagation is not a neutral assumption in standard-siren cosmology.
 \end{abstract}
@@ -150,9 +153,29 @@ For the material-relief requirement ($\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}
 This gives a simple scale estimate: core cross-channel support is compatible with the present signal level, while material closure needs roughly a factor-of-two stronger effective propagation amplitude under linear coupling.
 
 \subsection{Cross-probe and stability checks}
-We also ran lightweight forward checks to test whether the current signal can be embedded in a broader predictive picture without adding new heavy global fits.
-These checks satisfy the three core consistency criteria used here: bridge solutions exist, the dark-siren preference survives high-leverage-event removal, and the SN-only transfer channel remains same-sign.
-Finally, we performed a waveform-level likelihood-consistency check on the two highest-leverage events (GW200308\_173609 and GW200220\_061928) using public GWOSC O3 strain. We evaluated the extrinsic-marginalised likelihood with the RIFT engine across multiple random seeds and two independent waveform families (IMRPhenomPv3HM and IMRPhenomXPHM). All 10 runs completed without numerical failures. This does not constitute a full alternative PE or a glitch analysis, but it reduces the plausibility that the population-level preference is driven by a gross waveform-evaluation pathology in the dominant events.
+We ran a public-data robustness package based on re-scoring cached O3 dark-siren likelihood terms (the injection-logit selection-calibrated configuration). The aim is to confront the dominant escape hatches: selection-function misspecification, galaxy-catalogue/photo-$z$ biases, and PE analysis dependence, and to test for coherent redshift scaling of the preference.
+
+\paragraph*{Adversarial selection-function deformation.}
+We deform the injection-calibrated detection efficiency with bounded multiplicative splines in effective SNR (five knots) and redshift (three knots), plus a mild mass-tilt term, and then perform constrained adversarial minimisation of $\Delta\mathrm{LPD}$ with explicit regularisation. Across bounds spanning $\pm10\%$ to $\pm60\%$ deformations in this nuisance family, the best-achieved score remains essentially unchanged at $\Delta\mathrm{LPD}\simeq+3.67$; no tested bound drives the preference below 1 or 0.
+
+\paragraph*{Catalogue/photo-$z$ stress in the dominant spectral channel.}
+Using spectral-only rescoring (which retains most of the baseline preference), we apply global perturbations to the top-$N$ high-leverage events covering $\simeq80\%$ of the baseline score with a simple redshift-bias model $\Delta z=b_0+b_1 z$ and a bounded completeness-weight tilt. Even extreme grid choices (e.g.\ $b_0=0.03$, $b_1=0.2$) reduce but do not erase the signal, giving $\Delta\mathrm{LPD}\simeq+1.98$; completeness-weight deformations at the $\pm20\%$ level leave $\Delta\mathrm{LPD}\gtrsim+3.61$.
+
+\paragraph*{PE analysis-group swaps for high-leverage events.}
+For GW200308\_173609 and GW200220\_061928, we rebuild the binned $(\Omega,d_L)$ posterior using alternative GWTC-3 PEDataRelease analysis groups (C01:Mixed, C01:IMRPhenomXPHM, C01:SEOBNRv4PHM) while matching the baseline histogram support. In spectral-only rescoring, the global preference is stable at $\Delta\mathrm{LPD}\approx+3.63$ across these choices.
+
+\paragraph*{Redshift scaling.}
+Using the luminosity-distance posterior median to form three equal-count bins, the preference concentrates at higher distance: $\Delta\mathrm{LPD}\approx-0.52$, $+0.57$, and $+3.55$ from low to high bins. This monotonic concentration is qualitatively consistent with a cumulative propagation effect and provides a falsifiable scaling target for larger siren samples.
+
+\paragraph*{Redshift-scramble null.}
+To test whether the preference depends on coherent catalogue redshift structure in the dominant spectral channel, we compress each event's galaxy term into a binned redshift-weight histogram (spectral-only) and randomly permute the bin weights while holding the PE distance posterior, missing-host term, and selection normalisation fixed. In this null, the data-only contribution shifts from $\Delta\mathrm{LPD}_{\mathrm{data}}\simeq+2.65$ to a null mean $+2.27\pm0.13$, with empirical tail probability $p\simeq0.025$; the total score weakens similarly ($p\simeq0.05$). The preference therefore degrades under redshift scrambling, but does not collapse to zero in this fast binned-$z$ approximation.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{hubble_tension_assets/dark_siren_robustness_summary.png}
+\caption{Dark-siren robustness summary from public-data re-scoring: selection-function adversarial deformation, photo-$z$/completeness stress (dominant spectral channel), and the minimum $\Delta\mathrm{LPD}$ reached within tested nuisance families.}
+\label{fig:ds_robust}
+\end{figure}
 
 \paragraph*{Pantheon inference-bias audit.}
 In an SN-only transfer model, we obtain a weak same-sign preference for transfer terms:
@@ -216,7 +239,7 @@ The central result is that GR-assumed standard-ruler inversion can introduce a t
 
 Direct friction closure is smaller, with $\mathcal{R}_{\mathrm{anchor}}^{\mathrm{GR}}\simeq0.16$. The dominant mechanism in this Letter is therefore not late-time closure by friction alone, but the parameter wedge created by a mismatched inference model: GR compression can separate early and late anchors even when the underlying cosmology is internally consistent under MG truth.
 
-This interpretation is compatible with our lensing and stability checks. Baseline lensing projection is suppressed, but MG-aware response freedom restores near-reference performance. Pantheon SN-only transfer is weakly same-sign while the all-transfer variant is mildly negative, so present electromagnetic-sector evidence remains suggestive rather than decisive. Jackknife tests show concentration in GW200308\_173609 and other high-leverage events, but no single-event collapse.
+This interpretation is compatible with our lensing and stability checks. Baseline lensing projection is suppressed, but MG-aware response freedom restores near-reference performance. Public-data dark-siren re-scoring indicates that within the tested nuisance families the preference remains positive under bounded selection-function deformations and catalogue/photo-$z$ stresses. Pantheon SN-only transfer is weakly same-sign while the all-transfer variant is mildly negative, so present electromagnetic-sector evidence remains suggestive rather than decisive. Jackknife tests show concentration in GW200308\_173609 and other high-leverage events, but no single-event collapse.
 
 The identified vulnerabilities correspond to explicit, near-term tests. If the propagation deviation is physical, the population-level preference should stabilise (and should become less dominated by single events) as the siren sample grows and galaxy-catalogue completeness and selection modelling improve in O4/O5. Similarly, the degree of lensing response freedom required to reconcile baseline suppression with Planck 2018 lensing can be confronted with higher-precision CMB lensing measurements and joint large-scale-structure combinations, which should either recover a consistent MG response or exclude the relevant parameter space.
 
@@ -226,7 +249,7 @@ Even if the GWTC-3 propagation preference is ultimately attributed to residual s
 The author used AI-assisted tools for drafting, editing, and software development.
 
 \section*{Data Availability and DOIs}
-All code and reproducibility artefacts used in this study are archived at Zenodo, DOI \href{https://doi.org/10.5281/zenodo.18603134}{10.5281/zenodo.18603134}. Upstream O3 search-sensitivity injections are available at DOI \href{https://doi.org/10.5281/zenodo.7890437}{10.5281/zenodo.7890437}. Public cosmological datasets used here are cited in the reference list with corresponding DOIs.
+All code and reproducibility artefacts used in this study are archived at Zenodo, DOI \href{https://doi.org/10.5281/zenodo.18604204}{10.5281/zenodo.18604204}. Upstream O3 search-sensitivity injections are available at DOI \href{https://doi.org/10.5281/zenodo.7890437}{10.5281/zenodo.7890437}. Public cosmological datasets used here are cited in the reference list with corresponding DOIs.
 
 \begin{thebibliography}{99}
 
@@ -328,7 +351,7 @@ DOI: \href{https://doi.org/10.1103/PhysRevD.71.123001}{10.1103/PhysRevD.71.12300
 \bibitem[Smith(2026)]{O3Zenodo}
 A.~B.~Smith,
 ``O3 Modified Gravity Tension Replication,''
-Zenodo (2026), DOI: \href{https://doi.org/10.5281/zenodo.18603134}{10.5281/zenodo.18603134}.
+Zenodo (2026), DOI: \href{https://doi.org/10.5281/zenodo.18604204}{10.5281/zenodo.18604204}.
 
 \bibitem[Stern et al.(2010)]{Stern2010}
 D.~Stern \textit{et al.},
@@ -338,4 +361,5 @@ DOI: \href{https://doi.org/10.1088/1475-7516/2010/02/008}{10.1088/1475-7516/2010
 
 \end{thebibliography}
 
+\label{lastpage}
 \end{document}

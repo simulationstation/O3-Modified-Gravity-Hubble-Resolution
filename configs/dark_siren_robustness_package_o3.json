@@ -1,0 +1,39 @@
+{
+  "baseline": {
+    "gap_run_root": "/home/primary/PROJECT/outputs/dark_siren_o3_injection_logit_20260209_055801UTC",
+    "run_label": "M0_start101",
+    "recon_run_dir": "/home/primary/PROJECT/outputs/finalization/highpower_multistart_v2/M0_start101"
+  },
+  "selection_nuisance": {
+    "enabled": true,
+    "logsnr_knots": [1.8, 2.2, 2.7, 3.2, 4.0],
+    "z_knots": [0.0, 0.15, 0.3],
+    "delta_bound": 0.2,
+    "prior_sigma": 0.1,
+    "include_mass": true,
+    "mass_pivot_msun": 30.0,
+    "mass_log_scale": 1.0
+  },
+  "catalog_photoz_stress": {
+    "enabled": true,
+    "events_topk": 2,
+    "z_pivot": 0.15,
+    "photoz_b0_grid": [-0.03, -0.02, -0.01, -0.005, 0.0, 0.005, 0.01, 0.02, 0.03],
+    "photoz_b1_grid": [-0.2, 0.0, 0.2],
+    "comp_amp_grid": [-0.2, 0.0, 0.2],
+    "comp_tilt_grid": [-0.2, 0.0, 0.2]
+  },
+  "pe_waveform_stress": {
+    "enabled": true,
+    "events": [],
+    "max_pe_samples": 200000,
+    "seed": 0,
+    "analyses": ["C01:Mixed", "C01:IMRPhenomXPHM", "C01:SEOBNRv4PHM"]
+  },
+  "splits": {
+    "enabled": true,
+    "n_z_bins": 3,
+    "z_proxy_sample_max_gal": 200000,
+    "seed": 0
+  }
+}

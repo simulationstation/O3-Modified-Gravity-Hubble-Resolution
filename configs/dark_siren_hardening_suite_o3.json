@@ -1,0 +1,92 @@
+{
+  "baseline": {
+    "gap_run_root": "/home/primary/PROJECT/outputs/dark_siren_o3_injection_logit_20260209_055801UTC",
+    "run_label": "M0_start101",
+    "recon_run_dir": "/home/primary/PROJECT/outputs/finalization/highpower_multistart_v2/M0_start101"
+  },
+  "selection_nuisance": {
+    "enabled": true,
+    "logsnr_knots": [1.8, 2.2, 2.7, 3.2, 4.0],
+    "z_knots": [0.0, 0.15, 0.3],
+    "delta_bound": 0.2,
+    "prior_sigma": 0.1,
+    "include_mass": true,
+    "mass_pivot_msun": 30.0,
+    "mass_log_scale": 1.0,
+    "required_failure_scan": {
+      "enabled": true,
+      "delta_bounds": [0.1, 0.2, 0.3, 0.4, 0.6, 0.8, 1.0],
+      "thresholds": [1.0, 0.0],
+      "n_starts": 16,
+      "maxiter": 250,
+      "seed": 0
+    }
+  },
+  "catalog_photoz_stress": {
+    "enabled": true,
+    "events_topk": 2,
+    "z_pivot": 0.15,
+    "photoz_b0_grid": [-0.03, -0.02, -0.01, -0.005, 0.0, 0.005, 0.01, 0.02, 0.03],
+    "photoz_b1_grid": [-0.2, 0.0, 0.2],
+    "comp_amp_grid": [-0.2, 0.0, 0.2],
+    "comp_tilt_grid": [-0.2, 0.0, 0.2]
+  },
+  "catalog_photoz_stress_global": {
+    "enabled": true,
+    "target_leverage_fraction": 0.8,
+    "min_events": 5,
+    "max_events": 12,
+    "z_pivot": 0.15,
+    "photoz_b0_grid": [-0.03, -0.02, -0.01, 0.0, 0.01, 0.02, 0.03],
+    "photoz_b1_grid": [-0.2, 0.0, 0.2],
+    "comp_amp_grid": [-0.2, 0.0, 0.2],
+    "comp_tilt_grid": [-0.2, 0.0, 0.2],
+    "thresholds": [1.0, 0.0]
+  },
+  "pe_waveform_stress": {
+    "enabled": true,
+    "events": [],
+    "max_pe_samples": 200000,
+    "seed": 0,
+    "analyses": ["C01:Mixed", "C01:IMRPhenomXPHM", "C01:SEOBNRv4PHM"]
+  },
+  "splits": {
+    "enabled": true,
+    "n_z_bins": 3,
+    "z_proxy_sample_max_gal": 200000,
+    "seed": 0
+  },
+  "noncircular_splits": {
+    "enabled": true,
+    "n_bins": 3,
+    "distance_bins": true,
+    "catalog_z_bins": true,
+    "network_splits": true,
+    "epoch_splits": true,
+    "chirp_mass_bins": true,
+    "epoch_boundary_date": "2019-11-01",
+    "gwosc_meta_cache": "data/cache/gw/gwosc_event_meta_gwtc3.json"
+  },
+  "permutation_null": {
+    "enabled": true,
+    "n_perm": 200,
+    "seed": 0,
+    "mode": ["scramble_catalog_redshift_hist_spectral_only", "permute_catalog_terms_across_events"],
+    "z_hist_nbins": 200,
+    "n_f_coarse": 101
+  },
+  "mg_injection_check": {
+    "enabled": true,
+    "n_rep": 64,
+    "seed": 0,
+    "distance_mode": "spectral_only",
+    "z_hist_nbins": 200,
+    "sigma_floor_frac": 0.05
+  },
+  "interpretability": {
+    "enabled": true
+  },
+  "predictions": {
+    "enabled": true
+  }
+}

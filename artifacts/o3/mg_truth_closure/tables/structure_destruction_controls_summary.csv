@@ -1,0 +1,4 @@
+cat_mode,truth_z_mode,delta_lpd_total_mean,delta_lpd_total_p50,p_ge_observed
+global_pz,global_pz,3.5776001154622175,3.5304020782230054,0.3203125
+smooth_prior,smooth_prior,4.568832064046516,4.532045155157249,1.0
+event_hist_swap,catalog_hist,3.5067272548000976,3.461867620999641,0.20703125

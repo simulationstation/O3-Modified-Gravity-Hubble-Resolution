@@ -1,11 +1,18 @@
 {
+  "alpha_grid": "",
+  "diag_splits_nrep": 64,
   "gap_run_root": "/home/primary/PROJECT/outputs/dark_siren_o3_injection_logit_20260209_055801UTC",
   "n_f": 101,
-  "n_rep": 512,
+  "n_rep": 256,
   "recon_run_dir": "/home/primary/PROJECT/outputs/finalization/highpower_multistart_v2/M0_start101",
+  "referee_suite": true,
+  "run_gr_variants": false,
   "run_label": "M0_start101",
+  "run_structure_controls": false,
   "seed": 0,
   "sigma_floor_frac": 0.05,
+  "smooth_prior_beta": 1.5,
+  "smooth_prior_z0": 0.1,
   "threads": 8,
   "z_hist_nbins": 200
 }

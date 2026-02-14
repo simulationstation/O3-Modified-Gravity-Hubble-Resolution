@@ -1,0 +1,11 @@
+{
+  "gap_run_root": "/home/primary/PROJECT/outputs/dark_siren_o3_injection_logit_20260209_055801UTC",
+  "n_f": 101,
+  "n_rep": 512,
+  "recon_run_dir": "/home/primary/PROJECT/outputs/finalization/highpower_multistart_v2/M0_start101",
+  "run_label": "M0_start101",
+  "seed": 0,
+  "sigma_floor_frac": 0.05,
+  "threads": 8,
+  "z_hist_nbins": 200
+}

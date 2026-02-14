@@ -78,6 +78,7 @@ For full reruns, see `README_reproduce.md`.
 These are the current curated “seed” headlines; `make reproduce` writes the same numbers to a timestamped `report.md`:
 
 - O3 dark sirens (full score, selection-normalised): `ΔLPD_tot ≈ +3.670` (`ΔLPD_data ≈ +2.670`), with calibrated one-sided `p ≈ 0.00195` (`Z ≈ 2.89`) against the bundled GR-truth spectral-only null generator.
+- MG-truth causal-closure suite (ancillary, spectral-only + selection): under MG-truth forward catalogs generated from the same fixed propagation template, the observed `ΔLPD_tot ≈ 3.670` lands at `p ≈ 0.25` in the MG-truth distribution but only `p ≈ 0.027` under a GR-truth distribution; removing catalog structure collapses the typical score scale to `ΔLPD_tot ~ O(1)`.
 - Spec-$z$ override (strict shifted-sky gate; Tier A; `r = 10″`, `K = 20000`): median anchored host-weight proxy across the top-3 gate events `≈ 6.1%`, with `ΔLPD_tot ≈ 3.644` (non-decreasing with anchored coverage in the clean-radius regime).
 - Hubble transfer-bias relief posterior (MC-calibrated): mean `≈ 0.246` with `p16/p50/p84 ≈ 0.205 / 0.240 / 0.277`.
 - Planck lensing response refit: baseline MG projection suppresses `C_L^{\\phi\\phi}` near `L~100` by `≈ -17.6%` (median), while the constrained MG-aware response refit leaves `≈ -0.25%` residual (median) and achieves `χ²` median `≈ 8.06` versus Planck reference `≈ 9.04`.
@@ -92,6 +93,9 @@ Dark sirens (O3):
   - `artifacts/o3/dark_siren_hardening_suite/report.md`
   - `artifacts/o3/dark_siren_hardening_suite/tables/baseline_recompute.json`
   - `artifacts/o3/dark_siren_hardening_suite/tables/calibrated_pz_table.csv`
+- MG-truth causal-closure suite (forward MG/GR truth catalogs, scored under the same ΔLPD definition):
+  - `artifacts/o3/mg_truth_closure/report.md`
+  - `artifacts/o3/mg_truth_closure/summary.json`
 - Spec-$z$ “coverage maxout” audit (strict false-match gated):
   - `artifacts/o3/specz_coverage_maxout/summary.json`
   - `artifacts/o3/specz_coverage_maxout/tables/false_match_gate_by_radius.csv`
@@ -138,3 +142,21 @@ pip install -e '.[sirens,optical_bias]'
 
 - This repo is intentionally structured to keep the main O3 dark-siren scoring + the Hubble transfer analysis on the same fixed propagation history.
 - The “seed” command (`make reproduce`) is a headline verification tool; it does not claim to replace a full rerun with downloaded public inputs.
+
+---
+
+## Ancillary: MG-Truth Causal-Closure Suite (Non-Seed)
+
+This is a forward-model “closure” test: if the fixed propagation history used in the Hubble-tension analysis were true, does it *generically* produce a dark-siren ΔLPD excursion on the observed scale when analysed under a GR baseline, using the same catalog/selection machinery?
+
+Command (writes to a timestamped `outputs/mg_truth_closure_<UTC>/` directory):
+
+```bash
+PYTHONPATH=src .venv/bin/python scripts/run_dark_siren_mg_truth_closure_suite.py --n-rep 512 --threads 8
+```
+
+Outputs:
+
+- `outputs/mg_truth_closure_<UTC>/report.md`
+- `outputs/mg_truth_closure_<UTC>/summary.json`
+- `outputs/mg_truth_closure_<UTC>/figures/delta_lpd_hist_overlay.png`

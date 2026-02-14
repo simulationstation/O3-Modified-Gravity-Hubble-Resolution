@@ -1,0 +1,58 @@
+{
+  "argv": [
+    "scripts/run_joint_transfer_bias_fit.py",
+    "--out",
+    "outputs/joint_transfer_bias_fit_full_20260209_061958UTC",
+    "--draws-total",
+    "8192",
+    "--theta-samples",
+    "32768",
+    "--theta-chunk",
+    "512",
+    "--workers",
+    "48",
+    "--seed",
+    "0",
+    "--o3-delta-lpd",
+    "3.669945265",
+    "--heartbeat-sec",
+    "60",
+    "--resume"
+  ],
+  "bao_datasets": [
+    "sdss_dr12_consensus_bao",
+    "sdss_dr16_lrg_bao_dmdh",
+    "desi_2024_bao_all"
+  ],
+  "cc_variant": "BC03_all",
+  "created_utc": "2026-02-09T06:20:01Z",
+  "draws_effective": 8000,
+  "draws_total_requested": 8192,
+  "h0_local_ref_input": 73.0,
+  "h0_local_ref_used": 73.0,
+  "h0_local_sigma": 1.0,
+  "h0_planck_ref": 67.4,
+  "o3_delta_lpd_metadata": 3.669945265,
+  "priors": {
+    "beta_bao_sigma": 0.03,
+    "beta_cc_sigma": 0.2,
+    "beta_ia_sigma": 0.05,
+    "delta_h0_ladder_sigma": 1.0
+  },
+  "run_dirs": [
+    "/home/primary/PROJECT/outputs/finalization/highpower_multistart_v2/M0_start101",
+    "/home/primary/PROJECT/outputs/finalization/highpower_multistart_v2/M0_start202",
+    "/home/primary/PROJECT/outputs/finalization/highpower_multistart_v2/M0_start303",
+    "/home/primary/PROJECT/outputs/finalization/highpower_multistart_v2/M0_start404",
+    "/home/primary/PROJECT/outputs/finalization/highpower_multistart_v2/M0_start505"
+  ],
+  "sn_bin_count": 12,
+  "synthetic_mode": {
+    "enabled": false
+  },
+  "theta_chunk": 512,
+  "theta_samples": 32768,
+  "workers": 48,
+  "z_max": 0.62,
+  "z_min": 0.02
+}

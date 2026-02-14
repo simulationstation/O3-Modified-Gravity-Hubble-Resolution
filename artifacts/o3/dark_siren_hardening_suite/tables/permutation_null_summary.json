@@ -1,0 +1,77 @@
+{
+  "enabled": true,
+  "runs": [
+    {
+      "baseline_ref_delta_lpd_spectral_only_total": 3.634345260331145,
+      "mode": "scramble_catalog_redshift_hist_spectral_only",
+      "n_f_coarse": 101,
+      "n_perm": 200,
+      "notes": "binned-z spectral-only approximation; use observed (approx) vs scrambled ensemble for structure-dependence.",
+      "observed_delta_lpd_data": 2.6494374577946473,
+      "observed_delta_lpd_total": 3.6453334014931897,
+      "p_perm_ge_observed_data": 0.024875621890547265,
+      "p_perm_ge_observed_total": 0.04975124378109453,
+      "perm_mean_data": 2.2695550164027116,
+      "perm_mean_total": 3.3810304978728687,
+      "perm_sd_data": 0.1349186161888465,
+      "perm_sd_total": 0.14681632082809143,
+      "seed": 0
+    },
+    {
+      "mode": "permute_catalog_terms_across_events",
+      "n_f_coarse": 101,
+      "n_perm": 200,
+      "observed_delta_lpd_data": 2.6700319342049568,
+      "observed_delta_lpd_total": 3.669945265393494,
+      "p_perm_ge_observed_total": 0.004975124378109453,
+      "perm_mean_total": 3.6471376215001885,
+      "perm_sd_total": 0.015615567041481227,
+      "seed": 0
+    },
+    {
+      "mode": "permute_missing_terms_across_events",
+      "n_f_coarse": 101,
+      "n_perm": 200,
+      "notes": "Permutation null: swap missing-host terms across events (catalog terms fixed).",
+      "observed_delta_lpd_data": 2.6700319342049568,
+      "observed_delta_lpd_total": 3.669945265393494,
+      "p_perm_ge_observed_data": 0.004975124378109453,
+      "p_perm_ge_observed_total": 0.004975124378109453,
+      "perm_mean_data": 2.6334611510403714,
+      "perm_mean_total": 3.647509163839069,
+      "perm_sd_data": 0.028639857057881437,
+      "perm_sd_total": 0.015244931754015908,
+      "seed": 0
+    },
+    {
+      "mode": "permute_catalog_redshift_hist_across_events_spectral_only",
+      "n_f_coarse": 101,
+      "n_perm": 200,
+      "notes": "binned-z spectral-only approximation; cross-event reassignment of entire redshift-weight histograms.",
+      "observed_delta_lpd_data": 2.6494374577946473,
+      "observed_delta_lpd_total": 3.6453334014931897,
+      "p_perm_ge_observed_data": 0.7263681592039801,
+      "p_perm_ge_observed_total": 0.7164179104477612,
+      "perm_mean_data": 2.669884537043724,
+      "perm_mean_total": 3.667549552262651,
+      "perm_sd_data": 0.033376570829257685,
+      "perm_sd_total": 0.038272561015988436,
+      "seed": 0
+    },
+    {
+      "mode": "scramble_missing_host_prior_basez_spectral_only",
+      "n_f_coarse": 101,
+      "n_perm": 200,
+      "notes": "binned-z spectral-only approximation; missing-host prior base_z(z) scrambled (distance posteriors fixed).",
+      "observed_delta_lpd_data": 2.6494374577946473,
+      "observed_delta_lpd_total": 3.6453334014931897,
+      "p_perm_ge_observed_data": 0.736318407960199,
+      "p_perm_ge_observed_total": 0.945273631840796,
+      "perm_mean_data": 2.649443313443916,
+      "perm_mean_total": 3.645353970776167,
+      "perm_sd_data": 1.0669962026527416e-05,
+      "perm_sd_total": 1.1565474811938399e-05,
+      "seed": 0
+    }
+  ]
+}

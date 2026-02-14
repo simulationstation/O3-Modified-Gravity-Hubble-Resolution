@@ -1,0 +1,15 @@
+{
+  "created_utc": "2026-02-14T10:35:18Z",
+  "git_sha": "d94d69f814cfdc3c5c942e2821593f05cc813ec7",
+  "artifact_sources": {
+    "o3_dark_siren_hardening_suite": "outputs/dark_siren_hardening_suite_o3_20260213_192819UTC",
+    "o3_specz_coverage_maxout": "outputs/dark_siren_specz_coverage_maxout_20260214_090513UTC",
+    "hubble_final_relief_posterior": "outputs/hubble_tension_final_relief_posterior_20260209_061950UTC",
+    "hubble_mg_lensing_refit": "outputs/hubble_tension_mg_lensing_refit_camb32_20260210_live",
+    "hubble_joint_transfer_bias_fit": "outputs/joint_transfer_bias_fit_full_20260209_061958UTC"
+  },
+  "exclusions": [
+    "Large intermediate CSVs (e.g. host-candidate and posterior-row dumps) are intentionally not vendored into artifacts/."
+  ]
+}
+

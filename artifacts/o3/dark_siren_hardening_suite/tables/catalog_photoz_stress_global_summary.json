@@ -1,0 +1,52 @@
+{
+  "baseline_delta_lpd_total": 3.634345260331145,
+  "comp_grid": {
+    "c_amp": [
+      -0.2,
+      0.0,
+      0.2
+    ],
+    "c_tilt": [
+      -0.2,
+      0.0,
+      0.2
+    ],
+    "z_pivot": 0.15
+  },
+  "comp_min": {
+    "c_amp": -0.2,
+    "c_tilt": 0.2,
+    "delta_lpd_total": 3.608946994086409
+  },
+  "enabled": true,
+  "mode": "spectral_only",
+  "photoz_grid": {
+    "b0": [
+      -0.03,
+      -0.02,
+      -0.01,
+      0.0,
+      0.01,
+      0.02,
+      0.03
+    ],
+    "b1": [
+      -0.2,
+      0.0,
+      0.2
+    ]
+  },
+  "photoz_min": {
+    "b0": 0.03,
+    "b1": 0.2,
+    "delta_lpd_total": 1.9762098241359922
+  },
+  "target_leverage_fraction": 0.8,
+  "top_events": [
+    "GW200308_173609",
+    "GW200220_061928",
+    "GW200208_130117",
+    "GW200219_094415",
+    "GW191230_180458"
+  ]
+}

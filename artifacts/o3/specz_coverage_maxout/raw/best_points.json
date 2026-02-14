@@ -1,0 +1,32 @@
+{
+  "A": {
+    "gate_events": [
+      "GW200308_173609",
+      "GW200220_061928",
+      "GW200219_094415"
+    ],
+    "k": 20000,
+    "median_frac_weight_true_gate_events": 0.061397504157408696,
+    "radius_arcsec": 10.0
+  },
+  "B": {
+    "gate_events": [
+      "GW200308_173609",
+      "GW200220_061928",
+      "GW200219_094415"
+    ],
+    "k": 20000,
+    "median_frac_weight_true_gate_events": 0.061495065440575744,
+    "radius_arcsec": 10.0
+  },
+  "C": {
+    "gate_events": [
+      "GW200308_173609",
+      "GW200220_061928",
+      "GW200219_094415"
+    ],
+    "k": 20000,
+    "median_frac_weight_true_gate_events": 0.06462195613694222,
+    "radius_arcsec": 10.0
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "baseline": {
+    "gap_run_root": "/home/primary/PROJECT/outputs/dark_siren_o3_injection_logit_20260209_055801UTC",
+    "run_label": "M0_start101",
+    "recon_run_dir": "/home/primary/PROJECT/outputs/finalization/highpower_multistart_v2/M0_start101",
+    "spectral_only_terms_npz": "outputs/dark_siren_hardening_suite_o3_20260213_192819UTC/tables/spectral_only_cached_terms.npz"
+  },
+  "glade": {
+    "index_lumB": "/home/primary/PROJECT/data/processed/galaxies/gladeplus/index_nside128_wlumB_zmax0.3"
+  },
+  "top_events": [
+    "GW200308_173609",
+    "GW200220_061928",
+    "GW200219_094415",
+    "GW200208_130117",
+    "GW191230_180458"
+  ],
+  "maxout": {
+    "z_max": 0.3,
+    "radii_arcsec": [1, 2, 3, 5, 10, 15, 20, 30, 45, 60],
+    "k_grid": [200, 1000, 5000, 20000, 50000, 100000, 200000],
+    "k_gain_min_frac": 0.05,
+    "max_k_for_outputs": 200000
+  },
+  "false_match": {
+    "shift_ra_deg": 0.5,
+    "shift_dec_deg": 0.5,
+    "random_rotation_enabled": true,
+    "random_seed": 1337
+  },
+  "legitimacy_gate": {
+    "median_shift_over_true_max": 0.10,
+    "max_event_shift_over_true_max": 0.30,
+    "gate_events": ["GW200308_173609", "GW200220_061928", "GW200219_094415"]
+  },
+  "specz_cache_dir": "data/cache/specz_catalogs",
+  "tiers": {
+    "A": {
+      "sources": [
+        { "name": "2MRS", "npz": "2MRS_clean.npz" },
+        { "name": "6dFGS", "npz": "6dFGS_clean.npz", "min_quality": 3.0 },
+        { "name": "2dFGRS", "npz": "2dFGRS_clean.npz", "min_quality": 3.0 },
+        { "name": "GAMA_DR3", "npz": "GAMA_DR3_clean.npz", "min_quality": 3.0 },
+        { "name": "DESI_DR1", "npz": "DESI_DR1_clean.npz" }
+      ]
+    },
+    "B": {
+      "sources": [
+        { "name": "2MRS", "npz": "2MRS_clean.npz" },
+        { "name": "6dFGS", "npz": "6dFGS_clean.npz", "min_quality": 3.0 },
+        { "name": "2dFGRS", "npz": "2dFGRS_clean.npz", "min_quality": 2.0 },
+        { "name": "GAMA_DR3", "npz": "GAMA_DR3_clean.npz", "min_quality": 2.0 },
+        { "name": "DESI_DR1", "npz": "DESI_DR1_clean.npz" }
+      ]
+    },
+    "C": {
+      "sources": [
+        { "name": "2MRS", "npz": "2MRS_clean.npz" },
+        { "name": "6dFGS", "npz": "6dFGS_clean.npz" },
+        { "name": "2dFGRS", "npz": "2dFGRS_clean.npz" },
+        { "name": "GAMA_DR3", "npz": "GAMA_DR3_clean.npz" },
+        { "name": "DESI_DR1_loose", "npz": "DESI_DR1_loose_clean.npz" }
+      ]
+    }
+  },
+  "ppc_residuals": {
+    "h0_ref": 67.7,
+    "omega_m0": 0.31
+  },
+  "scoring": {
+    "enabled": true,
+    "z_hist_nbins": 400
+  }
+}
+

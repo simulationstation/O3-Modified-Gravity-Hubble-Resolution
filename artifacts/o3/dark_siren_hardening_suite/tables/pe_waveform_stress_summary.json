@@ -1,0 +1,45 @@
+{
+  "enabled": true,
+  "rows": [
+    {
+      "analysis": "C01:Mixed",
+      "delta_lpd_total": 3.6320645230843525,
+      "event": "GW200308_173609",
+      "n_pe_used": 26318
+    },
+    {
+      "analysis": "C01:IMRPhenomXPHM",
+      "delta_lpd_total": 3.6344226994418136,
+      "event": "GW200308_173609",
+      "n_pe_used": 132606
+    },
+    {
+      "analysis": "C01:SEOBNRv4PHM",
+      "delta_lpd_total": 3.6326859693429583,
+      "event": "GW200308_173609",
+      "n_pe_used": 13159
+    },
+    {
+      "analysis": "C01:Mixed",
+      "delta_lpd_total": 3.627506708197018,
+      "event": "GW200220_061928",
+      "n_pe_used": 39442
+    },
+    {
+      "analysis": "C01:IMRPhenomXPHM",
+      "delta_lpd_total": 3.634244412386181,
+      "event": "GW200220_061928",
+      "n_pe_used": 123819
+    },
+    {
+      "analysis": "C01:SEOBNRv4PHM",
+      "delta_lpd_total": 3.625352643673466,
+      "event": "GW200220_061928",
+      "n_pe_used": 19721
+    }
+  ],
+  "top_events": [
+    "GW200308_173609",
+    "GW200220_061928"
+  ]
+}

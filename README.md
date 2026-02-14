@@ -1,110 +1,133 @@
-# O3 Modified Gravity Hubble Resolution
+# O3 Modified Gravity Hubble Resolution (Reviewer Seed)
 
-Standalone pipeline for the O3-conditioned Hubble-relief analysis, updated to the latest O3 dark-siren support point:
-- `ΔLPD_total = +3.6699` (`ΔLPD_data = +2.6700`, `ΔLPD_sel = +0.9999`)
-- source summary: `outputs/dark_siren_o3_injection_logit_20260209_055801UTC/summary_M0_start101.json` in the parent project
+This repository is a review-focused seed export of the code and *curated* result artifacts used for:
 
-## Included here
+1. **GWTC-3 / O3 dark-siren posterior-predictive scoring** of a fixed modified-propagation history against an internal GR propagation baseline (selection-normalised, injection-calibrated).
+2. **Follow-on Hubble-tension transfer / inference-bias analysis** conditioned on the same propagation deformation.
 
-- Core Hubble scripts:
-  - `scripts/run_hubble_tension_mg_forecast.py`
-  - `scripts/run_hubble_tension_mg_forecast_robustness_grid.py`
-  - `scripts/run_hubble_tension_bias_transfer_sweep.py`
-  - `scripts/run_hubble_tension_final_relief_posterior.py`
-  - `scripts/run_joint_transfer_bias_fit.py`
-  - `scripts/run_hubble_tension_cmb_forecast.py`
-  - `scripts/run_hubble_tension_early_universe_bias.py`
-  - `scripts/run_hubble_tension_mg_lensing_refit.py` (MG-aware Planck-lensing refit with effective `M_*` running + tilt response)
-  - `scripts/run_horizon_anisotropy_scan.py` (sky-direction slope scan with HEALPix/Mollweide outputs; hemisphere/patch/crossfit modes)
-- Detached launchers:
-  - `scripts/launch_hubble_tension_mg_forecast_single_nohup.sh`
-  - `scripts/launch_hubble_tension_mg_robustness_grid_single_nohup.sh`
-  - `scripts/launch_hubble_tension_bias_transfer_sweep_single_nohup.sh`
-  - `scripts/launch_joint_transfer_bias_fit_single_nohup.sh`
-  - `scripts/launch_hubble_tension_early_universe_bias_single_nohup.sh`
-  - `scripts/launch_hubble_tension_mg_lensing_refit_single_nohup.sh`
-  - `scripts/launch_planck_global_mg_refit_single_nohup.sh` (multi-start global Planck+MG minimization with heartbeat logging)
-  - `scripts/launch_horizon_anisotropy_crossfit_from_entropy_single_nohup.sh` (post-entropy crossfit sky-direction scan)
-- Package code used by these scripts under `src/entropy_horizon_recon/`.
-- Updated paper assets:
-  - `update_paper/hubble_tension_hypothesis.tex`
-  - `update_paper/hubble_tension_hypothesis.pdf`
-  - `update_paper/hubble_tension_assets/`
-- Refreshed outputs from this run:
-  - `outputs/hubble_tension_bias_transfer_constrained_v2_20260209_061632UTC/`
-  - `outputs/hubble_tension_bias_transfer_constrained_v2_repeat_20260209_061832UTC/`
-  - `outputs/hubble_tension_final_relief_posterior_20260209_061950UTC/`
-  - `outputs/joint_transfer_bias_fit_full_20260209_061958UTC/`
+The intent is that a reviewer can:
 
-## Refreshed headline numbers
+- verify the headline numbers quickly (`make reproduce`), and
+- rerun the main pipelines if they download the (large) public inputs.
 
-From `outputs/hubble_tension_final_relief_posterior_20260209_061950UTC/final_relief_posterior_summary.json`:
-- Anchor-based GR-interpreted relief posterior (MC-calibrated):
-  - mean `0.2459`
-  - p16/p50/p84 `0.2048 / 0.2396 / 0.2767`
-- High-z bias thresholds (linearized):
-  - `10%` relief at `~ -1.20%`
-  - `40%` relief at `~ +1.26%`
+---
 
-From `outputs/joint_transfer_bias_fit_full_20260209_061958UTC/tables/summary.json`:
-- `o3_delta_lpd_metadata = 3.669945265`
-- `log BF(transfer vs no-transfer) = -0.5331`
-- Dominant transfer term: `delta_h0_ladder_local`
+## What This Repository Is Testing
 
-## Run notes
+The model path is not “free modified gravity”; it is a fixed propagation history derived upstream and then evaluated out-of-sample on dark sirens.
 
-All long runs are designed for detached execution (`setsid` + `taskset`) and write:
-- `pid.txt`
-- `run.log`
-- incremental status JSON
+Conceptually:
 
-To rerun the full joint transfer fit on a 48-core host:
+- **Stage A (geometry → entropy slope)**: reconstruct an effective horizon/entropy slope deformation $\mu(A)$ from late-time cosmology in the “minimal running-$M_\ast$” embedding implemented in `src/entropy_horizon_recon/`.
+- **Stage B ($\mu(A)$ → GW propagation)**: map to a GW propagation ratio $R(z)=d_L^{GW}(z)/d_L^{EM}(z)$.
+- **Stage C (dark sirens)**: score the fixed $R(z)$ history against an internal GR baseline using a joint posterior-predictive log score $\Delta \mathrm{LPD}$ with explicit selection normalisation and injection-based calibration/hardening.
+- **Stage D (Hubble tension)**: propagate the same deformation into late-time standard-ruler inversions to quantify the induced “inference wedge” (transfer-bias) on $H_0$.
+
+---
+
+## Included Contents
+
+- `src/entropy_horizon_recon/`: core package (sirens, selection models, mapping utilities, lensing ingests).
+- `scripts/`: runnable entrypoints for the O3 dark-siren hardening suite, spec-$z$ audits, and Hubble follow-on analyses.
+- `update_paper/`: latest Hubble-tension manuscript source + PDF (`hubble_tension_hypothesis.tex/.pdf`).
+- `entropy_slope_paper/`: entropy-slope letter source + PDF (context/foundation for the mapping).
+- `CQG_PAPER/`: CQG-style manuscript source + PDF (`dark_siren_cqg.tex/.pdf`).
+- `artifacts/`: **curated**, small “reviewer seed” outputs (tables/figures/reports). These are what `make reproduce` reads.
+
+Notes:
+
+- Large intermediate runs live under `outputs/` when generated locally; `outputs/` is git-ignored by design.
+- Large public inputs (GWTC PE files, GLADE+ indices, DESI/SDSS spectroscopy dumps, etc.) are not vendored in git.
+
+---
+
+## Seed Replication (Headline Verification)
+
+One command creates a timestamped reproduction folder containing `report.md` + `summary.json` with the key numbers:
 
 ```bash
-CPUSET=0-47 WORKERS=48 O3_DELTA_LPD=3.669945265 \
-  scripts/launch_joint_transfer_bias_fit_single_nohup.sh full
+make reproduce
 ```
 
-To run the MG-aware lensing refit with a conservative core cap:
+This uses the curated `artifacts/` bundle and does **not** require downloading the full public inputs.
+
+To rebuild the bundled CQG paper PDF (optional):
 
 ```bash
-CPUSET=0-31 scripts/launch_hubble_tension_mg_lensing_refit_single_nohup.sh pilot
+make cqg-paper
 ```
 
-To run the global Planck+MG minimizer with full cpuset saturation and live progress logging:
+Output example:
+
+- `outputs/reviewer_seed_<timestamp>/report.md`
+- `outputs/reviewer_seed_<timestamp>/summary.json`
+
+For full reruns, see `README_reproduce.md`.
+
+---
+
+## Headline Snapshot (From `artifacts/`)
+
+These are the current curated “seed” headlines; `make reproduce` writes the same numbers to a timestamped `report.md`:
+
+- O3 dark sirens (full score, selection-normalised): `ΔLPD_tot ≈ +3.670` (`ΔLPD_data ≈ +2.670`), with calibrated one-sided `p ≈ 0.00195` (`Z ≈ 2.89`) against the bundled GR-truth spectral-only null generator.
+- Spec-$z$ override (strict shifted-sky gate; Tier A; `r = 10″`, `K = 20000`): median anchored host-weight proxy across the top-3 gate events `≈ 6.1%`, with `ΔLPD_tot ≈ 3.644` (non-decreasing with anchored coverage in the clean-radius regime).
+- Hubble transfer-bias relief posterior (MC-calibrated): mean `≈ 0.246` with `p16/p50/p84 ≈ 0.205 / 0.240 / 0.277`.
+- Planck lensing response refit: baseline MG projection suppresses `C_L^{\\phi\\phi}` near `L~100` by `≈ -17.6%` (median), while the constrained MG-aware response refit leaves `≈ -0.25%` residual (median) and achieves `χ²` median `≈ 8.06` versus Planck reference `≈ 9.04`.
+
+---
+
+## Key Result Artifacts (Vendored)
+
+Dark sirens (O3):
+
+- Hardening suite (baseline reproduction, selection nuisance scan, null/permutation tests, injection checks):
+  - `artifacts/o3/dark_siren_hardening_suite/report.md`
+  - `artifacts/o3/dark_siren_hardening_suite/tables/baseline_recompute.json`
+  - `artifacts/o3/dark_siren_hardening_suite/tables/calibrated_pz_table.csv`
+- Spec-$z$ “coverage maxout” audit (strict false-match gated):
+  - `artifacts/o3/specz_coverage_maxout/summary.json`
+  - `artifacts/o3/specz_coverage_maxout/tables/false_match_gate_by_radius.csv`
+  - `artifacts/o3/specz_coverage_maxout/tables/override_score_best_points.csv`
+
+Hubble follow-on:
+
+- Transfer-bias relief posterior:
+  - `artifacts/hubble/final_relief_posterior/final_relief_posterior_summary.json`
+- Planck lensing response refit (amplitude + mild $\ell$-tilt):
+  - `artifacts/hubble/mg_lensing_refit/tables/summary.json`
+- Joint transfer fit summary:
+  - `artifacts/hubble/joint_transfer_bias_fit/tables/summary.json`
+
+Artifact provenance:
+
+- `artifacts/manifest.json`
+
+---
+
+## Environment
+
+Typical local setup:
 
 ```bash
-CPUSET=0-31 MODE=multistart WORKERS=32 RESTARTS=64 \
-  scripts/launch_planck_global_mg_refit_single_nohup.sh pilot
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -e '.[sirens,optical_bias]'
 ```
 
-Monitor with:
+---
 
-```bash
-tail -n 80 outputs/planck_global_mg_refit_*/run.log
-tail -n 80 outputs/planck_global_mg_refit_*/monitor/monitor.log
-```
+## Data Source DOI Manifest (Primary)
 
-## Slope-Direction Sky Map Test
+- GWTC-3 PE products: DOI `10.1103/PhysRevX.13.041039`
+- GLADE+ galaxy catalogue: DOI `10.1093/mnras/stac1443`
+- O3 search-sensitivity injections: DOI `10.5281/zenodo.7890437`
+- Code + reproducibility archive for the Hubble-tension manuscript: DOI `10.5281/zenodo.18635659`
 
-Imported from `/home/primary/PROJECT`: this is the Pantheon+ sky-direction test that scans hemisphere axes and maps direction-dependent slope behavior.
+---
 
-- Main runner:
-  - `scripts/run_horizon_anisotropy_scan.py`
-- Post-entropy launcher (auto-loads `z` domain and SN settings from the entropy run summary):
-  - `scripts/launch_horizon_anisotropy_crossfit_from_entropy_single_nohup.sh`
+## Notes For Reviewers
 
-Typical command after the entropy hardening run finishes:
-
-```bash
-scripts/launch_horizon_anisotropy_crossfit_from_entropy_single_nohup.sh pilot
-```
-
-Or explicitly point at a finished hardening run:
-
-```bash
-scripts/launch_horizon_anisotropy_crossfit_from_entropy_single_nohup.sh \
-  outputs/entropy_submission_hardening_20260210_175840UTC full
-```
-
-Outputs include fold-level train/test axis products and a final `crossfit_summary.json` under the chosen output directory.
+- This repo is intentionally structured to keep the main O3 dark-siren scoring + the Hubble transfer analysis on the same fixed propagation history.
+- The “seed” command (`make reproduce`) is a headline verification tool; it does not claim to replace a full rerun with downloaded public inputs.

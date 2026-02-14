@@ -1,0 +1,13 @@
+{
+  "delta_lpd_total": 3.669945265393494,
+  "delta_lpd_total_data": 2.6700319342049568,
+  "f_max": 0.999999,
+  "f_min": 1e-06,
+  "f_post_mean_gr": 0.12379876475119582,
+  "f_post_mean_mu": 0.12379608318066328,
+  "lpd_gr_total": 279.2672190823753,
+  "lpd_gr_total_data": 218.07276918085475,
+  "lpd_mu_total": 282.93716434776877,
+  "lpd_mu_total_data": 220.7428011150597,
+  "n_f": 401
+}

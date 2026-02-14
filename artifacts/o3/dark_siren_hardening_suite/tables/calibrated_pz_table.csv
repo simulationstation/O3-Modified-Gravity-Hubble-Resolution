@@ -1,0 +1,4 @@
+case,delta_lpd,p_one_sided,z_one_sided
+baseline (full),+3.670,0.001949,2.89
+selection min (bound=0.20),+3.667,0.001949,2.89
+photo-z stressed min,+1.976,1,nan

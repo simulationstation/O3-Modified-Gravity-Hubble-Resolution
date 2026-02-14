@@ -1,0 +1,180 @@
+{
+  "camb_fiducial": {
+    "As": 2.1e-09,
+    "mnu": 0.06,
+    "ns": 0.9649,
+    "ombh2": 0.02237,
+    "tau": 0.0544
+  },
+  "chi2": {
+    "chi2_baseline_draws": {
+      "max": 270.15616294970596,
+      "mean": 90.65057311590115,
+      "min": 9.5818349040093,
+      "p16": 33.297986148339426,
+      "p50": 64.12682170140829,
+      "p84": 166.41086268124153,
+      "sd": 67.35391452501621
+    },
+    "chi2_mg_refit_draws": {
+      "max": 8.832121247047752,
+      "mean": 8.02536880714307,
+      "min": 7.272137540575646,
+      "p16": 7.661727876495727,
+      "p50": 8.061574830928436,
+      "p84": 8.389890955853158,
+      "sd": 0.3824895299126264
+    },
+    "chi2_planck_ref_model": 9.040967206938303,
+    "delta_chi2_fit_minus_baseline": {
+      "max": -2.1912784504339653,
+      "mean": -82.62520430875807,
+      "min": -261.3240417026582,
+      "p16": -157.92301054236273,
+      "p50": -56.0166343888195,
+      "p84": -25.4006680481329,
+      "sd": 67.08297581972899
+    },
+    "optimizer_success_fraction": 1.0,
+    "p_baseline_better_than_ref": 0.0,
+    "p_refit_better_than_baseline": 1.0,
+    "p_refit_better_than_ref": 1.0
+  },
+  "created_utc": "2026-02-10T07:18:06Z",
+  "draws_camb_ok": 32,
+  "draws_fit_ok": 32,
+  "draws_requested": 32,
+  "draws_total_available": 1600,
+  "draws_used": 32,
+  "elapsed_sec": 218.85773086547852,
+  "fit_parameter_stats": {
+    "ell_tilt": {
+      "max": 0.11441879569288096,
+      "mean": -0.12693165467410686,
+      "min": -0.2730698931675423,
+      "p16": -0.20213683895161205,
+      "p50": -0.1448121624661676,
+      "p84": -0.05771737035663396,
+      "sd": 0.08599194278738463
+    },
+    "log10_mstar2_ratio_0": {
+      "max": 0.08755175078572898,
+      "mean": -0.04910632826701687,
+      "min": -0.14779749121535482,
+      "p16": -0.10191556285897077,
+      "p50": -0.04534091681054385,
+      "p84": -0.016599544232794333,
+      "sd": 0.050644027079929474
+    },
+    "mstar2_drop_pct": {
+      "max": 28.845477462816127,
+      "mean": 10.090827343297681,
+      "min": -22.335288581385647,
+      "p16": 3.7500308276855634,
+      "p50": 9.913586097961836,
+      "p84": 20.916760564227555,
+      "sd": 10.803038113351596
+    },
+    "mstar2_ratio_0": {
+      "max": 1.2233528858138565,
+      "mean": 0.8990917265670233,
+      "min": 0.7115452253718387,
+      "p16": 0.7908323943577245,
+      "p50": 0.9008641390203816,
+      "p84": 0.9624996917231443,
+      "sd": 0.10803038113351594
+    }
+  },
+  "headline_multipoles": {
+    "near_L100": {
+      "baseline_delta_frac_pct_q50": -17.614741664457,
+      "baseline_ratio_q50": 0.82385258335543,
+      "ell_eff": 106.0,
+      "refit_delta_frac_pct_q50": -0.25227278283852517,
+      "refit_ratio_q50": 0.9974772721716147
+    },
+    "near_L300": {
+      "baseline_delta_frac_pct_q50": -8.436886557975676,
+      "baseline_ratio_q50": 0.9156311344202432,
+      "ell_eff": 286.0,
+      "refit_delta_frac_pct_q50": -3.0533850923519346,
+      "refit_ratio_q50": 0.9694661490764807
+    }
+  },
+  "mg_response_assumptions": {
+    "clip_max": 20.0,
+    "clip_min": 0.05,
+    "ell_pivot": 200.0,
+    "eta0_fixed": 1.0,
+    "fit_bounds": {
+      "ell_tilt": [
+        -0.6,
+        0.6
+      ],
+      "log10_mstar2_ratio_0": [
+        -0.6,
+        0.6
+      ]
+    },
+    "mu0_fixed": 1.0,
+    "response_power": 1.0
+  },
+  "parameter_stats_from_draws": {
+    "H0": {
+      "max": 79.47006733278789,
+      "mean": 70.4583908110584,
+      "min": 66.60538409308536,
+      "p16": 67.94938299356318,
+      "p50": 69.69198871307808,
+      "p84": 73.70080215416648,
+      "sd": 3.008526378225799
+    },
+    "omega_k0": {
+      "max": 0.0,
+      "mean": 0.0,
+      "min": 0.0,
+      "p16": 0.0,
+      "p50": 0.0,
+      "p84": 0.0,
+      "sd": 0.0
+    },
+    "omega_m0": {
+      "max": 0.39960397871169523,
+      "mean": 0.35316102686396,
+      "min": 0.2242550160747271,
+      "p16": 0.30440012806569916,
+      "p50": 0.37705466838676077,
+      "p84": 0.39321202250114895,
+      "sd": 0.048538411102199246
+    },
+    "sigma8_0": {
+      "max": 0.8795610133191869,
+      "mean": 0.7720685120640786,
+      "min": 0.7163926524129931,
+      "p16": 0.7373728675333047,
+      "p50": 0.7708208027414554,
+      "p84": 0.8016555446400907,
+      "sd": 0.03644573681130803
+    }
+  },
+  "planck_lensing_dataset": "consext8",
+  "planck_reference": {
+    "H0": 67.4,
+    "omega_k0": 0.0,
+    "omega_m0": 0.315,
+    "sigma8_0": 0.811
+  },
+  "run_dir": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/outputs/finalization/highpower_multistart_v2/M0_start101",
+  "scope_notes": {
+    "modeled": [
+      "Planck 2018 lensing bandpower likelihood",
+      "Draw-level CAMB C_L^{phi phi} from MG posterior",
+      "Phenomenological MG response with effective Planck-mass running and ell tilt"
+    ],
+    "not_modeled": [
+      "Full Horndeski/EFT perturbation-equation Boltzmann evolution",
+      "Primary TT/TE/EE and nuisance-parameter joint likelihood refit"
+    ]
+  },
+  "sigma8_source": "posterior"
+}

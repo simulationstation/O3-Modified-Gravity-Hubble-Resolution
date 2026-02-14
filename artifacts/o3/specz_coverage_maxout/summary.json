@@ -1,0 +1,93 @@
+{
+  "best_points": {
+    "A": {
+      "gate_events": [
+        "GW200308_173609",
+        "GW200220_061928",
+        "GW200219_094415"
+      ],
+      "k": 20000,
+      "median_frac_weight_true_gate_events": 0.061397504157408696,
+      "radius_arcsec": 10.0
+    },
+    "B": {
+      "gate_events": [
+        "GW200308_173609",
+        "GW200220_061928",
+        "GW200219_094415"
+      ],
+      "k": 20000,
+      "median_frac_weight_true_gate_events": 0.061495065440575744,
+      "radius_arcsec": 10.0
+    },
+    "C": {
+      "gate_events": [
+        "GW200308_173609",
+        "GW200220_061928",
+        "GW200219_094415"
+      ],
+      "k": 20000,
+      "median_frac_weight_true_gate_events": 0.06462195613694222,
+      "radius_arcsec": 10.0
+    }
+  },
+  "gate_events": [
+    "GW200308_173609",
+    "GW200220_061928",
+    "GW200219_094415"
+  ],
+  "k_gain_min_frac": 0.05,
+  "k_grid": [
+    200,
+    1000,
+    5000,
+    20000,
+    50000,
+    100000,
+    200000
+  ],
+  "legitimacy_gate": {
+    "max_event_shift_over_true_max": 0.3,
+    "median_shift_over_true_max": 0.1
+  },
+  "outdir": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/outputs/dark_siren_specz_coverage_maxout_20260214_090513UTC",
+  "radii_arcsec": [
+    1.0,
+    2.0,
+    3.0,
+    5.0,
+    10.0,
+    15.0,
+    20.0,
+    30.0,
+    45.0,
+    60.0
+  ],
+  "scoring_best_points_rows": [
+    {
+      "baseline_delta_lpd_data": 2.6358894332519185,
+      "baseline_delta_lpd_total": 3.634345260331145,
+      "delta_lpd_data": 2.646569902362131,
+      "delta_lpd_total": 3.6436703758944304,
+      "k": 20000,
+      "radius_arcsec": 10.0,
+      "tier": "A"
+    },
+    {
+      "baseline_delta_lpd_data": 2.6358894332519185,
+      "baseline_delta_lpd_total": 3.634345260331145,
+      "delta_lpd_data": 2.6467246348257163,
+      "delta_lpd_total": 3.6438585185156853,
+      "k": 20000,
+      "radius_arcsec": 10.0,
+      "tier": "B"
+    }
+  ],
+  "top_events": [
+    "GW200308_173609",
+    "GW200220_061928",
+    "GW200219_094415",
+    "GW200208_130117",
+    "GW191230_180458"
+  ]
+}

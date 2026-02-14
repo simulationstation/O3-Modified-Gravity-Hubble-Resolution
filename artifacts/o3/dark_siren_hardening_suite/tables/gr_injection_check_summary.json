@@ -1,0 +1,11 @@
+{
+  "delta_lpd_max": 3.056242826317259,
+  "delta_lpd_mean": 2.6427248263126137,
+  "delta_lpd_p16": 2.5106787806615376,
+  "delta_lpd_p50": 2.6297546827689473,
+  "delta_lpd_p84": 2.768072885830493,
+  "enabled": true,
+  "n_rep": 512,
+  "seed": 1,
+  "truth": "gr"
+}

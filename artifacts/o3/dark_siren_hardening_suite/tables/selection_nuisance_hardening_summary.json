@@ -1,0 +1,161 @@
+{
+  "baseline_delta_lpd_total": 3.669945265393494,
+  "enabled": true,
+  "prior_sigma": 0.1,
+  "required_bounds": {
+    "0.0": null,
+    "1.0": null
+  },
+  "scan": [
+    {
+      "at_bounds_frac": 0.0,
+      "b_mass": -0.0006835223968971633,
+      "bound": 0.1,
+      "delta_lpd_total": 3.6671409091073315,
+      "delta_lpd_total_data": 2.6700319342049568,
+      "delta_lpd_total_fixed_f": 3.665524832646412,
+      "dl_snr": [
+        2.4502041859591345e-05,
+        0.00031910461623098005,
+        0.0008320794748715131,
+        -0.0005455402657778864,
+        -0.0006370330049647391
+      ],
+      "dl_z": [
+        0.0009075162056870756,
+        0.003066155009301061,
+        -0.003980601361177873
+      ],
+      "f_miss_fixed": 0.6807953774124085,
+      "max_abs_param": 0.003980601361177873,
+      "message": "Optimization terminated successfully.",
+      "n_random": 4000,
+      "nfev": 165,
+      "nit": 3,
+      "objective_penalised": 3.6669266072393105,
+      "penalty_lambda": 1.0,
+      "prior_penalty": 0.0014017745928987455,
+      "success": true
+    },
+    {
+      "at_bounds_frac": 0.0,
+      "b_mass": -0.0006810330803688064,
+      "bound": 0.2,
+      "delta_lpd_total": 3.6671411602333137,
+      "delta_lpd_total_data": 2.6700319342049568,
+      "delta_lpd_total_fixed_f": 3.6655250837905555,
+      "dl_snr": [
+        2.4502043864178813e-05,
+        0.0003191048927298698,
+        0.000832101577398825,
+        -0.0005453857237655985,
+        -0.0006370151873047458
+      ],
+      "dl_z": [
+        0.0009075252298817796,
+        0.00306607892547648,
+        -0.003980474381220518
+      ],
+      "f_miss_fixed": 0.6807953774124085,
+      "max_abs_param": 0.003980474381220518,
+      "message": "Optimization terminated successfully.",
+      "n_random": 4000,
+      "nfev": 165,
+      "nit": 3,
+      "objective_penalised": 3.6669266077720857,
+      "penalty_lambda": 1.0,
+      "prior_penalty": 0.0014015239815301991,
+      "success": true
+    },
+    {
+      "at_bounds_frac": 0.0,
+      "b_mass": -0.000676965140890412,
+      "bound": 0.3,
+      "delta_lpd_total": 3.6671415639738143,
+      "delta_lpd_total_data": 2.6700319342049283,
+      "delta_lpd_total_fixed_f": 3.665525487560501,
+      "dl_snr": [
+        2.4502047064736687e-05,
+        0.000319105342731385,
+        0.0008321376732616514,
+        -0.0005451317176364268,
+        -0.0006369859709363518
+      ],
+      "dl_z": [
+        0.0009075399438522452,
+        0.0030659606022640923,
+        -0.003980279124651126
+      ],
+      "f_miss_fixed": 0.6807953774124085,
+      "max_abs_param": 0.003980279124651126,
+      "message": "Optimization terminated successfully.",
+      "n_random": 4000,
+      "nfev": 165,
+      "nit": 3,
+      "objective_penalised": 3.6669266099740265,
+      "penalty_lambda": 1.0,
+      "prior_penalty": 0.0014011224135255802,
+      "success": true
+    },
+    {
+      "at_bounds_frac": 0.0,
+      "b_mass": -0.00067133528426154,
+      "bound": 0.4,
+      "delta_lpd_total": 3.667142119159564,
+      "delta_lpd_total_data": 2.6700319342049568,
+      "delta_lpd_total_fixed_f": 3.6655260427871212,
+      "dl_snr": [
+        2.4502051462704788e-05,
+        0.0003191059642760202,
+        0.0008321877412151707,
+        -0.0005447783748158685,
+        -0.0006369453762173072
+      ],
+      "dl_z": [
+        0.0009075603380343938,
+        0.0030657999748865683,
+        -0.003980015649612673
+      ],
+      "f_miss_fixed": 0.6807953774124085,
+      "max_abs_param": 0.003980015649612673,
+      "message": "Optimization terminated successfully.",
+      "n_random": 4000,
+      "nfev": 165,
+      "nit": 3,
+      "objective_penalised": 3.6669266157462106,
+      "penalty_lambda": 1.0,
+      "prior_penalty": 0.001400572959089337,
+      "success": true
+    },
+    {
+      "at_bounds_frac": 0.0,
+      "b_mass": -0.0006888194728837812,
+      "bound": 0.6,
+      "delta_lpd_total": 3.667141379937334,
+      "delta_lpd_total_data": 2.6700319342049568,
+      "delta_lpd_total_fixed_f": 3.665525303522031,
+      "dl_snr": [
+        2.45020496181525e-05,
+        0.0003191038392118539,
+        0.0008322927622040344,
+        -0.0005438659381951927,
+        -0.0006368690752608375
+      ],
+      "dl_z": [
+        0.000907600129868763,
+        0.0030652843148777087,
+        -0.003979370416555772
+      ],
+      "f_miss_fixed": 0.6807953774124085,
+      "max_abs_param": 0.003979370416555772,
+      "message": "Optimization terminated successfully.",
+      "n_random": 4000,
+      "nfev": 165,
+      "nit": 3,
+      "objective_penalised": 3.6669266084388092,
+      "penalty_lambda": 1.0,
+      "prior_penalty": 0.0014013049167780618,
+      "success": true
+    }
+  ]
+}

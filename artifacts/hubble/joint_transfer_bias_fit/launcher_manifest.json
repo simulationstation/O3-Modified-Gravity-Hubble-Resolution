@@ -1,0 +1,12 @@
+{
+  "created_utc": "2026-02-09T06:19:58Z",
+  "mode": "full",
+  "out_root": "outputs/joint_transfer_bias_fit_full_20260209_061958UTC",
+  "cpuset": "0-47",
+  "workers": 48,
+  "draws_total": 8192,
+  "theta_samples": 32768,
+  "theta_chunk": 512,
+  "seed": 0,
+  "heartbeat_sec": 60
+}

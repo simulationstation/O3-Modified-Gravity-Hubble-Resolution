@@ -1,0 +1,124 @@
+{
+  "tiers": {
+    "A": {
+      "n_combined": 5730904,
+      "sources": [
+        {
+          "min_quality": null,
+          "n_rows": 44599,
+          "name": "2MRS",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/2MRS_clean.npz",
+          "status": "loaded"
+        },
+        {
+          "min_quality": 3.0,
+          "n_rows": 124647,
+          "name": "6dFGS",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/6dFGS_clean.npz",
+          "status": "loaded"
+        },
+        {
+          "min_quality": 3.0,
+          "n_rows": 233251,
+          "name": "2dFGRS",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/2dFGRS_clean.npz",
+          "status": "loaded"
+        },
+        {
+          "min_quality": 3.0,
+          "n_rows": 192859,
+          "name": "GAMA_DR3",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/GAMA_DR3_clean.npz",
+          "status": "loaded"
+        },
+        {
+          "min_quality": null,
+          "n_rows": 5186949,
+          "name": "DESI_DR1",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/DESI_DR1_clean.npz",
+          "status": "loaded"
+        }
+      ]
+    },
+    "B": {
+      "n_combined": 5745879,
+      "sources": [
+        {
+          "min_quality": null,
+          "n_rows": 44599,
+          "name": "2MRS",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/2MRS_clean.npz",
+          "status": "loaded"
+        },
+        {
+          "min_quality": 3.0,
+          "n_rows": 124647,
+          "name": "6dFGS",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/6dFGS_clean.npz",
+          "status": "loaded"
+        },
+        {
+          "min_quality": 2.0,
+          "n_rows": 241553,
+          "name": "2dFGRS",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/2dFGRS_clean.npz",
+          "status": "loaded"
+        },
+        {
+          "min_quality": 2.0,
+          "n_rows": 205068,
+          "name": "GAMA_DR3",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/GAMA_DR3_clean.npz",
+          "status": "loaded"
+        },
+        {
+          "min_quality": null,
+          "n_rows": 5186949,
+          "name": "DESI_DR1",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/DESI_DR1_clean.npz",
+          "status": "loaded"
+        }
+      ]
+    },
+    "C": {
+      "n_combined": 9084009,
+      "sources": [
+        {
+          "min_quality": null,
+          "n_rows": 44599,
+          "name": "2MRS",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/2MRS_clean.npz",
+          "status": "loaded"
+        },
+        {
+          "min_quality": null,
+          "n_rows": 124647,
+          "name": "6dFGS",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/6dFGS_clean.npz",
+          "status": "loaded"
+        },
+        {
+          "min_quality": null,
+          "n_rows": 241554,
+          "name": "2dFGRS",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/2dFGRS_clean.npz",
+          "status": "loaded"
+        },
+        {
+          "min_quality": null,
+          "n_rows": 214624,
+          "name": "GAMA_DR3",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/GAMA_DR3_clean.npz",
+          "status": "loaded"
+        },
+        {
+          "min_quality": null,
+          "n_rows": 8522050,
+          "name": "DESI_DR1_loose",
+          "npz": "/home/primary/O3-Modified-Gravity-Hubble-Resolution/data/cache/specz_catalogs/DESI_DR1_loose_clean.npz",
+          "status": "loaded"
+        }
+      ]
+    }
+  }
+}

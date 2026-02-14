@@ -34,6 +34,10 @@ from entropy_horizon_recon.dark_sirens_pe import PePixelDistanceHistogram  # noq
 from entropy_horizon_recon.gw_distance_priors import GWDistancePrior  # noqa: E402
 from entropy_horizon_recon.sirens import MuForwardPosterior, load_mu_forward_posterior, predict_dL_em, predict_r_gw_em  # noqa: E402
 
+# Cache for large spec-z catalogs to avoid rebuilding spatial indices repeatedly.
+# Keyed by (catalog name, n_rows) for determinism/reproducibility within a run.
+_CKDTREE_CACHE: dict[tuple[str, int], Any] = {}
+
 
 def _utc_now_compact() -> str:
     return datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%SUTC")
@@ -984,53 +988,119 @@ def _crossmatch_candidates(
     """Return per-candidate match alternatives within radius_max_arcsec across all catalogs."""
     from astropy import units as u
     from astropy.coordinates import SkyCoord
+    from scipy.spatial import cKDTree
 
     cand_ra_deg = np.asarray(cand_ra_deg, dtype=float)
     cand_dec_deg = np.asarray(cand_dec_deg, dtype=float)
-    cand_coords = SkyCoord(ra=cand_ra_deg * u.deg, dec=cand_dec_deg * u.deg, frame="icrs")
-    out: list[list[dict[str, Any]]] = [[] for _ in range(int(cand_coords.size))]
-    if not catalogs or cand_coords.size == 0:
+    n_cand = int(cand_ra_deg.size)
+    out: list[list[dict[str, Any]]] = [[] for _ in range(n_cand)]
+    if not catalogs or n_cand == 0:
         return out
 
+    # Precompute candidate unit vectors for fast KD-tree queries on large catalogs.
+    ra_rad = np.deg2rad(cand_ra_deg)
+    dec_rad = np.deg2rad(cand_dec_deg)
+    cosd = np.cos(dec_rad)
+    cand_xyz = np.stack((cosd * np.cos(ra_rad), cosd * np.sin(ra_rad), np.sin(dec_rad)), axis=1).astype(np.float32)
+
+    # Angular radius in radians and corresponding chord distance on the unit sphere.
+    rmax_rad = float(radius_max_arcsec) * (np.pi / 180.0) / 3600.0
+    chord = float(2.0 * np.sin(0.5 * rmax_rad))
+
+    # Build SkyCoord for candidate points once for small-catalog matching via astropy.
+    cand_coords = SkyCoord(ra=cand_ra_deg * u.deg, dec=cand_dec_deg * u.deg, frame="icrs")
     rmax = float(radius_max_arcsec) * u.arcsec
+
+    # Threshold above which we switch to a cached KD-tree (astropy builds a new tree each call).
+    big_n = 200_000
+    workers = os.environ.get("OMP_NUM_THREADS")
+    try:
+        workers_i = int(workers) if workers is not None else 1
+    except Exception:
+        workers_i = 1
+
     for cat in catalogs:
-        cat_coords = SkyCoord(ra=np.asarray(cat.ra_deg, dtype=float) * u.deg, dec=np.asarray(cat.dec_deg, dtype=float) * u.deg, frame="icrs")
-        # SkyCoord.search_around_sky returns (idx_other, idx_self, sep2d, sep3d).
-        idx_g, idx_c, sep2d, _ = cand_coords.search_around_sky(cat_coords, seplimit=rmax)
-        if len(idx_c) == 0:
-            continue
-        idx_c = np.asarray(idx_c, dtype=np.int64)
-        idx_g = np.asarray(idx_g, dtype=np.int64)
-        sep_arcsec = np.asarray(sep2d.to_value(u.arcsec), dtype=float)
-        z = np.asarray(cat.z, dtype=float)[idx_g]
-        if cat.quality is not None:
-            q = np.asarray(cat.quality, dtype=float)[idx_g]
-        else:
-            q = np.zeros_like(z)
-        if cat.z_err is not None:
-            zerr = np.asarray(cat.z_err, dtype=float)[idx_g]
-        else:
-            zerr = np.full_like(z, np.nan)
+        n_cat = int(np.asarray(cat.ra_deg).size)
+        if n_cat >= big_n:
+            # Cached KD-tree path for very large catalogs (e.g., DESI).
+            key = (str(cat.name), n_cat)
+            cached = _CKDTREE_CACHE.get(key)
+            if cached is None:
+                ra = np.deg2rad(np.asarray(cat.ra_deg, dtype=float))
+                dec = np.deg2rad(np.asarray(cat.dec_deg, dtype=float))
+                cosd_c = np.cos(dec)
+                cat_xyz = np.stack((cosd_c * np.cos(ra), cosd_c * np.sin(ra), np.sin(dec)), axis=1).astype(np.float32)
+                tree = cKDTree(cat_xyz)
+                cached = (tree, cat_xyz)
+                _CKDTREE_CACHE[key] = cached
+            tree, cat_xyz = cached
 
-        order = np.argsort(idx_c, kind="mergesort")
-        idx_c = idx_c[order]
-        idx_g = idx_g[order]
-        sep_arcsec = sep_arcsec[order]
-        z = z[order]
-        q = q[order]
-        zerr = zerr[order]
+            # Query all candidates at once.
+            idx_lists = tree.query_ball_point(cand_xyz, r=chord, workers=workers_i)
+            for ic, neigh in enumerate(idx_lists):
+                if not neigh:
+                    continue
+                for ig in neigh:
+                    ig = int(ig)
+                    zz = float(np.asarray(cat.z, dtype=float)[ig])
+                    if not np.isfinite(zz):
+                        continue
+                    ze = float(np.asarray(cat.z_err, dtype=float)[ig]) if cat.z_err is not None else float("nan")
+                    qq = float(np.asarray(cat.quality, dtype=float)[ig]) if cat.quality is not None else 0.0
+                    # Convert chord distance to angular separation (radians).
+                    d = float(np.linalg.norm(cand_xyz[ic] - cat_xyz[ig]))
+                    # Clamp for numerical safety.
+                    d = min(max(d, 0.0), 2.0)
+                    sep_rad = 2.0 * float(np.arcsin(min(1.0, 0.5 * d)))
+                    sep_arcsec = sep_rad * (180.0 / np.pi) * 3600.0
+                    out[int(ic)].append(
+                        {
+                            "source": cat.name,
+                            "z": zz,
+                            "z_err": None if not np.isfinite(ze) else float(ze),
+                            "quality": None if not np.isfinite(qq) else float(qq),
+                            "sep_arcsec": float(sep_arcsec),
+                        }
+                    )
+        else:
+            # Astropy path for small catalogs.
+            cat_coords = SkyCoord(ra=np.asarray(cat.ra_deg, dtype=float) * u.deg, dec=np.asarray(cat.dec_deg, dtype=float) * u.deg, frame="icrs")
+            # SkyCoord.search_around_sky returns (idx_other, idx_self, sep2d, sep3d).
+            idx_g, idx_c, sep2d, _ = cand_coords.search_around_sky(cat_coords, seplimit=rmax)
+            if len(idx_c) == 0:
+                continue
+            idx_c = np.asarray(idx_c, dtype=np.int64)
+            idx_g = np.asarray(idx_g, dtype=np.int64)
+            sep_arcsec = np.asarray(sep2d.to_value(u.arcsec), dtype=float)
+            z = np.asarray(cat.z, dtype=float)[idx_g]
+            if cat.quality is not None:
+                q = np.asarray(cat.quality, dtype=float)[idx_g]
+            else:
+                q = np.zeros_like(z)
+            if cat.z_err is not None:
+                zerr = np.asarray(cat.z_err, dtype=float)[idx_g]
+            else:
+                zerr = np.full_like(z, np.nan)
 
-        # Append matches; we will sort per-candidate later.
-        for ic, ig, s, zz, qq, ze in zip(idx_c.tolist(), idx_g.tolist(), sep_arcsec.tolist(), z.tolist(), q.tolist(), zerr.tolist(), strict=True):
-            out[int(ic)].append(
-                {
-                    "source": cat.name,
-                    "z": float(zz),
-                    "z_err": None if not np.isfinite(float(ze)) else float(ze),
-                    "quality": None if not np.isfinite(float(qq)) else float(qq),
-                    "sep_arcsec": float(s),
-                }
-            )
+            order = np.argsort(idx_c, kind="mergesort")
+            idx_c = idx_c[order]
+            idx_g = idx_g[order]
+            sep_arcsec = sep_arcsec[order]
+            z = z[order]
+            q = q[order]
+            zerr = zerr[order]
+
+            # Append matches; we will sort per-candidate later.
+            for ic, ig, s, zz, qq, ze in zip(idx_c.tolist(), idx_g.tolist(), sep_arcsec.tolist(), z.tolist(), q.tolist(), zerr.tolist(), strict=True):
+                out[int(ic)].append(
+                    {
+                        "source": cat.name,
+                        "z": float(zz),
+                        "z_err": None if not np.isfinite(float(ze)) else float(ze),
+                        "quality": None if not np.isfinite(float(qq)) else float(qq),
+                        "sep_arcsec": float(s),
+                    }
+                )
 
     # Sort and truncate to top alternatives per candidate.
     for i in range(len(out)):
@@ -1405,14 +1475,16 @@ def main() -> int:
                         xm_manifest_rows.append({"event": ev, "source": sname, "status": "missing_cat2"})
                         continue
                     # Avoid repeated failing queries for tables not mirrored on the XMatch server.
-                    try:
-                        from astroquery.xmatch import XMatch
+                    # In offline mode we rely on cached query results and skip the availability check.
+                    if not bool(args.offline):
+                        try:
+                            from astroquery.xmatch import XMatch
 
-                        if not bool(XMatch.is_table_available(cat2)):
-                            xm_manifest_rows.append({"event": ev, "source": sname, "cat2": cat2, "status": "table_unavailable"})
-                            continue
-                    except Exception:
-                        pass
+                            if not bool(XMatch.is_table_available(cat2)):
+                                xm_manifest_rows.append({"event": ev, "source": sname, "cat2": cat2, "status": "table_unavailable"})
+                                continue
+                        except Exception:
+                            pass
                     src_rmax = float(src.get("radius_max_arcsec", radius_max))
                     src_rmax = float(min(float(radius_max), max(0.1, src_rmax)))
                     col_ra2 = str(src.get("ra2_col") or src.get("col_ra2") or "RAJ2000")
@@ -1481,14 +1553,15 @@ def main() -> int:
                             cat2 = str(src.get("cat2") or "")
                             if not cat2:
                                 continue
-                            try:
-                                from astroquery.xmatch import XMatch
+                            if not bool(args.offline):
+                                try:
+                                    from astroquery.xmatch import XMatch
 
-                                if not bool(XMatch.is_table_available(cat2)):
-                                    xm_manifest_rows.append({"event": ev, "source": sname, "cat2": cat2, "shift_kind": sk, "status": "table_unavailable"})
-                                    continue
-                            except Exception:
-                                pass
+                                    if not bool(XMatch.is_table_available(cat2)):
+                                        xm_manifest_rows.append({"event": ev, "source": sname, "cat2": cat2, "shift_kind": sk, "status": "table_unavailable"})
+                                        continue
+                                except Exception:
+                                    pass
                             src_rmax = float(src.get("radius_max_arcsec", radius_max))
                             src_rmax = float(min(float(radius_max), max(0.1, src_rmax)))
                             col_ra2 = str(src.get("ra2_col") or src.get("col_ra2") or "RAJ2000")

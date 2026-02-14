@@ -131,6 +131,7 @@ pip install -e '.[sirens,optical_bias]'
 - GLADE+ galaxy catalogue: DOI `10.1093/mnras/stac1443`
 - O3 search-sensitivity injections: DOI `10.5281/zenodo.7890437`
 - Code + reproducibility archive for the Hubble-tension manuscript: DOI `10.5281/zenodo.18635659`
+- Code + reproducibility archive for the Hubble-tension manuscript: DOI `10.5281/zenodo.18640608`
 
 ---
 

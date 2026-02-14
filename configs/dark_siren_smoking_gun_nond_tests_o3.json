@@ -1,0 +1,59 @@
+{
+  "baseline": {
+    "gap_run_root": "/home/primary/PROJECT/outputs/dark_siren_o3_injection_logit_20260209_055801UTC",
+    "run_label": "M0_start101",
+    "recon_run_dir": "/home/primary/PROJECT/outputs/finalization/highpower_multistart_v2/M0_start101",
+    "spectral_only_terms_npz": "outputs/dark_siren_hardening_suite_o3_20260213_192819UTC/tables/spectral_only_cached_terms.npz",
+    "photoz_grid_csv": "outputs/dark_siren_hardening_suite_o3_20260213_192819UTC/tables/catalog_photoz_stress_global_photoz_grid.csv",
+    "top_events_summary_json": "outputs/dark_siren_hardening_suite_o3_20260213_192819UTC/tables/catalog_photoz_stress_global_summary.json"
+  },
+  "glade": {
+    "index_lumB": "/home/primary/PROJECT/data/processed/galaxies/gladeplus/index_nside128_wlumB_zmax0.3",
+    "index_uniform": "/home/primary/PROJECT/data/processed/galaxies/gladeplus/index_nside128"
+  },
+  "event_selection": {
+    "leverage_target_fraction": 0.8,
+    "min_events": 5,
+    "max_events": 12
+  },
+  "dominant_hosts": {
+    "enabled": true,
+    "cumulative_weight_thresholds": [0.5, 0.8],
+    "initial_topk": 20000,
+    "max_topk": 200000
+  },
+  "specz_lookup": {
+    "enabled": true,
+    "service": "ned",
+    "radius_arcsec": 3.0,
+    "sleep_sec": 0.5,
+    "max_total_queries": 400
+  },
+  "specz_override": {
+    "enabled": true,
+    "override_thresholds": [0.5, 0.8],
+    "z_max": 0.3,
+    "out_of_support_mode": "drop_weight"
+  },
+  "catalog_weight_swap": {
+    "enabled": true,
+    "mode": "uniform_weights_on_same_glade"
+  },
+  "photoz_prior_marginalization": {
+    "enabled": true,
+    "prior_b0_sigma": 0.01,
+    "prior_b1_sigma": 0.1,
+    "n_samples": 200000,
+    "seed": 123
+  },
+  "ppc_residuals": {
+    "enabled": true,
+    "h0_ref": 67.7,
+    "omega_m0": 0.31
+  },
+  "scoring": {
+    "distance_mode": "spectral_only",
+    "gal_chunk_size": 50000,
+    "z_hist_nbins": 400
+  }
+}

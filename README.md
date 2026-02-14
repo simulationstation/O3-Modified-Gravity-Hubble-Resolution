@@ -31,7 +31,8 @@ Conceptually:
 - `scripts/`: runnable entrypoints for the O3 dark-siren hardening suite, spec-$z$ audits, and Hubble follow-on analyses.
 - `update_paper/`: latest Hubble-tension manuscript source + PDF (`hubble_tension_hypothesis.tex/.pdf`).
 - `entropy_slope_paper/`: entropy-slope letter source + PDF (context/foundation for the mapping).
-- `CQG_PAPER/`: CQG-style manuscript source + PDF (`dark_siren_cqg.tex/.pdf`).
+- `CQG_PAPER/`: CQG-style manuscript source + PDF for the Hubble-tension implications paper (`hubble_tension_cqg.tex/.pdf`).
+- `CQG_DARK_SIREN/`: CQG-style manuscript source + PDF for the O3 dark-siren scoring paper (`dark_siren_cqg.tex/.pdf`).
 - `artifacts/`: **curated**, small “reviewer seed” outputs (tables/figures/reports). These are what `make reproduce` reads.
 
 Notes:
@@ -55,6 +56,12 @@ To rebuild the bundled CQG paper PDF (optional):
 
 ```bash
 make cqg-paper
+```
+
+To rebuild the bundled CQG dark-siren PDF (optional):
+
+```bash
+make cqg-dark-siren
 ```
 
 Output example:

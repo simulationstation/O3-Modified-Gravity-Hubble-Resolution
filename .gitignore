@@ -33,3 +33,6 @@ forward_tests_manifest.json
 
 # RevTeX control stubs occasionally generated during local builds
 update_paper/*Notes.bib
+
+# Local copies of IOP template bundles (not required for reviewer seed).
+CQG_PAPER/iop_template/

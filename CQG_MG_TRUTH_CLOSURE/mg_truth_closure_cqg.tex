@@ -1,0 +1,186 @@
+\documentclass[12pt,a4paper,final]{iopart}
+% CQG (IOP) format: iopart class, numeric citations, IMRaD-style structure.
+
+% Some TeX installs ship an older iopart that conflicts with amsmath's equation*.
+\expandafter\let\csname equation*\endcsname\relax
+\expandafter\let\csname endequation*\endcsname\relax
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{cite}
+\usepackage{xurl}
+
+% Allow compilation either from the repo (figures/ subdir) or from a flat asset bundle.
+\graphicspath{{./}{figures/}}
+
+\newcommand{\LPD}{\mathrm{LPD}}
+\newcommand{\dL}{d_L}
+
+\begin{document}
+\markboth{A B Smith}{MG-truth Causal Closure of the O3 Dark-Siren Score Anomaly}
+
+\title[MG-truth Causal Closure]{MG-truth Causal Closure of the O3 Dark-Siren Score Anomaly}
+
+\author{Aiden B Smith}
+\address{Independent Researcher}
+\ead{aidenblakesmithtravel@gmail.com}
+
+\vspace{10pt}
+\begin{indented}
+\item[]14 February 2026
+\end{indented}
+
+\begin{abstract}
+The O3 GWTC-3 dark-siren catalogue exhibits a calibrated preference for a fixed modified gravitational-wave (GW) propagation history, quantified by a posterior-predictive score shift $\Delta\LPD_{\rm tot}\simeq 3.67$ relative to an internal General Relativity (GR) propagation baseline in the production scoring framework.
+Here we perform a causal-closure test: assuming the same modified-propagation template is the truth, does a GR-baseline analysis naturally generate a score excursion on the observed scale when filtered through the identical catalogue and selection machinery?
+We generate synthetic dark-siren catalogues using the O3 event ensemble and the same injection-calibrated selection normalisation as the real-data analysis, draw redshifts from the same host-redshift support structures used by the pipeline, and generate synthetic distance likelihoods centred on either GR-truth or modified-propagation-truth distances.
+Across 256 MG-truth replicates, $\Delta\LPD_{\rm tot}$ has mean $3.50$ and yields $P(\Delta\LPD_{\rm tot}\ge 3.6699)=0.219$; under the matched GR-truth generator the mean is $3.31$ with $P(\Delta\LPD_{\rm tot}\ge 3.6699)=0.0195$.
+A dose--response dial in the forward generator, $R_\alpha(z)=1+\alpha[R(z)-1]$, produces a monotone increase in the tail probability at the observed threshold as $\alpha$ is increased from 0 to 1.
+When the catalogue likelihood geometry is deliberately removed via structureless redshift weighting, the large-score scale collapses (mean $\Delta\LPD_{\rm tot}\simeq 0.64$).
+These results support the inference-bias mechanism as a coherent explanation of the observed score scale, while remaining conditional on the forward-generator assumptions and the tested nuisance family.
+\end{abstract}
+
+\vspace{2pc}
+\noindent{\it Keywords}: gravitational waves, standard sirens, cosmology, inference bias, catalogues, selection effects
+
+\maketitle
+
+\section{Introduction}
+Dark-siren cosmology combines gravitational-wave (GW) luminosity-distance posteriors with galaxy catalogues to infer statistical host-redshift information \cite{Schutz1986,Abbott2017GW170817}.
+In General Relativity (GR), the GW luminosity distance equals the electromagnetic luminosity distance for a given expansion history.
+In many modified-gravity constructions, however, the GW amplitude can experience additional effective ``friction'' during propagation, producing a redshift-dependent mapping $\dL^{\rm GW}(z)=R(z)\dL^{\rm EM}(z)$ with $R(z)\neq 1$ \cite{Belgacem2018,Nishizawa2018}.
+
+The companion O3 dark-siren analysis in this codebase reports a posterior-predictive preference for a fixed modified-propagation history over an internal GR propagation baseline, quantified by $\Delta\LPD_{\rm tot}\simeq 3.67$ in the production scoring framework, with injection-based GR-truth calibrations that disfavour a generic numerical artifact \cite{Abbott2023GWTC3,Dalya2022}.
+If such a propagation deviation is physical, then applying a GR ruler to a modified-propagation Universe introduces an inference bias: the analysis assumption (GR propagation) is not neutral, and can manufacture tension-scale parameter wedges when distances are inverted.
+
+This paper isolates one narrow question that can be addressed pre-O4 using public data and the existing scoring pipeline: does the modified-propagation ``truth'' used in the Hubble-tension transfer analysis causally imply a score anomaly of the observed magnitude when analysed under a GR baseline?
+We answer this by constructing MG-truth and GR-truth synthetic catalogues that preserve the key catalogue and selection structures, scoring them with the unmodified production code, and comparing the resulting $\Delta\LPD$ distributions to the observed score.
+
+\section{Formalism and experiment design}
+\subsection{Predictive score}
+The production analysis compares a fixed propagation hypothesis to an internal GR baseline using a joint posterior-predictive log score $\LPD$ evaluated across the event set with explicit selection normalisation.
+We report the score difference
+\begin{equation}
+\Delta\LPD_{\rm tot}\equiv \LPD(\mathrm{prop})-\LPD(\mathrm{GR}),
+\end{equation}
+where ``prop'' is the fixed modified-propagation template and ``GR'' sets $R\equiv 1$.
+Larger $\Delta\LPD_{\rm tot}$ indicates that the fixed template assigns higher predictive density to the catalogue under the scoring construction.
+
+\subsection{Forward generators and causal closure}
+The causal-closure experiment generates synthetic catalogues that preserve the real pipeline's dominant ingredients: (i) the same O3 event ensemble definition; (ii) the same injection-calibrated selection normalisation; and (iii) the same host-redshift support structures used by the catalogue likelihood in the dominant spectral channel.
+For each replicate, we draw a redshift for each event from its cached host-redshift support and compute a corresponding electromagnetic luminosity distance $\dL^{\rm EM}(z)$ under the baseline background history used by the production run.
+We then generate a synthetic distance likelihood centred on either
+\begin{equation}
+\dL^{\rm GW,\,true}(z)=\dL^{\rm EM}(z) \qquad (\mathrm{GR\ truth}),
+\end{equation}
+or
+\begin{equation}
+\dL^{\rm GW,\,true}(z)=R_\alpha(z)\,\dL^{\rm EM}(z),\qquad
+R_\alpha(z)=1+\alpha\,[R(z)-1]\qquad (\mathrm{MG\ truth}),
+\end{equation}
+with $\alpha\in[0,1]$ used as a dose--response dial in the forward generator.
+The synthetic catalogues are then scored with the unmodified production scoring code to obtain $\Delta\LPD_{\rm tot}$ and its data/selection decomposition.
+
+\subsection{Controls}
+We include two controls designed to validate mechanism alignment rather than to claim a comprehensive systematics closure.
+First, we evaluate multiple GR-truth generator variants (e.g.\ altering the truth missing-host mixture fraction) to test whether the GR-tail probability at the observed threshold is stable under plausible GR-truth forward modelling choices.
+Second, we remove the catalogue likelihood geometry by replacing the galaxy-catalogue term with a deliberately structureless redshift weighting in both the truth generator and the analysis model; this tests whether the large-score scale depends on catalogue/selection geometry rather than being a free property of the score.
+
+\section{Results}
+\subsection{Baseline MG-truth and GR-truth distributions}
+The observed real-catalogue score is $\Delta\LPD_{\rm tot}=3.6699$.
+Figure~\ref{fig:hist_overlay} shows the $\Delta\LPD_{\rm tot}$ distributions from 256 MG-truth and 256 GR-truth synthetic catalogues.
+Under MG truth (with $\alpha=1$), the distribution has mean $3.50$ and yields $P(\Delta\LPD_{\rm tot}\ge 3.6699)=0.219$.
+Under the matched GR-truth generator, the mean is $3.31$ and $P(\Delta\LPD_{\rm tot}\ge 3.6699)=0.0195$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.88\linewidth]{delta_lpd_hist_overlay.png}
+\caption{\label{fig:hist_overlay}Causal-closure overlay. Histogram of $\Delta\LPD_{\rm tot}$ for MG-truth (blue) and GR-truth (orange) synthetic catalogues, together with the ``catalog removed'' control (grey). The vertical line marks the observed real-catalogue value.}
+\end{figure}
+
+\subsection{Dose--response dial}
+The forward-generator amplitude dial produces a monotone increase in both the mean score and the tail probability at the observed threshold.
+Figure~\ref{fig:dose_p} shows $P(\Delta\LPD_{\rm tot}\ge 3.6699)$ as a function of $\alpha$ for $\alpha=\{0,0.25,0.5,0.75,1\}$.
+In this run snapshot, the tail probability rises from $0.023$ at $\alpha=0$ to $0.219$ at $\alpha=1$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.88\linewidth]{dose_response_p_ge_observed_vs_alpha.png}
+\caption{\label{fig:dose_p}Dose--response in the forward generator. Tail probability $P(\Delta\LPD_{\rm tot}\ge 3.6699)$ as a function of the truth amplitude dial $\alpha$ in $R_\alpha(z)$.}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.88\linewidth]{dose_response_mean_delta_lpd_vs_alpha.png}
+\caption{\label{fig:dose_mean}Dose--response in the forward generator. Mean $\Delta\LPD_{\rm tot}$ as a function of $\alpha$.}
+\end{figure}
+
+\subsection{Selection contribution and catalogue-removed control}
+Figure~\ref{fig:data_sel} visualises the decomposition of the score into data and selection components under MG truth. In this closure suite, the selection contribution remains of order unity and the dose response is primarily expressed in the data-fit term, consistent with the mechanism that the modified propagation accumulates in the distance--redshift channel.
+
+When the catalogue likelihood geometry is removed by structureless redshift weighting, the large-score scale collapses: the ``catalog removed'' control has mean $\Delta\LPD_{\rm tot}\simeq 0.64$ and does not populate the observed tail (Figure~\ref{fig:hist_overlay}). This demonstrates that the score amplitude in the baseline closure runs is not arbitrary; it depends on the catalogue/selection compression of the distance posteriors.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.88\linewidth]{mg_truth_data_vs_sel_scatter.png}
+\caption{\label{fig:data_sel}MG-truth decomposition. Scatter of $\Delta\LPD_{\rm data}$ versus $\Delta\LPD_{\rm sel}$ across MG-truth replicates (diagnostic for whether selection dominates the score).}
+\end{figure}
+
+\section{Discussion}
+This causal-closure experiment is designed to answer a specific mechanistic question: whether the modified-propagation history used in the Hubble-tension transfer analysis can naturally generate a score excursion of the observed scale when analysed under a GR propagation baseline.
+Within the assumptions of the forward generator, the answer is affirmative: the observed $\Delta\LPD_{\rm tot}$ sits in a typical region of the MG-truth distribution and lies in the high tail of the matched GR-truth distribution, and the generator exhibits a clean monotone dose--response with $\alpha$.
+
+The experiment remains conditional in two ways.
+First, the forward generator uses synthetic distance likelihoods tuned to the O3 event ensemble; it is not a full strain-level reanalysis, and it primarily targets the dominant spectral channel used by the production scoring.
+Second, the GR-tail probability is not immutable: GR-truth generator variants that substantially alter the truth redshift-drawing mixture can increase the probability of exceeding the observed threshold.
+For this reason, we interpret the closure result as a mechanism alignment test rather than as a standalone significance statement.
+
+The broader implication is methodological: whenever a pipeline compresses catalogue structure and selection functions through a fixed modelling assumption, ``anomalies'' of tension scale can be generated by ruler mismatch (truth $\neq$ analysis assumption).
+This does not in itself diagnose the origin of any specific anisotropy claim, but it motivates forward-model closure tests and structure-destruction nulls as standard robustness requirements.
+
+\section{Conclusion}
+We have implemented a MG-truth causal-closure experiment within the O3 dark-siren scoring pipeline.
+Under the baseline forward generator, MG truth yields $P(\Delta\LPD_{\rm tot}\ge 3.6699)=0.219$ whereas GR truth yields $P(\Delta\LPD_{\rm tot}\ge 3.6699)=0.0195$ for the observed threshold, and a forward-generator amplitude dial produces a monotone dose--response.
+When catalogue geometry is removed, the large-score scale collapses.
+These results support the inference-bias mechanism as a coherent explanation of the observed score magnitude, while remaining explicit about forward-generator dependence and the residual space of catalogue/selection systematics.
+
+\section*{Acknowledgements}
+The author used generative AI tools (large language models) for editorial assistance and code refactoring. All scientific claims, calculations and results were verified by the author.
+
+\section*{Declarations}
+\subsection*{Conflict of interest}
+The author declares no competing interests.
+
+\subsection*{Data availability}
+The code and archived artefacts required to reproduce this experiment are provided with the repository and mirrored on Zenodo (code DOI: 10.5281/zenodo.18640608). The companion O3 dark-siren scoring release is archived at Zenodo DOI: 10.5281/zenodo.18640507.
+
+\subsection*{Funding}
+The author received no specific funding for this work.
+
+\section*{References}
+\begin{thebibliography}{99}
+
+\bibitem{Schutz1986}
+Schutz B F 1986 \emph{Nature} \textbf{323} 310--1
+
+\bibitem{Abbott2017GW170817}
+Abbott B P \emph{et al} (LIGO Scientific Collaboration \& Virgo Collaboration) 2017 \emph{Nature} \textbf{551} 85--8
+
+\bibitem{Belgacem2018}
+Belgacem E, Dirian Y, Foffa S and Maggiore M 2018 \emph{Phys. Rev. D} \textbf{98} 023510
+
+\bibitem{Nishizawa2018}
+Nishizawa A 2018 \emph{Phys. Rev. D} \textbf{97} 104037
+
+\bibitem{Abbott2023GWTC3}
+Abbott R \emph{et al} (LIGO Scientific Collaboration, Virgo Collaboration \& KAGRA Collaboration) 2023 \emph{Phys. Rev. X} \textbf{13} 041039
+
+\bibitem{Dalya2022}
+D\'alya G \emph{et al} 2022 \emph{Mon. Not. R. Astron. Soc.} \textbf{514} 1403--11
+
+\end{thebibliography}
+
+\end{document}
